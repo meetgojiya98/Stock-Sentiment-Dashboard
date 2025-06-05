@@ -12,7 +12,7 @@ async def fetch_rss(url):
 
 async def fetch_news():
     rss_xml = await fetch_rss(NEWS_RSS_URL)
-    soup = BeautifulSoup(rss_xml, "xml")
+    soup = BeautifulSoup(rss_xml, "lxml-xml")
     items = soup.find_all("item")
     news_list = []
     for item in items[:20]:
