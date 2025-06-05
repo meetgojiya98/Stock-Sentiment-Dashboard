@@ -38,12 +38,18 @@ async def get_news():
     items = soup.find_all("item")[:20]
     news_list = []
     for item in items:
+        title = item.title.text if item.title else "No title"
+        url = item.link.text if item.link else ""
+        date = item.pubDate.text if item.pubDate else ""
+        description = item.description.text if item.description else ""
+        text = f"{title} {description}"
+
         news_list.append({
             "id": str(uuid.uuid4()),
-            "title": item.title.text if item.title else "No title",
-            "url": item.link.text if item.link else "",
-            "date": item.pubDate.text if item.pubDate else "",
-            "text": item.title.text + " " + (item.description.text if item.description else "")
+            "title": title,
+            "url": url,
+            "date": date,
+            "text": text,
         })
     return news_list
 
@@ -54,19 +60,23 @@ async def get_reddit():
     entries = soup.find_all("entry")[:20]
     reddit_list = []
     for entry in entries:
+        title = entry.title.text if entry.title else "No title"
+        url = entry.link['href'] if entry.link and entry.link.has_attr('href') else ""
+        date = entry.updated.text if entry.updated else ""
+        content = entry.content.text if entry.content else ""
+        text = f"{title} {content}"
+
         reddit_list.append({
             "id": str(uuid.uuid4()),
-            "title": entry.title.text if entry.title else "No title",
-            "url": entry.link['href'] if entry.link else "",
-            "date": entry.updated.text if entry.updated else "",
-            "text": entry.title.text + " " + (entry.content.text if entry.content else "")
+            "title": title,
+            "url": url,
+            "date": date,
+            "text": text,
         })
     return reddit_list
 
 @app.get("/api/sentiment")
 async def get_sentiment():
-    # This is a mock implementation; replace with your real sentiment analysis logic
-    # For demo: count "positive", "negative", "neutral" in text of news + reddit combined
     news = await get_news()
     reddit = await get_reddit()
     combined_texts = [item["text"].lower() for item in news + reddit]
@@ -75,7 +85,6 @@ async def get_sentiment():
     negative = sum(1 for t in combined_texts if any(w in t for w in ["down", "loss", "negative", "bear", "sell"]))
     neutral = len(combined_texts) - positive - negative
 
-    # Return list formatted for chart
     return [
         {"sentiment": "POSITIVE", "count": positive},
         {"sentiment": "NEGATIVE", "count": negative},
@@ -93,8 +102,6 @@ async def get_trending_stocks():
         tickers.extend(extract_tickers(text))
 
     counter = Counter(tickers)
-    # Only show tickers with count > 1 for relevance
     trending = [{"ticker": k, "count": v} for k, v in counter.most_common() if v > 1]
 
     return trending
-
