@@ -8,9 +8,13 @@ import re
 
 app = FastAPI()
 
+@app.get("/")
+async def root():
+    return {"message": "Stock Sentiment Backend is up and running!"}
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:3000", "https://stock-sentiment-frontend.vercel.app"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
