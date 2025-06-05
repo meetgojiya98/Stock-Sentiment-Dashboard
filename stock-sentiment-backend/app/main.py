@@ -14,7 +14,7 @@ async def root():
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://stock-sentiment-frontend.vercel.app", "https://meetgojiya98.github.io/stock-sentiment-frontend/"],
+    allow_origins=["http://localhost:3000", "https://stock-sentiment-frontend.vercel.app", "https://meetgojiya98.github.io"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
