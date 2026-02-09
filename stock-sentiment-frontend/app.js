@@ -3,6 +3,7 @@ const dom = {
   saveApiBaseBtn: document.querySelector("#save-api-base-btn"),
   refreshBtn: document.querySelector("#refresh-btn"),
   autoRefreshBtn: document.querySelector("#auto-refresh-btn"),
+  themeToggleBtn: document.querySelector("#theme-toggle-btn"),
   routeButtons: Array.from(document.querySelectorAll(".route-btn")),
   views: Array.from(document.querySelectorAll(".view")),
 
@@ -102,6 +103,7 @@ const BOOKMARKS_KEY_GUEST = "ssd_bookmarks_guest";
 const ALERTS_KEY_GUEST = "ssd_alerts_guest";
 const FEED_SORT_KEY = "ssd_feed_sort_v1";
 const FEED_DENSITY_KEY = "ssd_feed_density_v1";
+const THEME_KEY = "ssd_theme_v1";
 const ROUTES = ["home", "intelligence", "feed", "watchtower", "account"];
 
 const state = {
@@ -130,6 +132,7 @@ const state = {
     a: "",
     b: "",
   },
+  theme: loadTheme(),
   feedSort: loadFeedSort(),
   feedDense: loadFeedDensity(),
   charts: {
@@ -148,6 +151,7 @@ init();
 
 async function init() {
   dom.apiBaseInput.value = state.apiBase;
+  applyTheme(state.theme);
   bindEvents();
   setRoute(state.route, { updateHash: false });
   renderAuthState();
@@ -183,6 +187,16 @@ function bindEvents() {
     setAutoRefresh(!state.autoRefresh);
     toast(`Auto refresh ${state.autoRefresh ? "enabled" : "disabled"}`);
   });
+
+  if (dom.themeToggleBtn) {
+    dom.themeToggleBtn.addEventListener("click", () => {
+      const nextTheme = state.theme === "dark" ? "light" : "dark";
+      applyTheme(nextTheme);
+      renderAdvancedCharts(state.dashboard);
+      drawTimeline(state.dashboard?.timeline ?? []);
+      toast(`Theme switched to ${toTitleCase(nextTheme)}`);
+    });
+  }
 
   dom.routeButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -1114,6 +1128,7 @@ function drawTimeline(points) {
   if (!canvas) {
     return;
   }
+  const palette = themePalette();
 
   const ctx = canvas.getContext("2d");
   if (!ctx) {
@@ -1131,7 +1146,7 @@ function drawTimeline(points) {
   ctx.clearRect(0, 0, width, height);
 
   if (!points.length) {
-    ctx.fillStyle = "#95a9d4";
+    ctx.fillStyle = palette.timelineText;
     ctx.font = "500 13px Manrope";
     ctx.fillText("No timeline points yet", 16, 22);
     dom.timelineLegends.innerHTML = "";
@@ -1144,7 +1159,7 @@ function drawTimeline(points) {
 
   for (let i = 0; i <= 4; i += 1) {
     const y = pad.top + (chartHeight / 4) * i;
-    ctx.strokeStyle = "rgba(125, 146, 212, 0.2)";
+    ctx.strokeStyle = palette.timelineGrid;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(pad.left, y);
@@ -1164,8 +1179,8 @@ function drawTimeline(points) {
   });
 
   const gradient = ctx.createLinearGradient(0, pad.top, 0, pad.top + chartHeight);
-  gradient.addColorStop(0, "rgba(34, 211, 238, 0.36)");
-  gradient.addColorStop(1, "rgba(34, 211, 238, 0.04)");
+  gradient.addColorStop(0, palette.timelineAreaTop);
+  gradient.addColorStop(1, palette.timelineAreaBottom);
 
   ctx.beginPath();
   ctx.moveTo(coords[0].x, pad.top + chartHeight);
@@ -1183,18 +1198,18 @@ function drawTimeline(points) {
       ctx.lineTo(point.x, point.y);
     }
   });
-  ctx.strokeStyle = "#22d3ee";
+  ctx.strokeStyle = palette.timelineLine;
   ctx.lineWidth = 2.4;
   ctx.stroke();
 
   coords.forEach((point) => {
     ctx.beginPath();
     ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
-    ctx.fillStyle = "#38bdf8";
+    ctx.fillStyle = palette.timelineDot;
     ctx.fill();
   });
 
-  ctx.fillStyle = "#9fb0d4";
+  ctx.fillStyle = palette.timelineText;
   ctx.font = "500 11px Manrope";
   const step = Math.max(1, Math.floor(points.length / 5));
   points.forEach((point, index) => {
@@ -1228,6 +1243,7 @@ function renderAdvancedCharts(dashboard) {
     clearAdvancedCharts("Chart engine not available");
     return;
   }
+  const palette = themePalette();
 
   const timeline = dashboard?.timeline || [];
   const trending = dashboard?.trending || [];
@@ -1257,8 +1273,8 @@ function renderAdvancedCharts(dashboard) {
         {
           label: "Sentiment",
           data: sentimentSeries,
-          borderColor: "#22d3ee",
-          backgroundColor: "rgba(34, 211, 238, 0.2)",
+          borderColor: palette.chartPrimary,
+          backgroundColor: palette.chartPrimaryFill,
           borderWidth: 2.2,
           fill: true,
           tension: 0.35,
@@ -1267,7 +1283,7 @@ function renderAdvancedCharts(dashboard) {
         {
           label: "Velocity",
           data: velocitySeries,
-          borderColor: "#f472b6",
+          borderColor: palette.chartSecondary,
           borderWidth: 1.8,
           fill: false,
           tension: 0.25,
@@ -1288,10 +1304,10 @@ function renderAdvancedCharts(dashboard) {
         {
           data: sourceEntries.length ? sourceEntries.map(([, count]) => Number(count || 0)) : [1],
           backgroundColor: sourceEntries.length
-            ? ["#22d3ee", "#a78bfa", "#34d399", "#f472b6", "#fbbf24"]
-            : ["rgba(130, 149, 196, 0.35)"],
+            ? [palette.chartPrimary, palette.chartTertiary, palette.chartPositive, palette.chartSecondary, palette.chartWarning]
+            : [palette.chartFallback],
           borderWidth: 1,
-          borderColor: "rgba(13, 18, 35, 0.65)",
+          borderColor: palette.chartBorder,
           hoverOffset: 8,
         },
       ],
@@ -1301,13 +1317,13 @@ function renderAdvancedCharts(dashboard) {
       cutout: "68%",
       plugins: {
         ...buildChartOptions().plugins,
-        legend: {
-          position: "bottom",
-          labels: {
-            color: "#b9c9ee",
-            boxWidth: 10,
+          legend: {
+            position: "bottom",
+            labels: {
+              color: palette.chartText,
+              boxWidth: 10,
+            },
           },
-        },
       },
     },
   });
@@ -1317,10 +1333,10 @@ function renderAdvancedCharts(dashboard) {
     data: {
       labels: ["Sentiment", "Momentum", "Mentions", "Bullish Ratio", "Hype"],
       datasets: radarRows.map((row, index) => {
-        const palette = [
-          ["#22d3ee", "rgba(34, 211, 238, 0.18)"],
-          ["#a78bfa", "rgba(167, 139, 250, 0.16)"],
-          ["#34d399", "rgba(52, 211, 153, 0.16)"],
+        const datasetPalette = [
+          [palette.chartPrimary, palette.chartPrimaryFill],
+          [palette.chartTertiary, palette.chartTertiaryFill],
+          [palette.chartPositive, palette.chartPositiveFill],
         ][index % 3];
         return {
           label: row.ticker,
@@ -1331,8 +1347,8 @@ function renderAdvancedCharts(dashboard) {
             clamp((Number(row.bullish || 0) / Math.max(Number(row.mentions || 0), 1)) * 100, 0, 100),
             clamp((Number(row.hypeScore || 0) / hypeMax) * 100, 0, 100),
           ],
-          borderColor: palette[0],
-          backgroundColor: palette[1],
+          borderColor: datasetPalette[0],
+          backgroundColor: datasetPalette[1],
           borderWidth: 1.8,
           pointRadius: 2,
         };
@@ -1344,10 +1360,10 @@ function renderAdvancedCharts(dashboard) {
         r: {
           min: 0,
           max: 100,
-          angleLines: { color: "rgba(154, 173, 219, 0.18)" },
-          grid: { color: "rgba(154, 173, 219, 0.2)" },
+          angleLines: { color: palette.chartGridStrong },
+          grid: { color: palette.chartGrid },
           pointLabels: {
-            color: "#b9c9ee",
+            color: palette.chartText,
             font: { size: 10, weight: "600" },
           },
           ticks: { display: false, stepSize: 20 },
@@ -1357,7 +1373,7 @@ function renderAdvancedCharts(dashboard) {
         ...buildChartOptions().plugins,
         legend: {
           position: "bottom",
-          labels: { color: "#b9c9ee", boxWidth: 10 },
+          labels: { color: palette.chartText, boxWidth: 10 },
         },
       },
     },
@@ -1372,8 +1388,8 @@ function renderAdvancedCharts(dashboard) {
           type: "bar",
           label: "Mentions",
           data: topThemes.map((row) => Number(row.mentions || 0)),
-          backgroundColor: topThemes.map((row) => (Number(row.averageSentiment || 0) >= 0 ? "rgba(52, 211, 153, 0.65)" : "rgba(244, 114, 182, 0.65)")),
-          borderColor: topThemes.map((row) => (Number(row.averageSentiment || 0) >= 0 ? "#34d399" : "#f472b6")),
+          backgroundColor: topThemes.map((row) => (Number(row.averageSentiment || 0) >= 0 ? palette.chartPositiveFill : palette.chartSecondaryFill)),
+          borderColor: topThemes.map((row) => (Number(row.averageSentiment || 0) >= 0 ? palette.chartPositive : palette.chartSecondary)),
           borderWidth: 1.2,
           borderRadius: 6,
           yAxisID: "y",
@@ -1382,8 +1398,8 @@ function renderAdvancedCharts(dashboard) {
           type: "line",
           label: "Sentiment",
           data: topThemes.map((row) => Number(row.averageSentiment || 0)),
-          borderColor: "#fbbf24",
-          backgroundColor: "rgba(251, 191, 36, 0.2)",
+          borderColor: palette.chartWarning,
+          backgroundColor: palette.chartWarningFill,
           borderWidth: 1.8,
           tension: 0.3,
           pointRadius: 2,
@@ -1396,21 +1412,21 @@ function renderAdvancedCharts(dashboard) {
       scales: {
         y: {
           beginAtZero: true,
-          grid: { color: "rgba(128, 148, 202, 0.18)" },
-          ticks: { color: "#b8c8ea" },
-          title: { display: true, text: "Mentions", color: "#96addc" },
+          grid: { color: palette.chartGrid },
+          ticks: { color: palette.chartText },
+          title: { display: true, text: "Mentions", color: palette.chartAxisTitle },
         },
         y1: {
           position: "right",
           min: -100,
           max: 100,
           grid: { drawOnChartArea: false },
-          ticks: { color: "#b8c8ea" },
-          title: { display: true, text: "Sentiment", color: "#96addc" },
+          ticks: { color: palette.chartText },
+          title: { display: true, text: "Sentiment", color: palette.chartAxisTitle },
         },
         x: {
           grid: { display: false },
-          ticks: { color: "#b8c8ea", maxRotation: 20, minRotation: 0 },
+          ticks: { color: palette.chartText, maxRotation: 20, minRotation: 0 },
         },
       },
     },
@@ -1418,6 +1434,7 @@ function renderAdvancedCharts(dashboard) {
 }
 
 function buildChartOptions(overrides = {}) {
+  const palette = themePalette();
   return {
     responsive: true,
     maintainAspectRatio: false,
@@ -1426,29 +1443,29 @@ function buildChartOptions(overrides = {}) {
     plugins: {
       legend: {
         labels: {
-          color: "#b9c9ee",
+          color: palette.chartText,
           usePointStyle: true,
           boxWidth: 9,
           boxHeight: 9,
         },
       },
       tooltip: {
-        backgroundColor: "rgba(8, 13, 28, 0.94)",
-        borderColor: "rgba(95, 122, 196, 0.55)",
+        backgroundColor: palette.chartTooltipBg,
+        borderColor: palette.chartTooltipBorder,
         borderWidth: 1,
-        titleColor: "#e3ecff",
-        bodyColor: "#d3def7",
+        titleColor: palette.chartTooltipTitle,
+        bodyColor: palette.chartTooltipBody,
         padding: 10,
       },
     },
     scales: {
       x: {
-        grid: { color: "rgba(128, 148, 202, 0.14)" },
-        ticks: { color: "#b8c8ea" },
+        grid: { color: palette.chartGridSoft },
+        ticks: { color: palette.chartText },
       },
       y: {
-        grid: { color: "rgba(128, 148, 202, 0.18)" },
-        ticks: { color: "#b8c8ea" },
+        grid: { color: palette.chartGrid },
+        ticks: { color: palette.chartText },
       },
     },
     ...overrides,
@@ -1495,6 +1512,7 @@ function drawChartFallback(canvas, message) {
   if (!canvas) {
     return;
   }
+  const palette = themePalette();
   const ctx = canvas.getContext("2d");
   if (!ctx) {
     return;
@@ -1506,9 +1524,9 @@ function drawChartFallback(canvas, message) {
   canvas.height = Math.floor(height * dpr);
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = "rgba(148, 166, 213, 0.25)";
+  ctx.fillStyle = palette.chartFallback;
   ctx.fillRect(0, 0, width, height);
-  ctx.fillStyle = "#9db1de";
+  ctx.fillStyle = palette.timelineText;
   ctx.font = "600 12px Manrope";
   ctx.fillText(message, 14, 22);
 }
@@ -2177,6 +2195,87 @@ function loadFeedDensity() {
 
 function persistFeedDensity(isCompact) {
   localStorage.setItem(FEED_DENSITY_KEY, isCompact ? "compact" : "cozy");
+}
+
+function loadTheme() {
+  return localStorage.getItem(THEME_KEY) === "light" ? "light" : "dark";
+}
+
+function applyTheme(theme) {
+  state.theme = theme === "light" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", state.theme);
+  localStorage.setItem(THEME_KEY, state.theme);
+  if (dom.themeToggleBtn) {
+    const isDark = state.theme === "dark";
+    dom.themeToggleBtn.textContent = `Theme: ${isDark ? "Dark" : "Light"}`;
+    dom.themeToggleBtn.setAttribute("aria-pressed", String(isDark));
+  }
+}
+
+function themePalette() {
+  if (state.theme === "light") {
+    return {
+      timelineGrid: "rgba(120, 142, 192, 0.22)",
+      timelineLine: "#0b7db0",
+      timelineDot: "#0b7db0",
+      timelineAreaTop: "rgba(14, 126, 184, 0.28)",
+      timelineAreaBottom: "rgba(14, 126, 184, 0.04)",
+      timelineText: "#5e7396",
+
+      chartPrimary: "#0f8ecf",
+      chartPrimaryFill: "rgba(15, 142, 207, 0.2)",
+      chartSecondary: "#cc4a8c",
+      chartSecondaryFill: "rgba(204, 74, 140, 0.24)",
+      chartTertiary: "#6953dd",
+      chartTertiaryFill: "rgba(105, 83, 221, 0.2)",
+      chartPositive: "#1eaa75",
+      chartPositiveFill: "rgba(30, 170, 117, 0.24)",
+      chartWarning: "#cf8b1f",
+      chartWarningFill: "rgba(207, 139, 31, 0.24)",
+      chartFallback: "rgba(132, 150, 194, 0.2)",
+      chartBorder: "rgba(18, 30, 58, 0.22)",
+      chartGrid: "rgba(116, 139, 190, 0.2)",
+      chartGridSoft: "rgba(116, 139, 190, 0.14)",
+      chartGridStrong: "rgba(116, 139, 190, 0.28)",
+      chartText: "#556f99",
+      chartAxisTitle: "#5c78a8",
+      chartTooltipBg: "rgba(245, 250, 255, 0.96)",
+      chartTooltipBorder: "rgba(92, 123, 188, 0.35)",
+      chartTooltipTitle: "#153258",
+      chartTooltipBody: "#2d4e77",
+    };
+  }
+
+  return {
+    timelineGrid: "rgba(125, 146, 212, 0.2)",
+    timelineLine: "#22d3ee",
+    timelineDot: "#38bdf8",
+    timelineAreaTop: "rgba(34, 211, 238, 0.36)",
+    timelineAreaBottom: "rgba(34, 211, 238, 0.04)",
+    timelineText: "#9fb0d4",
+
+    chartPrimary: "#22d3ee",
+    chartPrimaryFill: "rgba(34, 211, 238, 0.2)",
+    chartSecondary: "#f472b6",
+    chartSecondaryFill: "rgba(244, 114, 182, 0.26)",
+    chartTertiary: "#a78bfa",
+    chartTertiaryFill: "rgba(167, 139, 250, 0.22)",
+    chartPositive: "#34d399",
+    chartPositiveFill: "rgba(52, 211, 153, 0.24)",
+    chartWarning: "#fbbf24",
+    chartWarningFill: "rgba(251, 191, 36, 0.2)",
+    chartFallback: "rgba(148, 166, 213, 0.25)",
+    chartBorder: "rgba(13, 18, 35, 0.65)",
+    chartGrid: "rgba(128, 148, 202, 0.18)",
+    chartGridSoft: "rgba(128, 148, 202, 0.14)",
+    chartGridStrong: "rgba(154, 173, 219, 0.2)",
+    chartText: "#b9c9ee",
+    chartAxisTitle: "#96addc",
+    chartTooltipBg: "rgba(8, 13, 28, 0.94)",
+    chartTooltipBorder: "rgba(95, 122, 196, 0.55)",
+    chartTooltipTitle: "#e3ecff",
+    chartTooltipBody: "#d3def7",
+  };
 }
 
 function loadApiBase() {
