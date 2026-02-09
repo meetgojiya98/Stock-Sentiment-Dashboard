@@ -25,3 +25,8 @@ Recommended:
 
 Alternative:
 - Open `index.html` directly and set API base to your backend URL.
+
+GitHub Pages:
+- Pages deployment uses `data/snapshot.json` as built-in data source.
+- If `/api/*` endpoints fail, app automatically serves dashboard/feed/watchlist from snapshot.
+- Set API base from header to point at a live backend when available.

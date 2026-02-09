@@ -40,6 +40,8 @@ const state = {
   feed: [],
   watchlist: loadWatchlist(),
   watchlistData: [],
+  staticSnapshot: null,
+  staticFallbackNotified: false,
   filters: {
     source: "",
     sentiment: "",
@@ -609,14 +611,244 @@ function onSaveApiBase() {
 
 async function fetchJson(path) {
   const url = `${state.apiBase}${path}`;
-  const response = await fetch(url, {
-    headers: { Accept: "application/json" },
-  });
+  try {
+    const response = await fetch(url, {
+      headers: { Accept: "application/json" },
+    });
 
-  if (!response.ok) {
-    throw new Error(`Request failed (${response.status})`);
+    if (!response.ok) {
+      throw new Error(`Request failed (${response.status})`);
+    }
+    return response.json();
+  } catch (error) {
+    const fallbackPayload = await tryStaticFallback(path);
+    if (fallbackPayload !== null) {
+      return fallbackPayload;
+    }
+    throw error;
   }
-  return response.json();
+}
+
+async function tryStaticFallback(path) {
+  if (!String(path).startsWith("/api/")) {
+    return null;
+  }
+
+  try {
+    const payload = await resolveStaticApi(path);
+    if (!state.staticFallbackNotified) {
+      toast("Using static GitHub Pages snapshot data", "warn");
+      state.staticFallbackNotified = true;
+    }
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
+async function resolveStaticApi(path) {
+  const snapshot = await loadStaticSnapshot();
+  const request = new URL(path, "https://local.snapshot");
+  const route = request.pathname;
+  const params = request.searchParams;
+  const generatedAt = snapshot.generatedAt || snapshot.dashboard?.generatedAt || new Date().toISOString();
+  const snapshotFeed = Array.isArray(snapshot.feed) ? snapshot.feed : [];
+  const tickerIndex = Array.isArray(snapshot.tickerIndex) ? snapshot.tickerIndex : snapshot.dashboard?.trending ?? [];
+
+  if (route === "/api/dashboard") {
+    return snapshot.dashboard;
+  }
+
+  if (route === "/api/feed") {
+    const limit = toBoundedInteger(params.get("limit"), 40, 1, 200);
+    const filteredItems = filterSnapshotFeed(snapshotFeed, {
+      source: params.get("source"),
+      sentiment: params.get("sentiment"),
+      ticker: params.get("ticker"),
+      q: params.get("q"),
+    });
+    return {
+      generatedAt,
+      cached: true,
+      count: filteredItems.length,
+      items: filteredItems.slice(0, limit),
+    };
+  }
+
+  if (route === "/api/watchlist") {
+    const requestedTickers = (params.get("tickers") || "")
+      .split(",")
+      .map((token) => sanitizeTicker(token))
+      .filter(Boolean);
+    const symbols = [...new Set(requestedTickers.length ? requestedTickers : DEFAULT_WATCHLIST)].slice(0, 25);
+    const index = new Map(tickerIndex.map((row) => [row.ticker, row]));
+    const items = symbols.map((symbol) => index.get(symbol) || emptyTickerSnapshot(symbol));
+
+    return {
+      generatedAt,
+      cached: true,
+      count: items.length,
+      items,
+    };
+  }
+
+  if (route === "/api/health") {
+    return {
+      status: "ok",
+      version: "static-snapshot",
+      cached: true,
+      cacheAgeSeconds: 0,
+      items: snapshotFeed.length,
+      generatedAt,
+    };
+  }
+
+  if (route === "/api/trending-stocks") {
+    const limit = toBoundedInteger(params.get("limit"), 15, 1, 50);
+    return tickerIndex.slice(0, limit);
+  }
+
+  if (route === "/api/sentiment") {
+    const summary = snapshot.dashboard?.sentiment || { positive: 0, negative: 0, neutral: 0 };
+    return [
+      { sentiment: "POSITIVE", count: summary.positive || 0 },
+      { sentiment: "NEGATIVE", count: summary.negative || 0 },
+      { sentiment: "NEUTRAL", count: summary.neutral || 0 },
+    ];
+  }
+
+  if (route === "/api/news" || route === "/api/reddit") {
+    const source = route.endsWith("news") ? "news" : "reddit";
+    const limit = toBoundedInteger(params.get("limit"), 20, 1, 100);
+    return snapshotFeed
+      .filter((item) => item.source === source)
+      .slice(0, limit)
+      .map((item) => ({
+        id: item.id,
+        title: item.title,
+        url: item.url,
+        date: item.publishedAt,
+        text: item.text,
+      }));
+  }
+
+  if (route.startsWith("/api/ticker/")) {
+    const symbol = sanitizeTicker(route.split("/").at(-1) || "");
+    const related = snapshotFeed.filter((item) => item.tickers?.includes(symbol));
+    const row = tickerIndex.find((entry) => entry.ticker === symbol) || emptyTickerSnapshot(symbol);
+    return {
+      generatedAt,
+      cached: true,
+      ticker: symbol,
+      mentions: related.length,
+      snapshot: row,
+      items: related.slice(0, 40),
+      themes: [],
+    };
+  }
+
+  if (route === "/api/insights") {
+    return {
+      generatedAt,
+      cached: true,
+      itemCount: snapshotFeed.length,
+      sentimentIndex: snapshot.dashboard?.overview?.sentimentIndex || 0,
+      themes: snapshot.dashboard?.themes || [],
+      trendingTickers: tickerIndex.slice(0, 10),
+      narratives: snapshot.dashboard?.narratives || [],
+    };
+  }
+
+  throw new Error(`No static route for ${route}`);
+}
+
+async function loadStaticSnapshot() {
+  if (state.staticSnapshot) {
+    return state.staticSnapshot;
+  }
+
+  const snapshotUrl = getStaticSnapshotUrl();
+  const response = await fetch(snapshotUrl, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`Snapshot not found (${response.status})`);
+  }
+
+  const snapshot = await response.json();
+  const dashboard = snapshot.dashboard || {};
+  const feed = Array.isArray(snapshot.feed) ? snapshot.feed : [];
+  state.staticSnapshot = {
+    ...snapshot,
+    generatedAt: snapshot.generatedAt || dashboard.generatedAt || new Date().toISOString(),
+    dashboard: {
+      ...dashboard,
+      generatedAt: dashboard.generatedAt || snapshot.generatedAt || new Date().toISOString(),
+    },
+    feed: [...feed].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)),
+  };
+  return state.staticSnapshot;
+}
+
+function getStaticSnapshotUrl() {
+  let basePath = window.location.pathname || "/";
+  if (!basePath.endsWith("/")) {
+    if (basePath.includes(".")) {
+      basePath = basePath.slice(0, basePath.lastIndexOf("/") + 1);
+    } else {
+      basePath = `${basePath}/`;
+    }
+  }
+  return `${window.location.origin}${basePath}data/snapshot.json`;
+}
+
+function filterSnapshotFeed(items, filters) {
+  const source = String(filters.source || "").toLowerCase();
+  const sentiment = String(filters.sentiment || "").toLowerCase();
+  const ticker = sanitizeTicker(filters.ticker || "");
+  const query = String(filters.q || "").trim().toLowerCase();
+
+  return items.filter((item) => {
+    if (source && item.source !== source) {
+      return false;
+    }
+    if (sentiment && String(item?.sentiment?.label || "").toLowerCase() !== sentiment) {
+      return false;
+    }
+    if (ticker && !Array.isArray(item.tickers)) {
+      return false;
+    }
+    if (ticker && !item.tickers.includes(ticker)) {
+      return false;
+    }
+    if (query) {
+      const haystack = `${item.title || ""} ${item.text || ""}`.toLowerCase();
+      if (!haystack.includes(query)) {
+        return false;
+      }
+    }
+    return true;
+  });
+}
+
+function emptyTickerSnapshot(symbol) {
+  return {
+    ticker: symbol,
+    mentions: 0,
+    averageSentiment: 0,
+    bullish: 0,
+    bearish: 0,
+    neutral: 0,
+    momentum: 0,
+    hypeScore: 0,
+    sourceMix: {},
+  };
+}
+
+function toBoundedInteger(raw, fallback, min, max) {
+  const num = Number(raw);
+  if (!Number.isFinite(num)) {
+    return fallback;
+  }
+  return Math.min(max, Math.max(min, Math.round(num)));
 }
 
 function animateMetric(element, target, options = {}) {

@@ -37,6 +37,16 @@ A full-stack stock sentiment intelligence platform with a redesigned UX and rich
 
 - `stock-sentiment-backend`: FastAPI service and analytics engine.
 - `stock-sentiment-frontend`: Static frontend files (`index.html`, `styles.css`, `app.js`).
+- `scripts/generate_static_snapshot.py`: Snapshot generator for GitHub Pages static mode.
+
+## GitHub Pages mode
+
+- GitHub Pages deployment at `https://meetgojiya98.github.io/Stock-Sentiment-Dashboard/` uses `stock-sentiment-frontend/data/snapshot.json`.
+- Frontend automatically falls back to this snapshot when `/api/*` is unavailable.
+- Snapshot is refreshed hourly by workflow:
+  - `.github/workflows/refresh-static-data.yml`
+  - and re-deployed by `.github/workflows/deploy-frontend-pages.yml`.
+- To use a live backend instead, set `API Base` in the app header and click **Save**.
 
 ## Run locally
 
