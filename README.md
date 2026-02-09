@@ -48,6 +48,15 @@ A full-stack stock sentiment intelligence platform with a redesigned UX and rich
   - and re-deployed by `.github/workflows/deploy-frontend-pages.yml`.
 - To use a live backend instead, set `API Base` in the app header and click **Save**.
 
+## Vercel deployment
+
+- This repo is deployed on Vercel as a static site from `stock-sentiment-frontend`.
+- Root `vercel.json` sets:
+  - `framework: null`
+  - `buildCommand: echo "Static frontend deployment"`
+  - `outputDirectory: stock-sentiment-frontend`
+- If your Vercel project still shows `react-scripts build`, remove that custom Build Command in Project Settings so Vercel uses `vercel.json`.
+
 ## Run locally
 
 ### 1. Backend
