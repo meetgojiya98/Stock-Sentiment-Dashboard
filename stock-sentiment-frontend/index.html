@@ -199,6 +199,43 @@
                   <button class="text-btn" type="button" data-route="watchtower">Route this to watchtower</button>
                 </div>
               </article>
+
+              <article class="panel charts-panel">
+                <div class="panel-head">
+                  <h3>Advanced Chart Deck</h3>
+                  <p>Velocity, source mix, pressure map, and multi-factor radar from live sentiment flow.</p>
+                </div>
+                <div class="charts-grid">
+                  <section class="chart-card">
+                    <header>
+                      <h4>Sentiment Velocity</h4>
+                      <p>Sentiment trend plus short-window momentum delta</p>
+                    </header>
+                    <canvas id="chart-sentiment-velocity" aria-label="Sentiment velocity chart"></canvas>
+                  </section>
+                  <section class="chart-card">
+                    <header>
+                      <h4>Source Mix</h4>
+                      <p>Contribution split between news and social stream</p>
+                    </header>
+                    <canvas id="chart-source-mix" aria-label="Source mix chart"></canvas>
+                  </section>
+                  <section class="chart-card">
+                    <header>
+                      <h4>Ticker Factor Radar</h4>
+                      <p>Top symbols scored on sentiment, momentum, mentions, and hype</p>
+                    </header>
+                    <canvas id="chart-ticker-radar" aria-label="Ticker factor radar chart"></canvas>
+                  </section>
+                  <section class="chart-card">
+                    <header>
+                      <h4>Theme Pressure Matrix</h4>
+                      <p>Theme mention intensity with directional sentiment pressure</p>
+                    </header>
+                    <canvas id="chart-theme-pressure" aria-label="Theme pressure chart"></canvas>
+                  </section>
+                </div>
+              </article>
             </div>
           </section>
 
@@ -393,6 +430,7 @@
       </article>
     </template>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <script type="module" src="./app.js"></script>
   </body>
 </html>

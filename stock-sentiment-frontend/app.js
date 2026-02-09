@@ -23,6 +23,10 @@ const dom = {
   themesList: document.querySelector("#themes-list"),
   timelineCanvas: document.querySelector("#timeline-canvas"),
   timelineLegends: document.querySelector("#timeline-legends"),
+  chartSentimentVelocity: document.querySelector("#chart-sentiment-velocity"),
+  chartSourceMix: document.querySelector("#chart-source-mix"),
+  chartTickerRadar: document.querySelector("#chart-ticker-radar"),
+  chartThemePressure: document.querySelector("#chart-theme-pressure"),
 
   heroMarketPulse: document.querySelector("#hero-market-pulse"),
   heroTrend: document.querySelector("#hero-trend"),
@@ -128,6 +132,12 @@ const state = {
   },
   feedSort: loadFeedSort(),
   feedDense: loadFeedDensity(),
+  charts: {
+    sentimentVelocity: null,
+    sourceMix: null,
+    tickerRadar: null,
+    themePressure: null,
+  },
   autoRefresh: true,
   timerId: null,
   searchDebounceId: null,
@@ -435,7 +445,13 @@ function bindEvents() {
     }
   });
 
-  window.addEventListener("resize", debounce(() => drawTimeline(state.dashboard?.timeline ?? []), 120));
+  window.addEventListener(
+    "resize",
+    debounce(() => {
+      drawTimeline(state.dashboard?.timeline ?? []);
+      renderAdvancedCharts(state.dashboard);
+    }, 120),
+  );
 }
 
 function setRoute(route, options = {}) {
@@ -551,6 +567,7 @@ function renderDashboard() {
   renderThemes(dashboard.themes ?? []);
   renderNarratives(dashboard.narratives ?? []);
   drawTimeline(dashboard.timeline ?? []);
+  renderAdvancedCharts(dashboard);
   renderHomeTickerTape(dashboard.trending ?? []);
   renderHomeInsights(dashboard);
   renderRegimePanel(dashboard);
@@ -1114,7 +1131,7 @@ function drawTimeline(points) {
   ctx.clearRect(0, 0, width, height);
 
   if (!points.length) {
-    ctx.fillStyle = "#61738f";
+    ctx.fillStyle = "#95a9d4";
     ctx.font = "500 13px Manrope";
     ctx.fillText("No timeline points yet", 16, 22);
     dom.timelineLegends.innerHTML = "";
@@ -1127,7 +1144,7 @@ function drawTimeline(points) {
 
   for (let i = 0; i <= 4; i += 1) {
     const y = pad.top + (chartHeight / 4) * i;
-    ctx.strokeStyle = "rgba(43, 68, 112, 0.12)";
+    ctx.strokeStyle = "rgba(125, 146, 212, 0.2)";
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(pad.left, y);
@@ -1147,8 +1164,8 @@ function drawTimeline(points) {
   });
 
   const gradient = ctx.createLinearGradient(0, pad.top, 0, pad.top + chartHeight);
-  gradient.addColorStop(0, "rgba(30, 100, 255, 0.34)");
-  gradient.addColorStop(1, "rgba(30, 100, 255, 0.04)");
+  gradient.addColorStop(0, "rgba(34, 211, 238, 0.36)");
+  gradient.addColorStop(1, "rgba(34, 211, 238, 0.04)");
 
   ctx.beginPath();
   ctx.moveTo(coords[0].x, pad.top + chartHeight);
@@ -1166,18 +1183,18 @@ function drawTimeline(points) {
       ctx.lineTo(point.x, point.y);
     }
   });
-  ctx.strokeStyle = "#1f63ff";
+  ctx.strokeStyle = "#22d3ee";
   ctx.lineWidth = 2.4;
   ctx.stroke();
 
   coords.forEach((point) => {
     ctx.beginPath();
     ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
-    ctx.fillStyle = "#1452d8";
+    ctx.fillStyle = "#38bdf8";
     ctx.fill();
   });
 
-  ctx.fillStyle = "#5a6f8f";
+  ctx.fillStyle = "#9fb0d4";
   ctx.font = "500 11px Manrope";
   const step = Math.max(1, Math.floor(points.length / 5));
   points.forEach((point, index) => {
@@ -1193,6 +1210,307 @@ function drawTimeline(points) {
     .slice(0, 4)
     .map((point) => `<span class="legend-pill">${escapeHtml(point.leadTicker || "Macro")}: ${formatSigned(point.sentiment)}</span>`)
     .join("");
+}
+
+function renderAdvancedCharts(dashboard) {
+  const canvases = [
+    dom.chartSentimentVelocity,
+    dom.chartSourceMix,
+    dom.chartTickerRadar,
+    dom.chartThemePressure,
+  ];
+  if (canvases.some((canvas) => !canvas)) {
+    return;
+  }
+
+  const ChartLib = window.Chart;
+  if (!ChartLib) {
+    clearAdvancedCharts("Chart engine not available");
+    return;
+  }
+
+  const timeline = dashboard?.timeline || [];
+  const trending = dashboard?.trending || [];
+  const themes = dashboard?.themes || [];
+  const sources = dashboard?.sources || {};
+
+  const labels = timeline.map((point, index) => formatTimelineLabel(point.label || `T${index + 1}`));
+  const sentimentSeries = timeline.map((point) => Number(point.sentiment || 0));
+  const velocitySeries = sentimentSeries.map((value, index, arr) => {
+    if (index === 0) {
+      return 0;
+    }
+    return value - arr[index - 1];
+  });
+
+  const sourceEntries = Object.entries(sources).filter((entry) => Number(entry[1] || 0) > 0);
+  const radarRows = trending.slice(0, 3);
+  const mentionMax = Math.max(...radarRows.map((row) => Number(row.mentions || 0)), 1);
+  const hypeMax = Math.max(...radarRows.map((row) => Number(row.hypeScore || 0)), 1);
+  const topThemes = themes.slice(0, 8);
+
+  upsertChart("sentimentVelocity", dom.chartSentimentVelocity, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "Sentiment",
+          data: sentimentSeries,
+          borderColor: "#22d3ee",
+          backgroundColor: "rgba(34, 211, 238, 0.2)",
+          borderWidth: 2.2,
+          fill: true,
+          tension: 0.35,
+          pointRadius: 2,
+        },
+        {
+          label: "Velocity",
+          data: velocitySeries,
+          borderColor: "#f472b6",
+          borderWidth: 1.8,
+          fill: false,
+          tension: 0.25,
+          pointRadius: 1.8,
+        },
+      ],
+    },
+    options: buildChartOptions({
+      y: { min: -100, max: 100, title: { display: true, text: "Signal" } },
+    }),
+  });
+
+  upsertChart("sourceMix", dom.chartSourceMix, {
+    type: "doughnut",
+    data: {
+      labels: sourceEntries.length ? sourceEntries.map(([name]) => toTitleCase(name)) : ["No data"],
+      datasets: [
+        {
+          data: sourceEntries.length ? sourceEntries.map(([, count]) => Number(count || 0)) : [1],
+          backgroundColor: sourceEntries.length
+            ? ["#22d3ee", "#a78bfa", "#34d399", "#f472b6", "#fbbf24"]
+            : ["rgba(130, 149, 196, 0.35)"],
+          borderWidth: 1,
+          borderColor: "rgba(13, 18, 35, 0.65)",
+          hoverOffset: 8,
+        },
+      ],
+    },
+    options: {
+      ...buildChartOptions(),
+      cutout: "68%",
+      plugins: {
+        ...buildChartOptions().plugins,
+        legend: {
+          position: "bottom",
+          labels: {
+            color: "#b9c9ee",
+            boxWidth: 10,
+          },
+        },
+      },
+    },
+  });
+
+  upsertChart("tickerRadar", dom.chartTickerRadar, {
+    type: "radar",
+    data: {
+      labels: ["Sentiment", "Momentum", "Mentions", "Bullish Ratio", "Hype"],
+      datasets: radarRows.map((row, index) => {
+        const palette = [
+          ["#22d3ee", "rgba(34, 211, 238, 0.18)"],
+          ["#a78bfa", "rgba(167, 139, 250, 0.16)"],
+          ["#34d399", "rgba(52, 211, 153, 0.16)"],
+        ][index % 3];
+        return {
+          label: row.ticker,
+          data: [
+            clamp((Number(row.averageSentiment || 0) + 100) / 2, 0, 100),
+            clamp((Number(row.momentum || 0) + 100) / 2, 0, 100),
+            clamp((Number(row.mentions || 0) / mentionMax) * 100, 0, 100),
+            clamp((Number(row.bullish || 0) / Math.max(Number(row.mentions || 0), 1)) * 100, 0, 100),
+            clamp((Number(row.hypeScore || 0) / hypeMax) * 100, 0, 100),
+          ],
+          borderColor: palette[0],
+          backgroundColor: palette[1],
+          borderWidth: 1.8,
+          pointRadius: 2,
+        };
+      }),
+    },
+    options: {
+      ...buildChartOptions(),
+      scales: {
+        r: {
+          min: 0,
+          max: 100,
+          angleLines: { color: "rgba(154, 173, 219, 0.18)" },
+          grid: { color: "rgba(154, 173, 219, 0.2)" },
+          pointLabels: {
+            color: "#b9c9ee",
+            font: { size: 10, weight: "600" },
+          },
+          ticks: { display: false, stepSize: 20 },
+        },
+      },
+      plugins: {
+        ...buildChartOptions().plugins,
+        legend: {
+          position: "bottom",
+          labels: { color: "#b9c9ee", boxWidth: 10 },
+        },
+      },
+    },
+  });
+
+  upsertChart("themePressure", dom.chartThemePressure, {
+    type: "bar",
+    data: {
+      labels: topThemes.map((row) => row.theme),
+      datasets: [
+        {
+          type: "bar",
+          label: "Mentions",
+          data: topThemes.map((row) => Number(row.mentions || 0)),
+          backgroundColor: topThemes.map((row) => (Number(row.averageSentiment || 0) >= 0 ? "rgba(52, 211, 153, 0.65)" : "rgba(244, 114, 182, 0.65)")),
+          borderColor: topThemes.map((row) => (Number(row.averageSentiment || 0) >= 0 ? "#34d399" : "#f472b6")),
+          borderWidth: 1.2,
+          borderRadius: 6,
+          yAxisID: "y",
+        },
+        {
+          type: "line",
+          label: "Sentiment",
+          data: topThemes.map((row) => Number(row.averageSentiment || 0)),
+          borderColor: "#fbbf24",
+          backgroundColor: "rgba(251, 191, 36, 0.2)",
+          borderWidth: 1.8,
+          tension: 0.3,
+          pointRadius: 2,
+          yAxisID: "y1",
+        },
+      ],
+    },
+    options: {
+      ...buildChartOptions(),
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: { color: "rgba(128, 148, 202, 0.18)" },
+          ticks: { color: "#b8c8ea" },
+          title: { display: true, text: "Mentions", color: "#96addc" },
+        },
+        y1: {
+          position: "right",
+          min: -100,
+          max: 100,
+          grid: { drawOnChartArea: false },
+          ticks: { color: "#b8c8ea" },
+          title: { display: true, text: "Sentiment", color: "#96addc" },
+        },
+        x: {
+          grid: { display: false },
+          ticks: { color: "#b8c8ea", maxRotation: 20, minRotation: 0 },
+        },
+      },
+    },
+  });
+}
+
+function buildChartOptions(overrides = {}) {
+  return {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: "index", intersect: false },
+    animation: { duration: 420, easing: "easeOutQuart" },
+    plugins: {
+      legend: {
+        labels: {
+          color: "#b9c9ee",
+          usePointStyle: true,
+          boxWidth: 9,
+          boxHeight: 9,
+        },
+      },
+      tooltip: {
+        backgroundColor: "rgba(8, 13, 28, 0.94)",
+        borderColor: "rgba(95, 122, 196, 0.55)",
+        borderWidth: 1,
+        titleColor: "#e3ecff",
+        bodyColor: "#d3def7",
+        padding: 10,
+      },
+    },
+    scales: {
+      x: {
+        grid: { color: "rgba(128, 148, 202, 0.14)" },
+        ticks: { color: "#b8c8ea" },
+      },
+      y: {
+        grid: { color: "rgba(128, 148, 202, 0.18)" },
+        ticks: { color: "#b8c8ea" },
+      },
+    },
+    ...overrides,
+  };
+}
+
+function upsertChart(key, canvas, config) {
+  if (!canvas) {
+    return;
+  }
+
+  const prior = state.charts[key];
+  if (prior) {
+    prior.destroy();
+  }
+
+  const ctx = canvas.getContext("2d");
+  if (!ctx || !window.Chart) {
+    return;
+  }
+
+  if (!config?.data?.datasets?.length || config.data.datasets.every((dataset) => !Array.isArray(dataset.data) || dataset.data.length === 0)) {
+    drawChartFallback(canvas, "No chart data yet");
+    state.charts[key] = null;
+    return;
+  }
+
+  state.charts[key] = new window.Chart(ctx, config);
+}
+
+function clearAdvancedCharts(message = "No chart data yet") {
+  for (const [key, chart] of Object.entries(state.charts)) {
+    if (chart) {
+      chart.destroy();
+      state.charts[key] = null;
+    }
+  }
+  [dom.chartSentimentVelocity, dom.chartSourceMix, dom.chartTickerRadar, dom.chartThemePressure].forEach((canvas) => {
+    drawChartFallback(canvas, message);
+  });
+}
+
+function drawChartFallback(canvas, message) {
+  if (!canvas) {
+    return;
+  }
+  const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    return;
+  }
+  const width = canvas.clientWidth || 320;
+  const height = canvas.clientHeight || 180;
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = Math.floor(width * dpr);
+  canvas.height = Math.floor(height * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = "rgba(148, 166, 213, 0.25)";
+  ctx.fillRect(0, 0, width, height);
+  ctx.fillStyle = "#9db1de";
+  ctx.font = "600 12px Manrope";
+  ctx.fillText(message, 14, 22);
 }
 
 function showFeedSkeleton() {
@@ -1219,6 +1537,7 @@ function renderEmptyStates() {
   renderWatchtowerInsights();
   renderHomeInsights({ trending: [], sources: {} });
   renderRegimePanel({ overview: {} });
+  clearAdvancedCharts("No chart data available");
 }
 
 function syncFilterInputs() {
