@@ -6,254 +6,347 @@
     <title>Stock Sentiment Command Center</title>
     <meta
       name="description"
-      content="Advanced stock sentiment intelligence dashboard with a minimal home and dedicated workspaces for analysis."
+      content="Advanced stock sentiment intelligence workspace with live feed triage, watchtower alerts, and narrative analytics."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="bg-grid" aria-hidden="true"></div>
-    <div class="bg-orb orb-a" aria-hidden="true"></div>
-    <div class="bg-orb orb-b" aria-hidden="true"></div>
+    <div class="ambient ambient-a" aria-hidden="true"></div>
+    <div class="ambient ambient-b" aria-hidden="true"></div>
+    <div class="ambient ambient-c" aria-hidden="true"></div>
 
     <div class="app-shell">
-      <header class="app-header panel">
-        <div class="header-top">
-          <div class="brand-wrap">
-            <p class="eyebrow">Live Market Language Intelligence</p>
-            <h1>Stock Sentiment Command Center</h1>
-            <p class="brand-subline">Minimal home. Dedicated operational workspaces for signal analysis, feed scanning, watchlist operations, and account controls.</p>
-          </div>
-
-          <div class="header-controls">
-            <div class="control-cluster">
-              <label class="api-input-wrap" for="api-base-input">
-                <span>API Base</span>
-                <input id="api-base-input" type="text" placeholder="http://127.0.0.1:8000" />
-              </label>
-              <button id="save-api-base-btn" class="ghost-btn" type="button">Save</button>
-              <button id="refresh-btn" class="primary-btn" type="button">Refresh</button>
-              <button id="auto-refresh-btn" class="ghost-btn" type="button" aria-pressed="true">Auto Refresh: On</button>
-            </div>
-
-            <div class="auth-strip">
-              <span id="auth-status-chip" class="status-chip">Guest Mode</span>
-              <button id="auth-open-btn" class="ghost-btn" type="button">Sign In / Sign Up</button>
-              <button id="auth-logout-btn" class="ghost-btn is-hidden" type="button">Sign Out</button>
-            </div>
-          </div>
+      <aside class="command-sidebar">
+        <div class="sidebar-head">
+          <p class="eyebrow">Market Intelligence System</p>
+          <h1>Stock Sentiment</h1>
+          <p class="sidebar-copy">A multi-workspace cockpit for signal discovery, triage, and execution context.</p>
         </div>
 
         <nav class="route-nav" aria-label="Primary sections">
           <button class="route-btn is-active" type="button" data-route="home">Home</button>
           <button class="route-btn" type="button" data-route="intelligence">Intelligence</button>
-          <button class="route-btn" type="button" data-route="feed">Feed</button>
+          <button class="route-btn" type="button" data-route="feed">Feed Lab</button>
           <button class="route-btn" type="button" data-route="watchtower">Watchtower</button>
           <button class="route-btn" type="button" data-route="account">Account</button>
         </nav>
-      </header>
 
-      <main class="view-stack">
-        <section class="view is-active" data-view="home" aria-label="Home overview">
-          <article class="panel home-hero">
-            <div class="home-copy">
-              <p class="hero-kicker">Minimal live pulse</p>
-              <h2 id="hero-market-pulse">Loading signal...</h2>
-              <p id="hero-trend" class="hero-trend">Trend: --</p>
-              <p id="last-updated" class="last-updated">Last update: --</p>
-              <div class="hero-actions">
-                <button class="primary-btn" type="button" data-route="intelligence">Open Intelligence</button>
-                <button class="ghost-btn" type="button" data-route="feed">Scan Feed</button>
-              </div>
-            </div>
+        <div class="sidebar-auth">
+          <span id="auth-status-chip" class="status-chip">Guest Mode</span>
+          <button id="auth-open-btn" class="ghost-btn" type="button">Sign In / Sign Up</button>
+          <button id="auth-logout-btn" class="ghost-btn is-hidden" type="button">Sign Out</button>
+          <p class="sidebar-note">Shortcut: press <kbd>/</kbd> to jump to feed search.</p>
+        </div>
+      </aside>
 
-            <div class="home-gauge-card">
-              <div class="gauge-track">
-                <div id="sentiment-gauge-fill" class="gauge-fill"></div>
-              </div>
-              <div class="gauge-metrics">
-                <span id="sentiment-gauge-value">0.0</span>
-                <small>Sentiment index</small>
-              </div>
-              <p id="home-pulse-chip" class="home-pulse-chip">Signal: --</p>
-            </div>
-          </article>
+      <section class="workspace-column">
+        <header class="utility-bar">
+          <label class="api-input-wrap" for="api-base-input">
+            <span>API Base</span>
+            <input id="api-base-input" type="text" placeholder="http://127.0.0.1:8000" />
+          </label>
+          <div class="utility-actions">
+            <button id="save-api-base-btn" class="ghost-btn" type="button">Save</button>
+            <button id="refresh-btn" class="primary-btn" type="button">Refresh</button>
+            <button id="auto-refresh-btn" class="ghost-btn" type="button" aria-pressed="true">Auto Refresh: On</button>
+          </div>
+        </header>
 
-          <section id="hero-kpis" class="home-kpi-row" aria-label="Key metrics">
-            <article class="kpi-card">
-              <span>Total Mentions</span>
-              <strong id="kpi-total-items">0</strong>
+        <main class="view-stack">
+          <section class="view is-active" data-view="home" aria-label="Home overview">
+            <article class="hero-card">
+              <div class="hero-copy">
+                <p class="hero-kicker">Minimal live pulse</p>
+                <h2 id="hero-market-pulse">Loading market pulse...</h2>
+                <p id="hero-trend" class="hero-trend">Trend: --</p>
+                <p id="last-updated" class="last-updated">Last update: --</p>
+                <div class="hero-actions">
+                  <button class="primary-btn" type="button" data-route="intelligence">Open Intelligence</button>
+                  <button class="ghost-btn" type="button" data-route="watchtower">Open Watchtower</button>
+                </div>
+              </div>
+
+              <div class="hero-signal">
+                <div class="gauge-track">
+                  <div id="sentiment-gauge-fill" class="gauge-fill"></div>
+                </div>
+                <div class="gauge-value-wrap">
+                  <strong id="sentiment-gauge-value">0.0</strong>
+                  <span>Sentiment Index</span>
+                </div>
+                <p id="home-pulse-chip" class="home-pulse-chip">Signal: --</p>
+              </div>
             </article>
-            <article class="kpi-card">
-              <span>Active Tickers</span>
-              <strong id="kpi-active-tickers">0</strong>
-            </article>
-            <article class="kpi-card">
-              <span>Volatility</span>
-              <strong id="kpi-volatility">0</strong>
-            </article>
-            <article class="kpi-card">
-              <span>Positive Ratio</span>
-              <strong id="kpi-positive-ratio">0%</strong>
+
+            <section id="hero-kpis" class="home-kpis" aria-label="Key metrics">
+              <article class="kpi-card">
+                <span>Total Mentions</span>
+                <strong id="kpi-total-items">0</strong>
+              </article>
+              <article class="kpi-card">
+                <span>Active Tickers</span>
+                <strong id="kpi-active-tickers">0</strong>
+              </article>
+              <article class="kpi-card">
+                <span>Volatility</span>
+                <strong id="kpi-volatility">0</strong>
+              </article>
+              <article class="kpi-card">
+                <span>Positive Ratio</span>
+                <strong id="kpi-positive-ratio">0%</strong>
+              </article>
+            </section>
+
+            <section class="home-insights" aria-label="Quick guidance">
+              <article class="insight-card">
+                <p class="insight-label">Best Opportunity</p>
+                <h3 id="home-insight-opportunity">Waiting for data</h3>
+                <p id="home-insight-opportunity-copy">Run refresh to compute highest conviction setup.</p>
+                <button class="text-btn" type="button" data-route="intelligence">Open deep analysis</button>
+              </article>
+
+              <article class="insight-card">
+                <p class="insight-label">Primary Risk</p>
+                <h3 id="home-insight-risk">Waiting for data</h3>
+                <p id="home-insight-risk-copy">Sentiment downside and momentum decay will appear here.</p>
+                <button class="text-btn" type="button" data-route="watchtower">Inspect watchtower</button>
+              </article>
+
+              <article class="insight-card">
+                <p class="insight-label">Dominant Source</p>
+                <h3 id="home-insight-source">Waiting for data</h3>
+                <p id="home-insight-source-copy">Source concentration updates as news and reddit flow in.</p>
+                <button class="text-btn" type="button" data-route="feed">Open feed lab</button>
+              </article>
+            </section>
+
+            <article class="tape-panel">
+              <div class="panel-head compact">
+                <h3>Trending Tape</h3>
+                <p>Fast movers and crowd sentiment in one line.</p>
+              </div>
+              <div class="ticker-tape-wrap">
+                <div id="home-ticker-tape" class="ticker-tape"></div>
+              </div>
             </article>
           </section>
 
-          <article class="panel home-tape-panel">
-            <div class="panel-head compact">
-              <h3>Now Trending</h3>
-              <p>Live motion strip of top symbols and crowd tone</p>
+          <section class="view" data-view="intelligence" aria-label="Intelligence analysis">
+            <div class="intelligence-grid">
+              <article class="panel pulse-panel">
+                <div class="panel-head">
+                  <h3>Sentiment Pulse Timeline</h3>
+                  <p>Time-window signal, confidence drift, and leader rotation.</p>
+                </div>
+                <div class="timeline-wrap">
+                  <canvas id="timeline-canvas" width="1200" height="350"></canvas>
+                </div>
+                <div id="timeline-legends" class="timeline-legends"></div>
+              </article>
+
+              <article class="panel ticker-panel">
+                <div class="panel-head">
+                  <h3>Ticker Arena</h3>
+                  <p>Heat-ranked symbols with sentiment and momentum bars.</p>
+                </div>
+                <div id="trending-tickers" class="ticker-grid scroll-area"></div>
+              </article>
+
+              <article class="panel themes-panel">
+                <div class="panel-head">
+                  <h3>Theme Heatmap</h3>
+                  <p>Narrative clusters by coverage and directional score.</p>
+                </div>
+                <div id="themes-list" class="themes-list scroll-area"></div>
+              </article>
+
+              <article class="panel narratives-panel">
+                <div class="panel-head">
+                  <h3>Narrative Signals</h3>
+                  <p>Headline-level context and highlighted ticker focus.</p>
+                </div>
+                <div id="narratives-list" class="narratives-list scroll-area"></div>
+              </article>
+
+              <article class="panel compare-panel">
+                <div class="panel-head">
+                  <h3>Ticker Compare</h3>
+                  <p>Head-to-head sentiment, momentum, and mention depth.</p>
+                </div>
+                <div class="compare-controls">
+                  <select id="compare-a" aria-label="Compare ticker A"></select>
+                  <select id="compare-b" aria-label="Compare ticker B"></select>
+                  <button id="compare-run-btn" class="primary-btn" type="button">Compare</button>
+                </div>
+                <div id="compare-result" class="compare-result"></div>
+              </article>
+
+              <article class="panel regime-panel">
+                <div class="panel-head">
+                  <h3>Market Regime Engine</h3>
+                  <p>Synthesized phase signal from trend direction and volatility.</p>
+                </div>
+                <div class="regime-body">
+                  <span id="regime-chip" class="regime-chip neutral">Regime pending</span>
+                  <h4 id="regime-summary">Waiting for dashboard data.</h4>
+                  <p id="regime-confidence">Confidence: --</p>
+                  <button class="text-btn" type="button" data-route="watchtower">Route this to watchtower</button>
+                </div>
+              </article>
             </div>
-            <div class="ticker-tape-wrap">
-              <div id="home-ticker-tape" class="ticker-tape"></div>
+          </section>
+
+          <section class="view" data-view="feed" aria-label="Feed lab">
+            <div class="feed-layout">
+              <article class="panel feed-panel">
+                <div class="panel-head">
+                  <h3>Intelligence Feed</h3>
+                  <p>Filter, sort, and triage high-signal entries at speed.</p>
+                </div>
+
+                <div class="filters-row">
+                  <select id="source-filter" aria-label="Filter by source">
+                    <option value="">All sources</option>
+                    <option value="news">News</option>
+                    <option value="reddit">Reddit</option>
+                  </select>
+                  <select id="sentiment-filter" aria-label="Filter by sentiment">
+                    <option value="">All sentiment</option>
+                    <option value="positive">Positive</option>
+                    <option value="neutral">Neutral</option>
+                    <option value="negative">Negative</option>
+                  </select>
+                  <select id="feed-sort-select" aria-label="Sort feed">
+                    <option value="recent">Most recent</option>
+                    <option value="sentiment_high">Highest sentiment</option>
+                    <option value="sentiment_low">Lowest sentiment</option>
+                    <option value="confidence">Highest confidence</option>
+                    <option value="ticker_density">Most tickers</option>
+                  </select>
+                  <input id="search-filter" type="search" placeholder="Search feed (shortcut: /)" />
+                  <button id="feed-density-btn" class="ghost-btn" type="button">Density: Cozy</button>
+                  <button id="clear-filters-btn" class="ghost-btn" type="button">Clear</button>
+                </div>
+
+                <div class="feed-metrics">
+                  <span class="metric-pill">Total <strong id="feed-metric-total">0</strong></span>
+                  <span class="metric-pill">Positive <strong id="feed-metric-positive">0</strong></span>
+                  <span class="metric-pill">Negative <strong id="feed-metric-negative">0</strong></span>
+                </div>
+
+                <div id="active-filter-pill" class="active-filter-pill is-hidden"></div>
+                <div id="feed-list" class="feed-list"></div>
+              </article>
+
+              <aside class="panel bookmarks-panel">
+                <div class="panel-head">
+                  <h3>Saved Signals</h3>
+                  <p>Curated shortlist for deeper investigation and action.</p>
+                </div>
+                <div id="bookmark-list" class="bookmark-list"></div>
+              </aside>
             </div>
-          </article>
-        </section>
+          </section>
 
-        <section class="view" data-view="intelligence" aria-label="Intelligence analysis">
-          <div class="intelligence-grid">
-            <article class="panel pulse-panel">
-              <div class="panel-head">
-                <h3>Sentiment Pulse Timeline</h3>
-                <p>Signal and conviction trend over recent discourse windows</p>
-              </div>
-              <canvas id="timeline-canvas" width="1200" height="350"></canvas>
-              <div id="timeline-legends" class="timeline-legends"></div>
-            </article>
+          <section class="view" data-view="watchtower" aria-label="Watchtower operations">
+            <div class="watchtower-grid">
+              <aside class="panel watchlist-panel">
+                <div class="panel-head">
+                  <h3>Watchtower</h3>
+                  <p id="watchlist-subtitle">Personal symbol radar with local persistence.</p>
+                </div>
 
-            <article class="panel tickers-panel">
-              <div class="panel-head">
-                <h3>Ticker Arena</h3>
-                <p>Hype-ranked symbols across news and social chatter</p>
-              </div>
-              <div id="trending-tickers" class="ticker-grid"></div>
-            </article>
+                <div class="watchlist-entry">
+                  <input id="watchlist-input" type="text" maxlength="5" placeholder="Add ticker (e.g. NVDA)" />
+                  <button id="watchlist-add-btn" class="primary-btn" type="button">Add</button>
+                </div>
 
-            <article class="panel themes-panel">
-              <div class="panel-head">
-                <h3>Theme Heatmap</h3>
-                <p>Dominant narrative clusters with sentiment tilt</p>
-              </div>
-              <div id="themes-list" class="themes-list"></div>
-            </article>
+                <div id="watchlist-tags" class="watchlist-tags"></div>
+                <div id="watchlist-grid" class="watchlist-grid"></div>
+              </aside>
 
-            <article class="panel narratives-panel">
-              <div class="panel-head">
-                <h3>Narrative Signals</h3>
-                <p>Latest directional themes and headline anchors</p>
-              </div>
-              <div id="narratives-list" class="narratives-list"></div>
-            </article>
+              <article class="panel alerts-panel">
+                <div class="panel-head">
+                  <h3>Sentiment Alerts</h3>
+                  <p>Create threshold rules and monitor trigger state in real time.</p>
+                </div>
 
-            <article class="panel compare-panel">
-              <div class="panel-head">
-                <h3>Ticker Compare</h3>
-                <p>Quickly compare sentiment and momentum between two symbols</p>
-              </div>
-              <div class="compare-controls">
-                <select id="compare-a" aria-label="Compare ticker A"></select>
-                <select id="compare-b" aria-label="Compare ticker B"></select>
-                <button id="compare-run-btn" class="primary-btn" type="button">Compare</button>
-              </div>
-              <div id="compare-result" class="compare-result"></div>
-            </article>
-          </div>
-        </section>
+                <div class="alert-form">
+                  <input id="alert-ticker-input" type="text" maxlength="5" placeholder="Ticker" />
+                  <select id="alert-direction-select" aria-label="Alert direction">
+                    <option value="above">Above</option>
+                    <option value="below">Below</option>
+                  </select>
+                  <input
+                    id="alert-threshold-input"
+                    type="number"
+                    min="-100"
+                    max="100"
+                    step="1"
+                    value="20"
+                    placeholder="Threshold"
+                  />
+                  <button id="alert-add-btn" class="primary-btn" type="button">Save</button>
+                </div>
 
-        <section class="view" data-view="feed" aria-label="Feed analysis">
-          <div class="workspace-grid">
-            <article class="panel feed-panel">
-              <div class="panel-head">
-                <h3>Intelligence Feed</h3>
-                <p>Filter, triage, bookmark and drill into context</p>
-              </div>
+                <div id="alerts-list" class="alerts-list"></div>
+              </article>
 
-              <div class="filters-row">
-                <select id="source-filter" aria-label="Filter by source">
-                  <option value="">All sources</option>
-                  <option value="news">News</option>
-                  <option value="reddit">Reddit</option>
-                </select>
-                <select id="sentiment-filter" aria-label="Filter by sentiment">
-                  <option value="">All sentiment</option>
-                  <option value="positive">Positive</option>
-                  <option value="neutral">Neutral</option>
-                  <option value="negative">Negative</option>
-                </select>
-                <input id="search-filter" type="search" placeholder="Search feed (shortcut: /)" />
-                <button id="clear-filters-btn" class="ghost-btn" type="button">Clear</button>
-              </div>
-
-              <div id="active-filter-pill" class="active-filter-pill is-hidden"></div>
-              <div id="feed-list" class="feed-list"></div>
-            </article>
-
-            <aside class="panel bookmarks-panel">
-              <div class="panel-head">
-                <h3>Saved Signals</h3>
-                <p>Bookmarked items for quick follow-up</p>
-              </div>
-              <div id="bookmark-list" class="bookmark-list"></div>
-            </aside>
-          </div>
-        </section>
-
-        <section class="view" data-view="watchtower" aria-label="Watchtower operations">
-          <div class="workspace-grid">
-            <aside class="panel watchlist-panel">
-              <div class="panel-head">
-                <h3>Watchtower</h3>
-                <p id="watchlist-subtitle">Personal symbol radar with local persistence</p>
-              </div>
-
-              <div class="watchlist-entry">
-                <input id="watchlist-input" type="text" maxlength="5" placeholder="Add ticker (e.g. NVDA)" />
-                <button id="watchlist-add-btn" class="primary-btn" type="button">Add</button>
-              </div>
-
-              <div id="watchlist-tags" class="watchlist-tags"></div>
-              <div id="watchlist-grid" class="watchlist-grid"></div>
-            </aside>
-
-            <article class="panel alerts-panel">
-              <div class="panel-head">
-                <h3>Sentiment Alerts</h3>
-                <p>Define threshold rules and monitor trigger state</p>
-              </div>
-
-              <div class="alert-form">
-                <input id="alert-ticker-input" type="text" maxlength="5" placeholder="Ticker" />
-                <select id="alert-direction-select" aria-label="Alert direction">
-                  <option value="above">Above</option>
-                  <option value="below">Below</option>
-                </select>
-                <input id="alert-threshold-input" type="number" min="-100" max="100" step="1" placeholder="Threshold" value="20" />
-                <button id="alert-add-btn" class="primary-btn" type="button">Save Alert</button>
-              </div>
-
-              <div id="alerts-list" class="alerts-list"></div>
-            </article>
-          </div>
-        </section>
-
-        <section class="view" data-view="account" aria-label="Account summary">
-          <article class="panel account-panel">
-            <div class="panel-head">
-              <h3>Account & Workspace State</h3>
-              <p>Local profile stats and quick system overview</p>
+              <article class="panel tower-intel-panel">
+                <div class="panel-head">
+                  <h3>Watchtower Snapshot</h3>
+                  <p>Instant posture score, strongest leader, and pressure point.</p>
+                </div>
+                <div class="tower-metrics">
+                  <article class="tower-metric-card">
+                    <span>Health Score</span>
+                    <strong id="tower-health-score">--</strong>
+                    <p>Weighted from watchlist sentiment average.</p>
+                  </article>
+                  <article class="tower-metric-card">
+                    <span>Strongest Symbol</span>
+                    <strong id="tower-best-ticker">--</strong>
+                    <p>Top combined sentiment and momentum.</p>
+                  </article>
+                  <article class="tower-metric-card">
+                    <span>Highest Risk</span>
+                    <strong id="tower-risk-ticker">--</strong>
+                    <p>Lowest sentiment with meaningful coverage.</p>
+                  </article>
+                  <article class="tower-metric-card">
+                    <span>Triggered Alerts</span>
+                    <strong id="tower-trigger-count">0</strong>
+                    <p>Current rules already above or below thresholds.</p>
+                  </article>
+                </div>
+              </article>
             </div>
-            <div id="account-summary" class="account-summary"></div>
-          </article>
-        </section>
-      </main>
+          </section>
+
+          <section class="view" data-view="account" aria-label="Account summary">
+            <article class="panel account-panel">
+              <div class="panel-head">
+                <h3>Account & Workspace State</h3>
+                <p>Session context, saved intelligence assets, and environment status.</p>
+              </div>
+              <div id="account-summary" class="account-summary"></div>
+            </article>
+          </section>
+        </main>
+      </section>
     </div>
 
     <div id="auth-modal" class="auth-modal is-hidden" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
       <div class="auth-dialog">
         <button id="auth-close-btn" class="auth-close-btn" type="button" aria-label="Close account dialog">×</button>
         <h3 id="auth-modal-title">Account Access</h3>
-        <p class="auth-copy">Sign in to unlock your personal watchlist, alerts, and saved signals in this browser.</p>
+        <p class="auth-copy">Sign in to keep watchlists, saved signals, and alerts tied to this browser profile.</p>
 
         <div class="auth-tabs">
           <button id="auth-tab-signin" class="auth-tab is-active" type="button">Sign In</button>

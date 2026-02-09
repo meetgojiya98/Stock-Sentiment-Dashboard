@@ -9,9 +9,14 @@ const dom = {
   sourceFilter: document.querySelector("#source-filter"),
   sentimentFilter: document.querySelector("#sentiment-filter"),
   searchFilter: document.querySelector("#search-filter"),
+  feedSortSelect: document.querySelector("#feed-sort-select"),
+  feedDensityBtn: document.querySelector("#feed-density-btn"),
   clearFiltersBtn: document.querySelector("#clear-filters-btn"),
   feedList: document.querySelector("#feed-list"),
   activeFilterPill: document.querySelector("#active-filter-pill"),
+  feedMetricTotal: document.querySelector("#feed-metric-total"),
+  feedMetricPositive: document.querySelector("#feed-metric-positive"),
+  feedMetricNegative: document.querySelector("#feed-metric-negative"),
 
   trendingTickers: document.querySelector("#trending-tickers"),
   narrativesList: document.querySelector("#narratives-list"),
@@ -30,11 +35,20 @@ const dom = {
   kpiActiveTickers: document.querySelector("#kpi-active-tickers"),
   kpiVolatility: document.querySelector("#kpi-volatility"),
   kpiPositiveRatio: document.querySelector("#kpi-positive-ratio"),
+  homeInsightOpportunity: document.querySelector("#home-insight-opportunity"),
+  homeInsightOpportunityCopy: document.querySelector("#home-insight-opportunity-copy"),
+  homeInsightRisk: document.querySelector("#home-insight-risk"),
+  homeInsightRiskCopy: document.querySelector("#home-insight-risk-copy"),
+  homeInsightSource: document.querySelector("#home-insight-source"),
+  homeInsightSourceCopy: document.querySelector("#home-insight-source-copy"),
 
   compareA: document.querySelector("#compare-a"),
   compareB: document.querySelector("#compare-b"),
   compareRunBtn: document.querySelector("#compare-run-btn"),
   compareResult: document.querySelector("#compare-result"),
+  regimeChip: document.querySelector("#regime-chip"),
+  regimeSummary: document.querySelector("#regime-summary"),
+  regimeConfidence: document.querySelector("#regime-confidence"),
 
   watchlistSubtitle: document.querySelector("#watchlist-subtitle"),
   watchlistInput: document.querySelector("#watchlist-input"),
@@ -49,6 +63,10 @@ const dom = {
   alertThresholdInput: document.querySelector("#alert-threshold-input"),
   alertAddBtn: document.querySelector("#alert-add-btn"),
   alertsList: document.querySelector("#alerts-list"),
+  towerHealthScore: document.querySelector("#tower-health-score"),
+  towerBestTicker: document.querySelector("#tower-best-ticker"),
+  towerRiskTicker: document.querySelector("#tower-risk-ticker"),
+  towerTriggerCount: document.querySelector("#tower-trigger-count"),
 
   accountSummary: document.querySelector("#account-summary"),
 
@@ -78,6 +96,8 @@ const AUTH_SESSION_KEY = "ssd_auth_session_v1";
 const WATCHLIST_KEY_GUEST = "ssd_watchlist_guest";
 const BOOKMARKS_KEY_GUEST = "ssd_bookmarks_guest";
 const ALERTS_KEY_GUEST = "ssd_alerts_guest";
+const FEED_SORT_KEY = "ssd_feed_sort_v1";
+const FEED_DENSITY_KEY = "ssd_feed_density_v1";
 const ROUTES = ["home", "intelligence", "feed", "watchtower", "account"];
 
 const state = {
@@ -106,6 +126,8 @@ const state = {
     a: "",
     b: "",
   },
+  feedSort: loadFeedSort(),
+  feedDense: loadFeedDensity(),
   autoRefresh: true,
   timerId: null,
   searchDebounceId: null,
@@ -124,6 +146,12 @@ async function init() {
   renderBookmarks();
   renderAlerts();
   renderAccountSummary();
+  syncFeedControls();
+  applyFeedDensity();
+  renderFeedMetrics([]);
+  renderHomeInsights({ trending: [], sources: {} });
+  renderRegimePanel({ overview: {} });
+  renderWatchtowerInsights();
   setAutoRefresh(true);
   await refreshAll(true);
 }
@@ -170,6 +198,7 @@ function bindEvents() {
       const itemId = bookmarkToggle.dataset.bookmarkToggle;
       toggleBookmarkById(itemId);
       renderFeed(state.feed);
+      renderFeedMetrics(state.feed);
       renderBookmarks();
       renderAccountSummary();
     }
@@ -179,6 +208,7 @@ function bindEvents() {
       const id = bookmarkRemove.dataset.removeBookmark;
       removeBookmark(id);
       renderFeed(state.feed);
+      renderFeedMetrics(state.feed);
       renderBookmarks();
       renderAccountSummary();
     }
@@ -189,6 +219,7 @@ function bindEvents() {
       state.alerts = state.alerts.filter((row) => row.id !== id);
       saveAlerts(state.alerts);
       renderAlerts();
+      renderWatchtowerInsights();
       renderAccountSummary();
     }
   });
@@ -211,6 +242,23 @@ function bindEvents() {
       await refreshFeed(false);
     }, 260);
   });
+
+  if (dom.feedSortSelect) {
+    dom.feedSortSelect.addEventListener("change", () => {
+      state.feedSort = dom.feedSortSelect.value || "recent";
+      persistFeedSort(state.feedSort);
+      renderFeed(state.feed);
+      renderFeedMetrics(state.feed);
+    });
+  }
+
+  if (dom.feedDensityBtn) {
+    dom.feedDensityBtn.addEventListener("click", () => {
+      state.feedDense = !state.feedDense;
+      persistFeedDensity(state.feedDense);
+      applyFeedDensity();
+    });
+  }
 
   dom.clearFiltersBtn.addEventListener("click", async () => {
     state.filters = { source: "", sentiment: "", search: "", ticker: "" };
@@ -291,6 +339,7 @@ function bindEvents() {
     state.auth.session = { email, signedInAt: new Date().toISOString() };
     persistAuthSession(state.auth.session);
     state.watchlist = loadWatchlist();
+    state.watchlistData = [];
     state.bookmarks = loadBookmarks();
     state.alerts = loadAlerts();
     state.firedAlertIds = new Set();
@@ -298,6 +347,7 @@ function bindEvents() {
     renderWatchlistTags();
     renderBookmarks();
     renderAlerts();
+    renderWatchtowerInsights();
     renderAccountSummary();
     closeAuthModal();
     toast(`Signed in as ${email}`);
@@ -344,6 +394,7 @@ function bindEvents() {
     state.auth.session = { email, signedInAt: new Date().toISOString() };
     persistAuthSession(state.auth.session);
     state.watchlist = loadWatchlist();
+    state.watchlistData = [];
     state.bookmarks = loadBookmarks();
     state.alerts = loadAlerts();
     state.firedAlertIds = new Set();
@@ -351,6 +402,7 @@ function bindEvents() {
     renderWatchlistTags();
     renderBookmarks();
     renderAlerts();
+    renderWatchtowerInsights();
     renderAccountSummary();
     closeAuthModal();
     toast(`Welcome, ${email}`);
@@ -444,11 +496,13 @@ async function refreshFeed(forceRefresh = false) {
     const response = await fetchJson(`/api/feed?${params.toString()}`);
     state.feed = response.items ?? [];
     renderFeed(state.feed);
+    renderFeedMetrics(state.feed);
     renderBookmarks();
     renderActiveFilterPill();
     renderAccountSummary();
   } catch (error) {
     dom.feedList.innerHTML = `<div class="empty-state">Unable to load feed. ${escapeHtml(error.message)}</div>`;
+    renderFeedMetrics([]);
   }
 }
 
@@ -462,10 +516,12 @@ async function refreshWatchlistData(forceRefresh = false) {
     renderAlerts();
     renderCompareOptions();
     evaluateAlerts();
+    renderWatchtowerInsights();
     renderAccountSummary();
   } catch (error) {
     dom.watchlistGrid.innerHTML = `<div class="empty-state">Watchlist unavailable. ${escapeHtml(error.message)}</div>`;
     renderAlerts();
+    renderWatchtowerInsights();
   }
 }
 
@@ -496,6 +552,8 @@ function renderDashboard() {
   renderNarratives(dashboard.narratives ?? []);
   drawTimeline(dashboard.timeline ?? []);
   renderHomeTickerTape(dashboard.trending ?? []);
+  renderHomeInsights(dashboard);
+  renderRegimePanel(dashboard);
   renderCompareOptions();
 }
 
@@ -514,6 +572,70 @@ function renderHomeTickerTape(rows) {
     .join("");
 
   dom.homeTickerTape.innerHTML = `${chips}${chips}`;
+}
+
+function renderHomeInsights(dashboard) {
+  const trending = dashboard?.trending || [];
+  const sources = dashboard?.sources || {};
+
+  const opportunity = [...trending].sort((a, b) => (b.averageSentiment + b.momentum * 0.5) - (a.averageSentiment + a.momentum * 0.5))[0];
+  const risk = [...trending].sort((a, b) => (a.averageSentiment - a.momentum * 0.25) - (b.averageSentiment - b.momentum * 0.25))[0];
+  const dominantSource = Object.entries(sources).sort((a, b) => Number(b[1] || 0) - Number(a[1] || 0))[0];
+
+  if (dom.homeInsightOpportunity) {
+    dom.homeInsightOpportunity.textContent = opportunity ? `${opportunity.ticker} lead setup` : "No opportunity signal";
+  }
+  if (dom.homeInsightOpportunityCopy) {
+    dom.homeInsightOpportunityCopy.textContent = opportunity
+      ? `${opportunity.mentions} mentions, sentiment ${formatSigned(opportunity.averageSentiment)}, momentum ${formatSigned(opportunity.momentum)}.`
+      : "Run refresh to compute highest conviction setup.";
+  }
+
+  if (dom.homeInsightRisk) {
+    dom.homeInsightRisk.textContent = risk ? `${risk.ticker} downside pocket` : "No risk concentration";
+  }
+  if (dom.homeInsightRiskCopy) {
+    dom.homeInsightRiskCopy.textContent = risk
+      ? `${risk.mentions} mentions with sentiment ${formatSigned(risk.averageSentiment)}.`
+      : "Sentiment downside and momentum decay will appear here.";
+  }
+
+  if (dom.homeInsightSource) {
+    dom.homeInsightSource.textContent = dominantSource ? `${toTitleCase(dominantSource[0])} channel` : "No source concentration";
+  }
+  if (dom.homeInsightSourceCopy) {
+    dom.homeInsightSourceCopy.textContent = dominantSource
+      ? `${dominantSource[1]} items (${Math.round((Number(dominantSource[1] || 0) / Math.max(Number(dashboard?.overview?.totalItems || 0), 1)) * 100)}% of flow).`
+      : "Source concentration updates as news and reddit flow in.";
+  }
+}
+
+function renderRegimePanel(dashboard) {
+  if (!dom.regimeChip || !dom.regimeSummary || !dom.regimeConfidence) {
+    return;
+  }
+
+  const overview = dashboard?.overview || {};
+  const sentiment = Number(overview.sentimentIndex || 0);
+  const volatility = Number(overview.volatilityIndex || 0);
+  const trend = String(overview.trendDirection || "flat").toLowerCase();
+
+  let regime = "neutral";
+  let title = "Balanced / transition regime";
+  if ((sentiment >= 8 && trend !== "down") || (sentiment >= 4 && trend === "up")) {
+    regime = "risk-on";
+    title = "Risk-on regime with bullish pressure";
+  } else if ((sentiment <= -8 && trend !== "up") || (sentiment <= -4 && trend === "down")) {
+    regime = "risk-off";
+    title = "Risk-off regime with defensive tone";
+  }
+
+  dom.regimeChip.className = `regime-chip ${regime}`;
+  dom.regimeChip.textContent = regime === "risk-on" ? "Risk-On" : regime === "risk-off" ? "Risk-Off" : "Balanced";
+  dom.regimeSummary.textContent = `${title}. Trend is ${toTitleCase(trend)} with volatility ${volatility.toFixed(1)}.`;
+
+  const confidence = clamp(Math.round(Math.abs(sentiment) * 3.4 + (trend === "flat" ? 12 : 24) - volatility * 0.35), 18, 96);
+  dom.regimeConfidence.textContent = `Confidence: ${confidence}%`;
 }
 
 function renderTrending(rows) {
@@ -595,12 +717,15 @@ function renderNarratives(rows) {
 }
 
 function renderFeed(items) {
-  if (!items.length) {
+  const sortedItems = sortFeedItems(items);
+
+  if (!sortedItems.length) {
     dom.feedList.innerHTML = `<div class="empty-state">No feed items match your active filters.</div>`;
+    applyFeedDensity();
     return;
   }
 
-  dom.feedList.innerHTML = items
+  dom.feedList.innerHTML = sortedItems
     .map((item) => {
       const sentiment = item.sentiment || {};
       const sentimentClass = sentimentClassFromLabel(sentiment.label);
@@ -631,6 +756,65 @@ function renderFeed(items) {
       </article>`;
     })
     .join("");
+
+  applyFeedDensity();
+}
+
+function renderFeedMetrics(items) {
+  if (!dom.feedMetricTotal || !dom.feedMetricPositive || !dom.feedMetricNegative) {
+    return;
+  }
+
+  const total = items.length;
+  const positive = items.filter((item) => String(item?.sentiment?.label || "").toLowerCase() === "positive").length;
+  const negative = items.filter((item) => String(item?.sentiment?.label || "").toLowerCase() === "negative").length;
+
+  dom.feedMetricTotal.textContent = String(total);
+  dom.feedMetricPositive.textContent = String(positive);
+  dom.feedMetricNegative.textContent = String(negative);
+}
+
+function sortFeedItems(items) {
+  const sorted = [...items];
+  const byDateDesc = (a, b) => new Date(b.publishedAt || 0).getTime() - new Date(a.publishedAt || 0).getTime();
+
+  switch (state.feedSort) {
+    case "sentiment_high":
+      sorted.sort((a, b) => Number(b?.sentiment?.score || 0) - Number(a?.sentiment?.score || 0) || byDateDesc(a, b));
+      break;
+    case "sentiment_low":
+      sorted.sort((a, b) => Number(a?.sentiment?.score || 0) - Number(b?.sentiment?.score || 0) || byDateDesc(a, b));
+      break;
+    case "confidence":
+      sorted.sort((a, b) => Number(b?.sentiment?.confidence || 0) - Number(a?.sentiment?.confidence || 0) || byDateDesc(a, b));
+      break;
+    case "ticker_density":
+      sorted.sort((a, b) => (b?.tickers?.length || 0) - (a?.tickers?.length || 0) || byDateDesc(a, b));
+      break;
+    case "recent":
+    default:
+      sorted.sort(byDateDesc);
+      break;
+  }
+
+  return sorted;
+}
+
+function syncFeedControls() {
+  if (dom.feedSortSelect) {
+    dom.feedSortSelect.value = state.feedSort;
+  }
+  if (dom.feedDensityBtn) {
+    dom.feedDensityBtn.textContent = `Density: ${state.feedDense ? "Compact" : "Cozy"}`;
+  }
+}
+
+function applyFeedDensity() {
+  if (!dom.feedList) {
+    return;
+  }
+  dom.feedList.classList.toggle("is-compact", state.feedDense);
+  syncFeedControls();
 }
 
 function renderBookmarks() {
@@ -739,6 +923,45 @@ function renderAlerts() {
       </article>`;
     })
     .join("");
+}
+
+function renderWatchtowerInsights() {
+  if (!dom.towerHealthScore || !dom.towerBestTicker || !dom.towerRiskTicker || !dom.towerTriggerCount) {
+    return;
+  }
+
+  if (!state.watchlistData.length) {
+    dom.towerHealthScore.textContent = "--";
+    dom.towerBestTicker.textContent = "--";
+    dom.towerRiskTicker.textContent = "--";
+    dom.towerTriggerCount.textContent = "0";
+    return;
+  }
+
+  const avgSentiment =
+    state.watchlistData.reduce((sum, row) => sum + Number(row.averageSentiment || 0), 0) / Math.max(state.watchlistData.length, 1);
+  const healthScore = clamp(Math.round(((avgSentiment + 100) / 200) * 100), 0, 100);
+  const bestTicker = [...state.watchlistData].sort((a, b) => (b.averageSentiment + b.momentum * 0.45) - (a.averageSentiment + a.momentum * 0.45))[0];
+  const riskTicker = [...state.watchlistData].sort((a, b) => (a.averageSentiment - a.momentum * 0.2) - (b.averageSentiment - b.momentum * 0.2))[0];
+
+  let triggeredRules = 0;
+  const watchIndex = new Map(state.watchlistData.map((row) => [row.ticker, row]));
+  for (const rule of state.alerts) {
+    const row = watchIndex.get(rule.ticker);
+    if (!row) {
+      continue;
+    }
+    const current = Number(row.averageSentiment || 0);
+    const triggered = rule.direction === "above" ? current >= rule.threshold : current <= rule.threshold;
+    if (triggered) {
+      triggeredRules += 1;
+    }
+  }
+
+  dom.towerHealthScore.textContent = `${healthScore}`;
+  dom.towerBestTicker.textContent = bestTicker ? `${bestTicker.ticker} (${formatSigned(bestTicker.averageSentiment)})` : "--";
+  dom.towerRiskTicker.textContent = riskTicker ? `${riskTicker.ticker} (${formatSigned(riskTicker.averageSentiment)})` : "--";
+  dom.towerTriggerCount.textContent = String(triggeredRules);
 }
 
 function evaluateAlerts() {
@@ -892,7 +1115,7 @@ function drawTimeline(points) {
 
   if (!points.length) {
     ctx.fillStyle = "#61738f";
-    ctx.font = "500 13px Sora";
+    ctx.font = "500 13px Manrope";
     ctx.fillText("No timeline points yet", 16, 22);
     dom.timelineLegends.innerHTML = "";
     return;
@@ -955,7 +1178,7 @@ function drawTimeline(points) {
   });
 
   ctx.fillStyle = "#5a6f8f";
-  ctx.font = "500 11px Sora";
+  ctx.font = "500 11px Manrope";
   const step = Math.max(1, Math.floor(points.length / 5));
   points.forEach((point, index) => {
     if (index % step !== 0 && index !== points.length - 1) {
@@ -981,6 +1204,7 @@ function showFeedSkeleton() {
   for (let i = 0; i < 4; i += 1) {
     dom.feedList.appendChild(dom.loadingFeedTemplate.content.cloneNode(true));
   }
+  applyFeedDensity();
 }
 
 function renderEmptyStates() {
@@ -988,9 +1212,13 @@ function renderEmptyStates() {
   dom.themesList.innerHTML = `<div class="empty-state">No theme data available.</div>`;
   dom.narrativesList.innerHTML = `<div class="empty-state">No narrative data available.</div>`;
   dom.feedList.innerHTML = `<div class="empty-state">No feed data available.</div>`;
+  renderFeedMetrics([]);
   dom.watchlistGrid.innerHTML = `<div class="empty-state">No watchlist data available.</div>`;
   dom.bookmarkList.innerHTML = `<div class="empty-state">No saved signals available.</div>`;
   dom.alertsList.innerHTML = `<div class="empty-state">No alerts data available.</div>`;
+  renderWatchtowerInsights();
+  renderHomeInsights({ trending: [], sources: {} });
+  renderRegimePanel({ overview: {} });
 }
 
 function syncFilterInputs() {
@@ -1048,6 +1276,7 @@ function addAlertRule() {
   ];
   saveAlerts(state.alerts);
   renderAlerts();
+  renderWatchtowerInsights();
   renderAccountSummary();
 
   dom.alertTickerInput.value = "";
@@ -1176,6 +1405,7 @@ function signOut() {
   state.auth.session = null;
   persistAuthSession(null);
   state.watchlist = loadWatchlist();
+  state.watchlistData = [];
   state.bookmarks = loadBookmarks();
   state.alerts = loadAlerts();
   state.firedAlertIds = new Set();
@@ -1183,6 +1413,7 @@ function signOut() {
   renderWatchlistTags();
   renderBookmarks();
   renderAlerts();
+  renderWatchtowerInsights();
   renderAccountSummary();
   toast("Signed out");
 }
@@ -1609,6 +1840,24 @@ function loadAlerts() {
 
 function saveAlerts(alerts) {
   localStorage.setItem(alertsStorageKey(), JSON.stringify(alerts));
+}
+
+function loadFeedSort() {
+  const raw = String(localStorage.getItem(FEED_SORT_KEY) || "").trim();
+  const allowed = new Set(["recent", "sentiment_high", "sentiment_low", "confidence", "ticker_density"]);
+  return allowed.has(raw) ? raw : "recent";
+}
+
+function persistFeedSort(value) {
+  localStorage.setItem(FEED_SORT_KEY, value);
+}
+
+function loadFeedDensity() {
+  return localStorage.getItem(FEED_DENSITY_KEY) === "compact";
+}
+
+function persistFeedDensity(isCompact) {
+  localStorage.setItem(FEED_DENSITY_KEY, isCompact ? "compact" : "cozy");
 }
 
 function loadApiBase() {
