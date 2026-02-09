@@ -362,6 +362,7 @@ main {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  align-items: stretch;
 }
 
 .panel-head {
@@ -379,9 +380,17 @@ main {
   font-size: 0.84rem;
 }
 
+.pulse-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 470px;
+}
+
 #timeline-canvas {
   width: 100%;
-  height: 240px;
+  height: auto;
+  min-height: 320px;
+  flex: 1;
   display: block;
   padding: 0 0.76rem;
 }
@@ -397,11 +406,15 @@ main {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  align-items: stretch;
 }
 
 .feed-panel,
 .watchlist-panel {
-  min-height: 380px;
+  min-height: 560px;
+  height: clamp(560px, 72vh, 820px);
+  display: flex;
+  flex-direction: column;
 }
 
 .filters-row {
@@ -454,6 +467,34 @@ main {
   display: grid;
   gap: 0.62rem;
   padding: 0 0.95rem 0.95rem;
+}
+
+.feed-list,
+.watchlist-grid {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.44rem;
+  scrollbar-width: thin;
+  scrollbar-color: #b7c7e3 #e9eff9;
+}
+
+.feed-list::-webkit-scrollbar,
+.watchlist-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.feed-list::-webkit-scrollbar-thumb,
+.watchlist-grid::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #b7c7e3;
+}
+
+.feed-list::-webkit-scrollbar-track,
+.watchlist-grid::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: #e9eff9;
 }
 
 .ticker-grid {
@@ -867,6 +908,12 @@ main {
 
   .hero-kpis {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feed-panel,
+  .watchlist-panel {
+    min-height: 420px;
+    height: auto;
   }
 }
 
