@@ -3,31 +3,55 @@ const dom = {
   saveApiBaseBtn: document.querySelector("#save-api-base-btn"),
   refreshBtn: document.querySelector("#refresh-btn"),
   autoRefreshBtn: document.querySelector("#auto-refresh-btn"),
+  routeButtons: Array.from(document.querySelectorAll(".route-btn")),
+  views: Array.from(document.querySelectorAll(".view")),
+
   sourceFilter: document.querySelector("#source-filter"),
   sentimentFilter: document.querySelector("#sentiment-filter"),
   searchFilter: document.querySelector("#search-filter"),
   clearFiltersBtn: document.querySelector("#clear-filters-btn"),
   feedList: document.querySelector("#feed-list"),
   activeFilterPill: document.querySelector("#active-filter-pill"),
+
   trendingTickers: document.querySelector("#trending-tickers"),
   narrativesList: document.querySelector("#narratives-list"),
   themesList: document.querySelector("#themes-list"),
   timelineCanvas: document.querySelector("#timeline-canvas"),
   timelineLegends: document.querySelector("#timeline-legends"),
+
   heroMarketPulse: document.querySelector("#hero-market-pulse"),
   heroTrend: document.querySelector("#hero-trend"),
   lastUpdated: document.querySelector("#last-updated"),
   gaugeFill: document.querySelector("#sentiment-gauge-fill"),
   gaugeValue: document.querySelector("#sentiment-gauge-value"),
+  homePulseChip: document.querySelector("#home-pulse-chip"),
+  homeTickerTape: document.querySelector("#home-ticker-tape"),
   kpiTotalItems: document.querySelector("#kpi-total-items"),
   kpiActiveTickers: document.querySelector("#kpi-active-tickers"),
   kpiVolatility: document.querySelector("#kpi-volatility"),
   kpiPositiveRatio: document.querySelector("#kpi-positive-ratio"),
+
+  compareA: document.querySelector("#compare-a"),
+  compareB: document.querySelector("#compare-b"),
+  compareRunBtn: document.querySelector("#compare-run-btn"),
+  compareResult: document.querySelector("#compare-result"),
+
+  watchlistSubtitle: document.querySelector("#watchlist-subtitle"),
   watchlistInput: document.querySelector("#watchlist-input"),
   watchlistAddBtn: document.querySelector("#watchlist-add-btn"),
   watchlistTags: document.querySelector("#watchlist-tags"),
   watchlistGrid: document.querySelector("#watchlist-grid"),
-  watchlistSubtitle: document.querySelector("#watchlist-subtitle"),
+
+  bookmarkList: document.querySelector("#bookmark-list"),
+
+  alertTickerInput: document.querySelector("#alert-ticker-input"),
+  alertDirectionSelect: document.querySelector("#alert-direction-select"),
+  alertThresholdInput: document.querySelector("#alert-threshold-input"),
+  alertAddBtn: document.querySelector("#alert-add-btn"),
+  alertsList: document.querySelector("#alerts-list"),
+
+  accountSummary: document.querySelector("#account-summary"),
+
   authStatusChip: document.querySelector("#auth-status-chip"),
   authOpenBtn: document.querySelector("#auth-open-btn"),
   authLogoutBtn: document.querySelector("#auth-logout-btn"),
@@ -42,6 +66,7 @@ const dom = {
   signupEmail: document.querySelector("#signup-email"),
   signupPassword: document.querySelector("#signup-password"),
   signupConfirmPassword: document.querySelector("#signup-confirm-password"),
+
   toastStack: document.querySelector("#toast-stack"),
   loadingFeedTemplate: document.querySelector("#loading-feed-template"),
 };
@@ -51,8 +76,12 @@ const REFRESH_INTERVAL_MS = 60_000;
 const AUTH_USERS_KEY = "ssd_auth_users_v1";
 const AUTH_SESSION_KEY = "ssd_auth_session_v1";
 const WATCHLIST_KEY_GUEST = "ssd_watchlist_guest";
+const BOOKMARKS_KEY_GUEST = "ssd_bookmarks_guest";
+const ALERTS_KEY_GUEST = "ssd_alerts_guest";
+const ROUTES = ["home", "intelligence", "feed", "watchtower", "account"];
 
 const state = {
+  route: initialRoute(),
   apiBase: loadApiBase(),
   auth: {
     mode: "signin",
@@ -63,6 +92,8 @@ const state = {
   feed: [],
   watchlist: loadWatchlist(),
   watchlistData: [],
+  bookmarks: loadBookmarks(),
+  alerts: loadAlerts(),
   staticSnapshot: null,
   staticFallbackNotified: false,
   filters: {
@@ -71,9 +102,14 @@ const state = {
     search: "",
     ticker: "",
   },
+  compare: {
+    a: "",
+    b: "",
+  },
   autoRefresh: true,
   timerId: null,
   searchDebounceId: null,
+  firedAlertIds: new Set(),
 };
 
 init();
@@ -81,9 +117,13 @@ init();
 async function init() {
   dom.apiBaseInput.value = state.apiBase;
   bindEvents();
+  setRoute(state.route, { updateHash: false });
   renderAuthState();
   setAuthMode(state.auth.mode);
   renderWatchlistTags();
+  renderBookmarks();
+  renderAlerts();
+  renderAccountSummary();
   setAutoRefresh(true);
   await refreshAll(true);
 }
@@ -106,6 +146,53 @@ function bindEvents() {
     toast(`Auto refresh ${state.autoRefresh ? "enabled" : "disabled"}`);
   });
 
+  dom.routeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setRoute(button.dataset.route);
+    });
+  });
+
+  document.addEventListener("click", async (event) => {
+    const routeTarget = event.target.closest("[data-route]");
+    if (routeTarget) {
+      setRoute(routeTarget.dataset.route);
+    }
+
+    const tickerFilter = event.target.closest("[data-filter-ticker]");
+    if (tickerFilter && tickerFilter.dataset.filterTicker) {
+      state.filters.ticker = tickerFilter.dataset.filterTicker;
+      setRoute("feed");
+      await refreshFeed(false);
+    }
+
+    const bookmarkToggle = event.target.closest("[data-bookmark-toggle]");
+    if (bookmarkToggle) {
+      const itemId = bookmarkToggle.dataset.bookmarkToggle;
+      toggleBookmarkById(itemId);
+      renderFeed(state.feed);
+      renderBookmarks();
+      renderAccountSummary();
+    }
+
+    const bookmarkRemove = event.target.closest("[data-remove-bookmark]");
+    if (bookmarkRemove) {
+      const id = bookmarkRemove.dataset.removeBookmark;
+      removeBookmark(id);
+      renderFeed(state.feed);
+      renderBookmarks();
+      renderAccountSummary();
+    }
+
+    const alertRemove = event.target.closest("[data-remove-alert]");
+    if (alertRemove) {
+      const id = alertRemove.dataset.removeAlert;
+      state.alerts = state.alerts.filter((row) => row.id !== id);
+      saveAlerts(state.alerts);
+      renderAlerts();
+      renderAccountSummary();
+    }
+  });
+
   dom.sourceFilter.addEventListener("change", async (event) => {
     state.filters.source = event.target.value;
     await refreshFeed(false);
@@ -122,7 +209,7 @@ function bindEvents() {
     state.searchDebounceId = window.setTimeout(async () => {
       state.filters.search = nextValue;
       await refreshFeed(false);
-    }, 280);
+    }, 260);
   });
 
   dom.clearFiltersBtn.addEventListener("click", async () => {
@@ -141,61 +228,21 @@ function bindEvents() {
     }
   });
 
-  dom.watchlistTags.addEventListener("click", async (event) => {
-    const removeButton = event.target.closest("button[data-remove-ticker]");
-    if (removeButton) {
-      const ticker = removeButton.dataset.removeTicker;
-      state.watchlist = state.watchlist.filter((symbol) => symbol !== ticker);
-      saveWatchlist(state.watchlist);
-      renderWatchlistTags();
-      await refreshWatchlistData(false);
-      return;
-    }
-
-    const filterTicker = event.target.closest("[data-filter-ticker]");
-    if (filterTicker) {
-      state.filters.ticker = filterTicker.dataset.filterTicker;
-      await refreshFeed(false);
-    }
+  dom.alertAddBtn.addEventListener("click", () => {
+    addAlertRule();
   });
 
-  dom.watchlistGrid.addEventListener("click", async (event) => {
-    const row = event.target.closest("[data-filter-ticker]");
-    if (!row) {
-      return;
-    }
-    state.filters.ticker = row.dataset.filterTicker;
-    await refreshFeed(false);
+  dom.compareRunBtn.addEventListener("click", () => {
+    runCompare();
   });
 
-  dom.trendingTickers.addEventListener("click", async (event) => {
-    const card = event.target.closest("[data-filter-ticker]");
-    if (!card) {
-      return;
-    }
-    state.filters.ticker = card.dataset.filterTicker;
-    await refreshFeed(false);
+  dom.compareA.addEventListener("change", (event) => {
+    state.compare.a = event.target.value;
   });
 
-  document.addEventListener("keydown", async (event) => {
-    if (event.key === "/" && document.activeElement !== dom.searchFilter) {
-      event.preventDefault();
-      dom.searchFilter.focus();
-      dom.searchFilter.select();
-    }
-
-    if (event.key === "Escape" && !dom.authModal.classList.contains("is-hidden")) {
-      closeAuthModal();
-      return;
-    }
-
-    if (event.key === "Escape" && state.filters.ticker) {
-      state.filters.ticker = "";
-      await refreshFeed(false);
-    }
+  dom.compareB.addEventListener("change", (event) => {
+    state.compare.b = event.target.value;
   });
-
-  window.addEventListener("resize", debounce(() => drawTimeline(state.dashboard?.timeline ?? []), 120));
 
   dom.authOpenBtn.addEventListener("click", () => {
     openAuthModal();
@@ -204,6 +251,7 @@ function bindEvents() {
   dom.authLogoutBtn.addEventListener("click", async () => {
     signOut();
     await refreshWatchlistData(false);
+    renderFeed(state.feed);
   });
 
   dom.authCloseBtn.addEventListener("click", () => {
@@ -242,11 +290,17 @@ function bindEvents() {
 
     state.auth.session = { email, signedInAt: new Date().toISOString() };
     persistAuthSession(state.auth.session);
+    state.watchlist = loadWatchlist();
+    state.bookmarks = loadBookmarks();
+    state.alerts = loadAlerts();
+    state.firedAlertIds = new Set();
     renderAuthState();
+    renderWatchlistTags();
+    renderBookmarks();
+    renderAlerts();
+    renderAccountSummary();
     closeAuthModal();
     toast(`Signed in as ${email}`);
-    state.watchlist = loadWatchlist();
-    renderWatchlistTags();
     await refreshWatchlistData(false);
     dom.signinForm.reset();
   });
@@ -261,51 +315,103 @@ function bindEvents() {
       toast("Enter a valid email", "warn");
       return;
     }
-
     if (password.length < 6) {
       toast("Use at least 6 characters for password", "warn");
       return;
     }
-
     if (password !== confirm) {
       toast("Passwords do not match", "warn");
       return;
     }
 
-    const exists = state.auth.users.some((entry) => entry.email === email);
-    if (exists) {
-      toast("Account already exists. Please sign in.", "warn");
+    if (state.auth.users.some((entry) => entry.email === email)) {
+      toast("Account exists. Please sign in.", "warn");
       setAuthMode("signin");
       dom.signinEmail.value = email;
       return;
     }
 
-    const user = {
-      email,
-      passwordDigest: digestPassword(email, password),
-      createdAt: new Date().toISOString(),
-    };
-    state.auth.users = [...state.auth.users, user];
+    state.auth.users = [
+      ...state.auth.users,
+      {
+        email,
+        passwordDigest: digestPassword(email, password),
+        createdAt: new Date().toISOString(),
+      },
+    ];
     persistAuthUsers(state.auth.users);
 
     state.auth.session = { email, signedInAt: new Date().toISOString() };
     persistAuthSession(state.auth.session);
+    state.watchlist = loadWatchlist();
+    state.bookmarks = loadBookmarks();
+    state.alerts = loadAlerts();
+    state.firedAlertIds = new Set();
     renderAuthState();
+    renderWatchlistTags();
+    renderBookmarks();
+    renderAlerts();
+    renderAccountSummary();
     closeAuthModal();
     toast(`Welcome, ${email}`);
-    state.watchlist = loadWatchlist();
-    renderWatchlistTags();
     await refreshWatchlistData(false);
-    dom.signupForm.reset();
     dom.signinForm.reset();
+    dom.signupForm.reset();
   });
+
+  window.addEventListener("hashchange", () => {
+    const next = initialRoute();
+    setRoute(next, { updateHash: false });
+  });
+
+  document.addEventListener("keydown", async (event) => {
+    if (event.key === "/" && document.activeElement !== dom.searchFilter) {
+      event.preventDefault();
+      setRoute("feed");
+      dom.searchFilter.focus();
+      dom.searchFilter.select();
+    }
+
+    if (event.key === "Escape" && !dom.authModal.classList.contains("is-hidden")) {
+      closeAuthModal();
+      return;
+    }
+
+    if (event.key === "Escape" && state.filters.ticker) {
+      state.filters.ticker = "";
+      await refreshFeed(false);
+    }
+  });
+
+  window.addEventListener("resize", debounce(() => drawTimeline(state.dashboard?.timeline ?? []), 120));
+}
+
+function setRoute(route, options = {}) {
+  const { updateHash = true } = options;
+  const normalized = ROUTES.includes(route) ? route : "home";
+  state.route = normalized;
+
+  dom.routeButtons.forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.route === normalized);
+  });
+
+  dom.views.forEach((view) => {
+    view.classList.toggle("is-active", view.dataset.view === normalized);
+  });
+
+  if (updateHash && window.location.hash !== `#${normalized}`) {
+    window.location.hash = normalized;
+  }
+
+  if (normalized === "account") {
+    renderAccountSummary();
+  }
 }
 
 async function refreshAll(forceRefresh = false) {
   setRefreshing(true);
   try {
-    const dashboardPath = `/api/dashboard?force_refresh=${String(forceRefresh)}`;
-    const [dashboard] = await Promise.all([fetchJson(dashboardPath)]);
+    const dashboard = await fetchJson(`/api/dashboard?force_refresh=${String(forceRefresh)}`);
     state.dashboard = dashboard;
     renderDashboard();
 
@@ -321,7 +427,7 @@ async function refreshAll(forceRefresh = false) {
 async function refreshFeed(forceRefresh = false) {
   showFeedSkeleton();
   try {
-    const params = new URLSearchParams({ limit: "70", force_refresh: String(forceRefresh) });
+    const params = new URLSearchParams({ limit: "80", force_refresh: String(forceRefresh) });
     if (state.filters.source) {
       params.set("source", state.filters.source);
     }
@@ -338,7 +444,9 @@ async function refreshFeed(forceRefresh = false) {
     const response = await fetchJson(`/api/feed?${params.toString()}`);
     state.feed = response.items ?? [];
     renderFeed(state.feed);
+    renderBookmarks();
     renderActiveFilterPill();
+    renderAccountSummary();
   } catch (error) {
     dom.feedList.innerHTML = `<div class="empty-state">Unable to load feed. ${escapeHtml(error.message)}</div>`;
   }
@@ -351,8 +459,13 @@ async function refreshWatchlistData(forceRefresh = false) {
     const response = await fetchJson(`/api/watchlist?${params.toString()}`);
     state.watchlistData = response.items ?? [];
     renderWatchlistGrid();
+    renderAlerts();
+    renderCompareOptions();
+    evaluateAlerts();
+    renderAccountSummary();
   } catch (error) {
     dom.watchlistGrid.innerHTML = `<div class="empty-state">Watchlist unavailable. ${escapeHtml(error.message)}</div>`;
+    renderAlerts();
   }
 }
 
@@ -368,6 +481,7 @@ function renderDashboard() {
   dom.heroMarketPulse.textContent = overview.marketPulse || "No pulse data";
   dom.heroTrend.textContent = `Trend: ${toTitleCase(overview.trendDirection || "flat")}`;
   dom.lastUpdated.textContent = `Last update: ${formatDateTime(dashboard.generatedAt)}`;
+  dom.homePulseChip.textContent = `Signal: ${formatSigned(sentimentIndex)} | ${toTitleCase(overview.trendDirection || "flat")}`;
 
   animateMetric(dom.gaugeValue, sentimentIndex, { decimals: 1 });
   dom.gaugeFill.style.left = `${clamp((sentimentIndex + 100) / 2, 0, 100)}%`;
@@ -381,6 +495,25 @@ function renderDashboard() {
   renderThemes(dashboard.themes ?? []);
   renderNarratives(dashboard.narratives ?? []);
   drawTimeline(dashboard.timeline ?? []);
+  renderHomeTickerTape(dashboard.trending ?? []);
+  renderCompareOptions();
+}
+
+function renderHomeTickerTape(rows) {
+  if (!rows.length) {
+    dom.homeTickerTape.innerHTML = `<span class="ticker-tape-item">No active tickers yet</span>`;
+    return;
+  }
+
+  const chips = rows
+    .slice(0, 8)
+    .map(
+      (row) =>
+        `<span class="ticker-tape-item"><strong>${row.ticker}</strong> <span>${formatSigned(row.averageSentiment)}</span> <span>${row.mentions}x</span></span>`,
+    )
+    .join("");
+
+  dom.homeTickerTape.innerHTML = `${chips}${chips}`;
 }
 
 function renderTrending(rows) {
@@ -407,9 +540,9 @@ function renderTrending(rows) {
           <span class="badge">Momentum ${formatSigned(row.momentum)}</span>
         </div>
         <div class="ticker-bars">
-          <div class="ticker-bar"><span style="width:${positivePct}%;background:#2daa74"></span></div>
-          <div class="ticker-bar"><span style="width:${Math.max(negativePct, 2)}%;background:#d26b57"></span></div>
-          <div class="ticker-bar"><span style="width:${Math.max(neutralPct, 2)}%;background:#bfa761"></span></div>
+          <div class="ticker-bar"><span style="width:${Math.max(positivePct, 2)}%;background:#23a874"></span></div>
+          <div class="ticker-bar"><span style="width:${Math.max(negativePct, 2)}%;background:#d6655c"></span></div>
+          <div class="ticker-bar"><span style="width:${Math.max(neutralPct, 2)}%;background:#bea763"></span></div>
         </div>
       </article>`;
     })
@@ -423,12 +556,10 @@ function renderThemes(rows) {
   }
 
   const topMention = Math.max(...rows.map((row) => row.mentions), 1);
-
   dom.themesList.innerHTML = rows
     .map((row) => {
       const width = Math.round((row.mentions / topMention) * 100);
-      const hue = row.averageSentiment >= 0 ? "#2baa73" : "#cc6b57";
-
+      const hue = row.averageSentiment >= 0 ? "#21a876" : "#d4685c";
       return `
       <article class="theme-item">
         <h4>${row.theme}</h4>
@@ -448,10 +579,7 @@ function renderNarratives(rows) {
   dom.narrativesList.innerHTML = rows
     .map((row) => {
       const sentimentClass = sentimentClassFromScore(row.sentiment);
-      const tickerChips = (row.tickerFocus || [])
-        .map((ticker) => `<span class="inline-pill">${ticker}</span>`)
-        .join("");
-
+      const tickerChips = (row.tickerFocus || []).map((ticker) => `<span class="inline-pill">${ticker}</span>`).join("");
       return `
       <article class="narrative-item">
         <h4>${row.theme}</h4>
@@ -477,10 +605,8 @@ function renderFeed(items) {
       const sentiment = item.sentiment || {};
       const sentimentClass = sentimentClassFromLabel(sentiment.label);
       const themes = (item.themes || []).map((theme) => `<span class="theme-pill">${theme}</span>`).join("");
-      const tickers = (item.tickers || [])
-        .slice(0, 6)
-        .map((ticker) => `<span class="inline-pill" data-filter-ticker="${ticker}">${ticker}</span>`)
-        .join("");
+      const tickers = (item.tickers || []).slice(0, 6).map((ticker) => `<span class="inline-pill" data-filter-ticker="${ticker}">${ticker}</span>`).join("");
+      const bookmarked = state.bookmarks.some((row) => row.id === item.id);
 
       return `
       <article class="feed-item">
@@ -496,17 +622,47 @@ function renderFeed(items) {
           ${themes}
           ${tickers}
         </div>
-        <a href="${escapeAttribute(item.url || "#")}" target="_blank" rel="noreferrer">Open source</a>
+        <div class="feed-item-actions">
+          <a href="${escapeAttribute(item.url || "#")}" target="_blank" rel="noreferrer">Open source</a>
+          <button class="mini-btn ${bookmarked ? "active" : ""}" type="button" data-bookmark-toggle="${item.id}">
+            ${bookmarked ? "Saved" : "Save"}
+          </button>
+        </div>
       </article>`;
     })
     .join("");
+}
 
-  dom.feedList.querySelectorAll("[data-filter-ticker]").forEach((chip) => {
-    chip.addEventListener("click", async () => {
-      state.filters.ticker = chip.dataset.filterTicker;
-      await refreshFeed(false);
-    });
-  });
+function renderBookmarks() {
+  if (!state.bookmarks.length) {
+    dom.bookmarkList.innerHTML = `<div class="empty-state">Save feed items to build a focused shortlist.</div>`;
+    return;
+  }
+
+  dom.bookmarkList.innerHTML = [...state.bookmarks]
+    .reverse()
+    .map((item) => {
+      const sentimentClass = sentimentClassFromLabel(item.sentiment?.label);
+      const tickerChip = (item.tickers || [])
+        .slice(0, 3)
+        .map((ticker) => `<span class="inline-pill" data-filter-ticker="${ticker}">${ticker}</span>`)
+        .join("");
+
+      return `
+      <article class="bookmark-item">
+        <div class="bookmark-item-head">
+          <h4>${escapeHtml(item.title || "Untitled")}</h4>
+          <span class="sentiment-pill ${sentimentClass}">${formatSigned(item.sentiment?.score || 0)}</span>
+        </div>
+        <p>${escapeHtml(item.summary || item.text || "")}</p>
+        <div class="bookmark-actions">
+          ${tickerChip}
+          <a href="${escapeAttribute(item.url || "#")}" target="_blank" rel="noreferrer">Open</a>
+          <button class="mini-btn" type="button" data-remove-bookmark="${item.id}">Remove</button>
+        </div>
+      </article>`;
+    })
+    .join("");
 }
 
 function renderWatchlistTags() {
@@ -518,9 +674,21 @@ function renderWatchlistTags() {
   dom.watchlistTags.innerHTML = state.watchlist
     .map(
       (ticker) =>
-        `<span class="watchlist-tag" data-filter-ticker="${ticker}">${ticker} <button type="button" data-remove-ticker="${ticker}" aria-label="Remove ${ticker}">×</button></span>`,
+        `<span class="watchlist-tag" data-filter-ticker="${ticker}">${ticker} <button type="button" data-remove-watch-ticker="${ticker}">×</button></span>`,
     )
     .join("");
+
+  dom.watchlistTags.querySelectorAll("[data-remove-watch-ticker]").forEach((button) => {
+    button.addEventListener("click", async (event) => {
+      event.stopPropagation();
+      const ticker = button.dataset.removeWatchTicker;
+      state.watchlist = state.watchlist.filter((symbol) => symbol !== ticker);
+      saveWatchlist(state.watchlist);
+      renderWatchlistTags();
+      await refreshWatchlistData(false);
+      renderAccountSummary();
+    });
+  });
 }
 
 function renderWatchlistGrid() {
@@ -544,6 +712,56 @@ function renderWatchlistGrid() {
     .join("");
 }
 
+function renderAlerts() {
+  if (!state.alerts.length) {
+    dom.alertsList.innerHTML = `<div class="empty-state">No alert rules yet. Add one to monitor sentiment thresholds.</div>`;
+    return;
+  }
+
+  const watchIndex = new Map((state.watchlistData || []).map((row) => [row.ticker, row]));
+
+  dom.alertsList.innerHTML = state.alerts
+    .map((rule) => {
+      const row = watchIndex.get(rule.ticker);
+      const current = Number(row?.averageSentiment ?? 0);
+      const triggered = rule.direction === "above" ? current >= rule.threshold : current <= rule.threshold;
+
+      return `
+      <article class="alert-item">
+        <div class="alert-item-head">
+          <h4>${rule.ticker} ${rule.direction === "above" ? "above" : "below"} ${rule.threshold}</h4>
+          <span class="alert-status ${triggered ? "triggered" : ""}">${triggered ? "Triggered" : "Monitoring"}</span>
+        </div>
+        <p>Current sentiment: ${formatSigned(current)} | Created ${formatDateTime(rule.createdAt)}</p>
+        <div class="alert-item-meta">
+          <button class="mini-btn" type="button" data-remove-alert="${rule.id}">Remove</button>
+        </div>
+      </article>`;
+    })
+    .join("");
+}
+
+function evaluateAlerts() {
+  if (!state.alerts.length || !state.watchlistData.length) {
+    return;
+  }
+
+  const watchIndex = new Map(state.watchlistData.map((row) => [row.ticker, row]));
+  for (const rule of state.alerts) {
+    const row = watchIndex.get(rule.ticker);
+    if (!row) {
+      continue;
+    }
+
+    const current = Number(row.averageSentiment || 0);
+    const triggered = rule.direction === "above" ? current >= rule.threshold : current <= rule.threshold;
+    if (triggered && !state.firedAlertIds.has(rule.id)) {
+      state.firedAlertIds.add(rule.id);
+      toast(`Alert: ${rule.ticker} ${rule.direction} ${rule.threshold} (${formatSigned(current)})`, "warn");
+    }
+  }
+}
+
 function renderActiveFilterPill() {
   if (!state.filters.ticker) {
     dom.activeFilterPill.classList.add("is-hidden");
@@ -553,6 +771,102 @@ function renderActiveFilterPill() {
 
   dom.activeFilterPill.classList.remove("is-hidden");
   dom.activeFilterPill.innerHTML = `<span class="filter-pill">Ticker filter: ${state.filters.ticker}</span>`;
+}
+
+function renderCompareOptions() {
+  const options = tickerUniverse();
+  if (!options.length) {
+    dom.compareA.innerHTML = "<option value=''>No tickers</option>";
+    dom.compareB.innerHTML = "<option value=''>No tickers</option>";
+    dom.compareResult.innerHTML = `<div class="empty-state">No ticker data available for comparison.</div>`;
+    return;
+  }
+
+  if (!options.includes(state.compare.a)) {
+    state.compare.a = options[0];
+  }
+  if (!options.includes(state.compare.b) || state.compare.b === state.compare.a) {
+    state.compare.b = options[Math.min(1, options.length - 1)] || options[0];
+  }
+
+  dom.compareA.innerHTML = options.map((ticker) => `<option value="${ticker}" ${ticker === state.compare.a ? "selected" : ""}>${ticker}</option>`).join("");
+  dom.compareB.innerHTML = options.map((ticker) => `<option value="${ticker}" ${ticker === state.compare.b ? "selected" : ""}>${ticker}</option>`).join("");
+  runCompare();
+}
+
+function runCompare() {
+  const a = sanitizeTicker(dom.compareA.value || state.compare.a);
+  const b = sanitizeTicker(dom.compareB.value || state.compare.b);
+  if (!a || !b || a === b) {
+    dom.compareResult.innerHTML = `<div class="empty-state">Choose two different tickers.</div>`;
+    return;
+  }
+
+  state.compare.a = a;
+  state.compare.b = b;
+
+  const index = new Map((state.dashboard?.trending || []).map((row) => [row.ticker, row]));
+  const rowA = index.get(a) || state.watchlistData.find((row) => row.ticker === a);
+  const rowB = index.get(b) || state.watchlistData.find((row) => row.ticker === b);
+
+  if (!rowA || !rowB) {
+    dom.compareResult.innerHTML = `<div class="empty-state">Comparison data unavailable for one or both symbols.</div>`;
+    return;
+  }
+
+  const sentimentLead = rowA.averageSentiment >= rowB.averageSentiment ? a : b;
+  const momentumLead = rowA.momentum >= rowB.momentum ? a : b;
+  const mentionsLead = rowA.mentions >= rowB.mentions ? a : b;
+
+  dom.compareResult.innerHTML = `
+    <div class="feed-meta-left">
+      <span class="badge">Sentiment Leader: <strong>${sentimentLead}</strong></span>
+      <span class="badge">Momentum Leader: <strong>${momentumLead}</strong></span>
+      <span class="badge">Coverage Leader: <strong>${mentionsLead}</strong></span>
+    </div>
+    <p>${a}: ${formatSigned(rowA.averageSentiment)} (${rowA.mentions} mentions) | ${b}: ${formatSigned(rowB.averageSentiment)} (${rowB.mentions} mentions)</p>
+  `;
+}
+
+function renderAccountSummary() {
+  const session = state.auth.session;
+  const watchCount = state.watchlist.length;
+  const bookmarkCount = state.bookmarks.length;
+  const alertCount = state.alerts.length;
+  const routeName = toTitleCase(state.route);
+
+  dom.accountSummary.innerHTML = `
+    <article class="account-card">
+      <span>Profile</span>
+      <strong>${escapeHtml(session?.email || "Guest Mode")}</strong>
+      <p class="ticker-mentions">${session ? "Signed in" : "Local guest workspace"}</p>
+    </article>
+    <article class="account-card">
+      <span>Saved Signals</span>
+      <strong>${bookmarkCount}</strong>
+      <p class="ticker-mentions">Bookmarked feed entries</p>
+    </article>
+    <article class="account-card">
+      <span>Watchlist</span>
+      <strong>${watchCount}</strong>
+      <p class="ticker-mentions">Tracked ticker symbols</p>
+    </article>
+    <article class="account-card">
+      <span>Alert Rules</span>
+      <strong>${alertCount}</strong>
+      <p class="ticker-mentions">Sentiment threshold monitors</p>
+    </article>
+    <article class="account-card">
+      <span>Current Section</span>
+      <strong>${routeName}</strong>
+      <p class="ticker-mentions">Use top nav to switch workspaces</p>
+    </article>
+    <article class="account-card">
+      <span>API Mode</span>
+      <strong>${state.staticFallbackNotified ? "Static Snapshot" : "Live API"}</strong>
+      <p class="ticker-mentions">Set API base in header to switch backend</p>
+    </article>
+  `;
 }
 
 function drawTimeline(points) {
@@ -577,8 +891,8 @@ function drawTimeline(points) {
   ctx.clearRect(0, 0, width, height);
 
   if (!points.length) {
-    ctx.fillStyle = "#587270";
-    ctx.font = "500 13px Bricolage Grotesque";
+    ctx.fillStyle = "#61738f";
+    ctx.font = "500 13px Sora";
     ctx.fillText("No timeline points yet", 16, 22);
     dom.timelineLegends.innerHTML = "";
     return;
@@ -590,7 +904,7 @@ function drawTimeline(points) {
 
   for (let i = 0; i <= 4; i += 1) {
     const y = pad.top + (chartHeight / 4) * i;
-    ctx.strokeStyle = "rgba(22, 72, 68, 0.1)";
+    ctx.strokeStyle = "rgba(43, 68, 112, 0.12)";
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(pad.left, y);
@@ -610,8 +924,8 @@ function drawTimeline(points) {
   });
 
   const gradient = ctx.createLinearGradient(0, pad.top, 0, pad.top + chartHeight);
-  gradient.addColorStop(0, "rgba(14, 148, 136, 0.34)");
-  gradient.addColorStop(1, "rgba(14, 148, 136, 0.02)");
+  gradient.addColorStop(0, "rgba(30, 100, 255, 0.34)");
+  gradient.addColorStop(1, "rgba(30, 100, 255, 0.04)");
 
   ctx.beginPath();
   ctx.moveTo(coords[0].x, pad.top + chartHeight);
@@ -629,19 +943,19 @@ function drawTimeline(points) {
       ctx.lineTo(point.x, point.y);
     }
   });
-  ctx.strokeStyle = "#0a857a";
-  ctx.lineWidth = 2.6;
+  ctx.strokeStyle = "#1f63ff";
+  ctx.lineWidth = 2.4;
   ctx.stroke();
 
   coords.forEach((point) => {
     ctx.beginPath();
     ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
-    ctx.fillStyle = "#0c6c63";
+    ctx.fillStyle = "#1452d8";
     ctx.fill();
   });
 
-  ctx.fillStyle = "#516967";
-  ctx.font = "500 11px Bricolage Grotesque";
+  ctx.fillStyle = "#5a6f8f";
+  ctx.font = "500 11px Sora";
   const step = Math.max(1, Math.floor(points.length / 5));
   points.forEach((point, index) => {
     if (index % step !== 0 && index !== points.length - 1) {
@@ -651,13 +965,11 @@ function drawTimeline(points) {
     ctx.fillText(formatTimelineLabel(point.label), x - 24, height - 10);
   });
 
-  const highlights = [...points]
+  dom.timelineLegends.innerHTML = [...points]
     .sort((a, b) => Math.abs(b.sentiment) - Math.abs(a.sentiment))
     .slice(0, 4)
     .map((point) => `<span class="legend-pill">${escapeHtml(point.leadTicker || "Macro")}: ${formatSigned(point.sentiment)}</span>`)
     .join("");
-
-  dom.timelineLegends.innerHTML = highlights || `<span class="legend-pill">No standout tickers</span>`;
 }
 
 function showFeedSkeleton() {
@@ -665,14 +977,10 @@ function showFeedSkeleton() {
     return;
   }
 
-  const fragments = [];
-  for (let i = 0; i < 4; i += 1) {
-    const clone = dom.loadingFeedTemplate.content.cloneNode(true);
-    fragments.push(clone);
-  }
-
   dom.feedList.innerHTML = "";
-  fragments.forEach((fragment) => dom.feedList.appendChild(fragment));
+  for (let i = 0; i < 4; i += 1) {
+    dom.feedList.appendChild(dom.loadingFeedTemplate.content.cloneNode(true));
+  }
 }
 
 function renderEmptyStates() {
@@ -681,6 +989,8 @@ function renderEmptyStates() {
   dom.narrativesList.innerHTML = `<div class="empty-state">No narrative data available.</div>`;
   dom.feedList.innerHTML = `<div class="empty-state">No feed data available.</div>`;
   dom.watchlistGrid.innerHTML = `<div class="empty-state">No watchlist data available.</div>`;
+  dom.bookmarkList.innerHTML = `<div class="empty-state">No saved signals available.</div>`;
+  dom.alertsList.innerHTML = `<div class="empty-state">No alerts data available.</div>`;
 }
 
 function syncFilterInputs() {
@@ -698,6 +1008,7 @@ async function addWatchlistTicker() {
 
   if (state.watchlist.includes(symbol)) {
     state.filters.ticker = symbol;
+    setRoute("feed");
     await refreshFeed(false);
     return;
   }
@@ -707,6 +1018,70 @@ async function addWatchlistTicker() {
   saveWatchlist(state.watchlist);
   renderWatchlistTags();
   await refreshWatchlistData(false);
+  renderAccountSummary();
+}
+
+function addAlertRule() {
+  const ticker = sanitizeTicker(dom.alertTickerInput.value);
+  const direction = dom.alertDirectionSelect.value === "below" ? "below" : "above";
+  const threshold = Number(dom.alertThresholdInput.value);
+
+  if (!ticker) {
+    toast("Enter a valid ticker for alert", "warn");
+    return;
+  }
+
+  if (!Number.isFinite(threshold) || threshold < -100 || threshold > 100) {
+    toast("Threshold must be between -100 and 100", "warn");
+    return;
+  }
+
+  state.alerts = [
+    ...state.alerts,
+    {
+      id: `alert_${Date.now()}_${ticker}`,
+      ticker,
+      direction,
+      threshold: Math.round(threshold * 10) / 10,
+      createdAt: new Date().toISOString(),
+    },
+  ];
+  saveAlerts(state.alerts);
+  renderAlerts();
+  renderAccountSummary();
+
+  dom.alertTickerInput.value = "";
+  dom.alertThresholdInput.value = "20";
+}
+
+function toggleBookmarkById(itemId) {
+  const existing = state.bookmarks.find((row) => row.id === itemId);
+  if (existing) {
+    state.bookmarks = state.bookmarks.filter((row) => row.id !== itemId);
+    saveBookmarks(state.bookmarks);
+    return;
+  }
+
+  const item = state.feed.find((row) => row.id === itemId);
+  if (!item) {
+    return;
+  }
+
+  state.bookmarks = [...state.bookmarks, item].slice(-120);
+  saveBookmarks(state.bookmarks);
+}
+
+function removeBookmark(itemId) {
+  state.bookmarks = state.bookmarks.filter((row) => row.id !== itemId);
+  saveBookmarks(state.bookmarks);
+}
+
+function tickerUniverse() {
+  const tickers = new Set();
+  (state.dashboard?.trending || []).forEach((row) => tickers.add(row.ticker));
+  (state.watchlistData || []).forEach((row) => tickers.add(row.ticker));
+  state.watchlist.forEach((ticker) => tickers.add(ticker));
+  return [...tickers].filter(Boolean).sort();
 }
 
 function setAutoRefresh(enabled) {
@@ -734,21 +1109,88 @@ function onSaveApiBase() {
     toast("API base URL is invalid", "error");
     return;
   }
+
   state.apiBase = input;
   localStorage.setItem("ssd_api_base", input);
   toast("API base saved");
+
   refreshAll(true).catch(() => {
     toast("Could not connect to API", "error");
   });
 }
 
+function setRefreshing(isRefreshing) {
+  dom.refreshBtn.disabled = isRefreshing;
+  dom.refreshBtn.textContent = isRefreshing ? "Refreshing..." : "Refresh";
+}
+
+function toast(message, level = "info") {
+  const el = document.createElement("div");
+  el.className = `toast ${level}`;
+  el.textContent = message;
+  dom.toastStack.appendChild(el);
+  window.setTimeout(() => el.remove(), 3200);
+}
+
+function openAuthModal() {
+  dom.authModal.classList.remove("is-hidden");
+  document.body.classList.add("modal-open");
+  if (state.auth.mode === "signin") {
+    dom.signinEmail.focus();
+  } else {
+    dom.signupEmail.focus();
+  }
+}
+
+function closeAuthModal() {
+  dom.authModal.classList.add("is-hidden");
+  document.body.classList.remove("modal-open");
+}
+
+function setAuthMode(mode) {
+  state.auth.mode = mode === "signup" ? "signup" : "signin";
+  const isSignin = state.auth.mode === "signin";
+
+  dom.authTabSignin.classList.toggle("is-active", isSignin);
+  dom.authTabSignup.classList.toggle("is-active", !isSignin);
+  dom.signinForm.classList.toggle("is-hidden", !isSignin);
+  dom.signupForm.classList.toggle("is-hidden", isSignin);
+}
+
+function renderAuthState() {
+  const session = state.auth.session;
+  if (session?.email) {
+    dom.authStatusChip.textContent = session.email;
+    dom.authOpenBtn.textContent = "Account";
+    dom.authLogoutBtn.classList.remove("is-hidden");
+    dom.watchlistSubtitle.textContent = `Personal symbol radar for ${session.email}`;
+  } else {
+    dom.authStatusChip.textContent = "Guest Mode";
+    dom.authOpenBtn.textContent = "Sign In / Sign Up";
+    dom.authLogoutBtn.classList.add("is-hidden");
+    dom.watchlistSubtitle.textContent = "Personal symbol radar with local persistence";
+  }
+}
+
+function signOut() {
+  state.auth.session = null;
+  persistAuthSession(null);
+  state.watchlist = loadWatchlist();
+  state.bookmarks = loadBookmarks();
+  state.alerts = loadAlerts();
+  state.firedAlertIds = new Set();
+  renderAuthState();
+  renderWatchlistTags();
+  renderBookmarks();
+  renderAlerts();
+  renderAccountSummary();
+  toast("Signed out");
+}
+
 async function fetchJson(path) {
   const url = `${state.apiBase}${path}`;
   try {
-    const response = await fetch(url, {
-      headers: { Accept: "application/json" },
-    });
-
+    const response = await fetch(url, { headers: { Accept: "application/json" } });
     if (!response.ok) {
       throw new Error(`Request failed (${response.status})`);
     }
@@ -772,6 +1214,7 @@ async function tryStaticFallback(path) {
     if (!state.staticFallbackNotified) {
       toast("Using static GitHub Pages snapshot data", "warn");
       state.staticFallbackNotified = true;
+      renderAccountSummary();
     }
     return payload;
   } catch {
@@ -909,6 +1352,7 @@ async function loadStaticSnapshot() {
   const snapshot = await response.json();
   const dashboard = snapshot.dashboard || {};
   const feed = Array.isArray(snapshot.feed) ? snapshot.feed : [];
+
   state.staticSnapshot = {
     ...snapshot,
     generatedAt: snapshot.generatedAt || dashboard.generatedAt || new Date().toISOString(),
@@ -918,6 +1362,7 @@ async function loadStaticSnapshot() {
     },
     feed: [...feed].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)),
   };
+
   return state.staticSnapshot;
 }
 
@@ -946,10 +1391,7 @@ function filterSnapshotFeed(items, filters) {
     if (sentiment && String(item?.sentiment?.label || "").toLowerCase() !== sentiment) {
       return false;
     }
-    if (ticker && !Array.isArray(item.tickers)) {
-      return false;
-    }
-    if (ticker && !item.tickers.includes(ticker)) {
+    if (ticker && (!Array.isArray(item.tickers) || !item.tickers.includes(ticker))) {
       return false;
     }
     if (query) {
@@ -1006,75 +1448,6 @@ function animateMetric(element, target, options = {}) {
   };
 
   requestAnimationFrame(frame);
-}
-
-function setRefreshing(isRefreshing) {
-  dom.refreshBtn.disabled = isRefreshing;
-  if (isRefreshing) {
-    dom.refreshBtn.textContent = "Refreshing...";
-  } else {
-    dom.refreshBtn.textContent = "Refresh";
-  }
-}
-
-function toast(message, level = "info") {
-  const el = document.createElement("div");
-  el.className = `toast ${level}`;
-  el.textContent = message;
-  dom.toastStack.appendChild(el);
-
-  window.setTimeout(() => {
-    el.remove();
-  }, 3200);
-}
-
-function openAuthModal() {
-  dom.authModal.classList.remove("is-hidden");
-  document.body.classList.add("modal-open");
-  if (state.auth.mode === "signin") {
-    dom.signinEmail.focus();
-  } else {
-    dom.signupEmail.focus();
-  }
-}
-
-function closeAuthModal() {
-  dom.authModal.classList.add("is-hidden");
-  document.body.classList.remove("modal-open");
-}
-
-function setAuthMode(mode) {
-  state.auth.mode = mode === "signup" ? "signup" : "signin";
-  const isSignin = state.auth.mode === "signin";
-
-  dom.authTabSignin.classList.toggle("is-active", isSignin);
-  dom.authTabSignup.classList.toggle("is-active", !isSignin);
-  dom.signinForm.classList.toggle("is-hidden", !isSignin);
-  dom.signupForm.classList.toggle("is-hidden", isSignin);
-}
-
-function renderAuthState() {
-  const session = state.auth.session;
-  if (session?.email) {
-    dom.authStatusChip.textContent = session.email;
-    dom.authOpenBtn.textContent = "Account";
-    dom.authLogoutBtn.classList.remove("is-hidden");
-    dom.watchlistSubtitle.textContent = `Personal symbol radar for ${session.email}`;
-  } else {
-    dom.authStatusChip.textContent = "Guest Mode";
-    dom.authOpenBtn.textContent = "Sign In / Sign Up";
-    dom.authLogoutBtn.classList.add("is-hidden");
-    dom.watchlistSubtitle.textContent = "Personal symbol radar with local persistence";
-  }
-}
-
-function signOut() {
-  state.auth.session = null;
-  persistAuthSession(null);
-  renderAuthState();
-  state.watchlist = loadWatchlist();
-  renderWatchlistTags();
-  toast("Signed out");
 }
 
 function loadAuthUsers() {
@@ -1150,28 +1523,33 @@ function digestPassword(email, password) {
 }
 
 function watchlistStorageKey() {
-  const session = loadAuthSession();
-  if (session?.email) {
-    return `ssd_watchlist_${session.email}`;
-  }
-  return WATCHLIST_KEY_GUEST;
+  const sessionEmail = loadAuthSession()?.email;
+  return sessionEmail ? `ssd_watchlist_${sessionEmail}` : WATCHLIST_KEY_GUEST;
+}
+
+function bookmarksStorageKey() {
+  const sessionEmail = loadAuthSession()?.email;
+  return sessionEmail ? `ssd_bookmarks_${sessionEmail}` : BOOKMARKS_KEY_GUEST;
+}
+
+function alertsStorageKey() {
+  const sessionEmail = loadAuthSession()?.email;
+  return sessionEmail ? `ssd_alerts_${sessionEmail}` : ALERTS_KEY_GUEST;
 }
 
 function loadWatchlist() {
-  const key = watchlistStorageKey();
-  const raw = localStorage.getItem("ssd_watchlist");
-  const namespaced = localStorage.getItem(key);
-  const data = namespaced ?? raw;
-  if (!data) {
+  const legacy = localStorage.getItem("ssd_watchlist");
+  const namespaced = localStorage.getItem(watchlistStorageKey());
+  const source = namespaced ?? legacy;
+  if (!source) {
     return DEFAULT_WATCHLIST;
   }
 
   try {
-    const parsed = JSON.parse(data);
+    const parsed = JSON.parse(source);
     if (!Array.isArray(parsed)) {
       return DEFAULT_WATCHLIST;
     }
-
     const clean = parsed.map((value) => sanitizeTicker(String(value))).filter(Boolean);
     return clean.length ? clean.slice(0, 25) : DEFAULT_WATCHLIST;
   } catch {
@@ -1183,6 +1561,56 @@ function saveWatchlist(watchlist) {
   localStorage.setItem(watchlistStorageKey(), JSON.stringify(watchlist));
 }
 
+function loadBookmarks() {
+  const raw = localStorage.getItem(bookmarksStorageKey());
+  if (!raw) {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    return parsed.slice(-120);
+  } catch {
+    return [];
+  }
+}
+
+function saveBookmarks(bookmarks) {
+  localStorage.setItem(bookmarksStorageKey(), JSON.stringify(bookmarks));
+}
+
+function loadAlerts() {
+  const raw = localStorage.getItem(alertsStorageKey());
+  if (!raw) {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    return parsed
+      .map((row) => ({
+        id: String(row?.id || ""),
+        ticker: sanitizeTicker(row?.ticker || ""),
+        direction: row?.direction === "below" ? "below" : "above",
+        threshold: Number(row?.threshold || 0),
+        createdAt: String(row?.createdAt || ""),
+      }))
+      .filter((row) => row.id && row.ticker && Number.isFinite(row.threshold));
+  } catch {
+    return [];
+  }
+}
+
+function saveAlerts(alerts) {
+  localStorage.setItem(alertsStorageKey(), JSON.stringify(alerts));
+}
+
 function loadApiBase() {
   const saved = localStorage.getItem("ssd_api_base");
   if (saved) {
@@ -1192,7 +1620,6 @@ function loadApiBase() {
   if (window.location.protocol.startsWith("http")) {
     return `${window.location.protocol}//${window.location.host}`;
   }
-
   return "http://127.0.0.1:8000";
 }
 
@@ -1207,6 +1634,14 @@ function normalizeApiBase(value) {
   }
 
   return `http://${cleaned}`;
+}
+
+function initialRoute() {
+  const hash = String(window.location.hash || "").replace(/^#\/?/, "").trim().toLowerCase();
+  if (ROUTES.includes(hash)) {
+    return hash;
+  }
+  return "home";
 }
 
 function sanitizeTicker(value) {
