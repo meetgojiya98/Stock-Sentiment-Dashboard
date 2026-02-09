@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Sentiment Command Center</title>
+    <meta
+      name="description"
+      content="Advanced stock sentiment intelligence dashboard across finance news and wallstreetbets discourse."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orb orb-a" aria-hidden="true"></div>
+    <div class="bg-orb orb-b" aria-hidden="true"></div>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <p class="eyebrow">Real-time market language intelligence</p>
+          <h1>Stock Sentiment Command Center</h1>
+        </div>
+
+        <div class="topbar-controls">
+          <label class="api-input-wrap" for="api-base-input">
+            <span>API Base</span>
+            <input id="api-base-input" type="text" placeholder="http://127.0.0.1:8000" />
+          </label>
+          <button id="save-api-base-btn" class="ghost-btn" type="button">Save</button>
+
+          <button id="refresh-btn" class="primary-btn" type="button">Refresh</button>
+          <button id="auto-refresh-btn" class="ghost-btn" type="button" aria-pressed="true">
+            Auto Refresh: On
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-panel">
+          <div class="hero-copy">
+            <p class="hero-kicker">Market pulse</p>
+            <h2 id="hero-market-pulse">Loading signal...</h2>
+            <p id="hero-trend" class="hero-trend">Trend: --</p>
+            <p id="last-updated" class="last-updated">Last update: --</p>
+          </div>
+
+          <div class="hero-gauge">
+            <div class="gauge-track">
+              <div id="sentiment-gauge-fill" class="gauge-fill"></div>
+            </div>
+            <div class="gauge-metrics">
+              <span id="sentiment-gauge-value">0.0</span>
+              <small>Sentiment index</small>
+            </div>
+          </div>
+
+          <div class="hero-kpis" id="hero-kpis">
+            <article class="kpi-card">
+              <span>Total Mentions</span>
+              <strong id="kpi-total-items">0</strong>
+            </article>
+            <article class="kpi-card">
+              <span>Active Tickers</span>
+              <strong id="kpi-active-tickers">0</strong>
+            </article>
+            <article class="kpi-card">
+              <span>Volatility</span>
+              <strong id="kpi-volatility">0</strong>
+            </article>
+            <article class="kpi-card">
+              <span>Positive Ratio</span>
+              <strong id="kpi-positive-ratio">0%</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="analytics-grid">
+          <article class="panel pulse-panel">
+            <div class="panel-head">
+              <h3>Sentiment Pulse Timeline</h3>
+              <p>Recent shift in discourse intensity and conviction</p>
+            </div>
+            <canvas id="timeline-canvas" width="1200" height="350"></canvas>
+            <div id="timeline-legends" class="timeline-legends"></div>
+          </article>
+
+          <article class="panel tickers-panel">
+            <div class="panel-head">
+              <h3>Ticker Arena</h3>
+              <p>Hype-ranked symbols across news and social chatter</p>
+            </div>
+            <div id="trending-tickers" class="ticker-grid"></div>
+          </article>
+
+          <article class="panel narratives-panel">
+            <div class="panel-head">
+              <h3>Narrative Signals</h3>
+              <p>Thematic focus and directional skew in the latest cycle</p>
+            </div>
+            <div id="narratives-list" class="narratives-list"></div>
+          </article>
+
+          <article class="panel themes-panel">
+            <div class="panel-head">
+              <h3>Theme Heatmap</h3>
+              <p>Dominant idea clusters with sentiment bias</p>
+            </div>
+            <div id="themes-list" class="themes-list"></div>
+          </article>
+        </section>
+
+        <section class="feed-layout">
+          <article class="panel feed-panel">
+            <div class="panel-head">
+              <h3>Intelligence Feed</h3>
+              <p>Filter, scan and drill into context quickly</p>
+            </div>
+
+            <div class="filters-row">
+              <select id="source-filter" aria-label="Filter by source">
+                <option value="">All sources</option>
+                <option value="news">News</option>
+                <option value="reddit">Reddit</option>
+              </select>
+              <select id="sentiment-filter" aria-label="Filter by sentiment">
+                <option value="">All sentiment</option>
+                <option value="positive">Positive</option>
+                <option value="neutral">Neutral</option>
+                <option value="negative">Negative</option>
+              </select>
+              <input id="search-filter" type="search" placeholder="Search the feed (shortcut: /)" />
+              <button id="clear-filters-btn" class="ghost-btn" type="button">Clear</button>
+            </div>
+
+            <div id="active-filter-pill" class="active-filter-pill is-hidden"></div>
+            <div id="feed-list" class="feed-list"></div>
+          </article>
+
+          <aside class="panel watchlist-panel">
+            <div class="panel-head">
+              <h3>Watchtower</h3>
+              <p>Personal symbol radar with local persistence</p>
+            </div>
+
+            <div class="watchlist-entry">
+              <input id="watchlist-input" type="text" maxlength="5" placeholder="Add ticker (e.g. NVDA)" />
+              <button id="watchlist-add-btn" class="primary-btn" type="button">Add</button>
+            </div>
+
+            <div id="watchlist-tags" class="watchlist-tags"></div>
+            <div id="watchlist-grid" class="watchlist-grid"></div>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast-stack" class="toast-stack" aria-live="polite" aria-atomic="true"></div>
+
+    <template id="loading-feed-template">
+      <article class="feed-item skeleton">
+        <div class="skeleton-line long"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+      </article>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
