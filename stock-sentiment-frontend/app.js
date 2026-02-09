@@ -27,15 +27,38 @@ const dom = {
   watchlistAddBtn: document.querySelector("#watchlist-add-btn"),
   watchlistTags: document.querySelector("#watchlist-tags"),
   watchlistGrid: document.querySelector("#watchlist-grid"),
+  watchlistSubtitle: document.querySelector("#watchlist-subtitle"),
+  authStatusChip: document.querySelector("#auth-status-chip"),
+  authOpenBtn: document.querySelector("#auth-open-btn"),
+  authLogoutBtn: document.querySelector("#auth-logout-btn"),
+  authModal: document.querySelector("#auth-modal"),
+  authCloseBtn: document.querySelector("#auth-close-btn"),
+  authTabSignin: document.querySelector("#auth-tab-signin"),
+  authTabSignup: document.querySelector("#auth-tab-signup"),
+  signinForm: document.querySelector("#signin-form"),
+  signupForm: document.querySelector("#signup-form"),
+  signinEmail: document.querySelector("#signin-email"),
+  signinPassword: document.querySelector("#signin-password"),
+  signupEmail: document.querySelector("#signup-email"),
+  signupPassword: document.querySelector("#signup-password"),
+  signupConfirmPassword: document.querySelector("#signup-confirm-password"),
   toastStack: document.querySelector("#toast-stack"),
   loadingFeedTemplate: document.querySelector("#loading-feed-template"),
 };
 
 const DEFAULT_WATCHLIST = ["AAPL", "MSFT", "NVDA", "TSLA"];
 const REFRESH_INTERVAL_MS = 60_000;
+const AUTH_USERS_KEY = "ssd_auth_users_v1";
+const AUTH_SESSION_KEY = "ssd_auth_session_v1";
+const WATCHLIST_KEY_GUEST = "ssd_watchlist_guest";
 
 const state = {
   apiBase: loadApiBase(),
+  auth: {
+    mode: "signin",
+    users: loadAuthUsers(),
+    session: loadAuthSession(),
+  },
   dashboard: null,
   feed: [],
   watchlist: loadWatchlist(),
@@ -58,6 +81,8 @@ init();
 async function init() {
   dom.apiBaseInput.value = state.apiBase;
   bindEvents();
+  renderAuthState();
+  setAuthMode(state.auth.mode);
   renderWatchlistTags();
   setAutoRefresh(true);
   await refreshAll(true);
@@ -159,6 +184,11 @@ function bindEvents() {
       dom.searchFilter.select();
     }
 
+    if (event.key === "Escape" && !dom.authModal.classList.contains("is-hidden")) {
+      closeAuthModal();
+      return;
+    }
+
     if (event.key === "Escape" && state.filters.ticker) {
       state.filters.ticker = "";
       await refreshFeed(false);
@@ -166,6 +196,109 @@ function bindEvents() {
   });
 
   window.addEventListener("resize", debounce(() => drawTimeline(state.dashboard?.timeline ?? []), 120));
+
+  dom.authOpenBtn.addEventListener("click", () => {
+    openAuthModal();
+  });
+
+  dom.authLogoutBtn.addEventListener("click", async () => {
+    signOut();
+    await refreshWatchlistData(false);
+  });
+
+  dom.authCloseBtn.addEventListener("click", () => {
+    closeAuthModal();
+  });
+
+  dom.authModal.addEventListener("click", (event) => {
+    if (event.target === dom.authModal) {
+      closeAuthModal();
+    }
+  });
+
+  dom.authTabSignin.addEventListener("click", () => {
+    setAuthMode("signin");
+  });
+
+  dom.authTabSignup.addEventListener("click", () => {
+    setAuthMode("signup");
+  });
+
+  dom.signinForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = normalizeEmail(dom.signinEmail.value);
+    const password = dom.signinPassword.value;
+
+    if (!email || password.length < 6) {
+      toast("Enter a valid email and password (min 6 chars)", "warn");
+      return;
+    }
+
+    const user = state.auth.users.find((entry) => entry.email === email);
+    if (!user || user.passwordDigest !== digestPassword(email, password)) {
+      toast("Invalid credentials", "error");
+      return;
+    }
+
+    state.auth.session = { email, signedInAt: new Date().toISOString() };
+    persistAuthSession(state.auth.session);
+    renderAuthState();
+    closeAuthModal();
+    toast(`Signed in as ${email}`);
+    state.watchlist = loadWatchlist();
+    renderWatchlistTags();
+    await refreshWatchlistData(false);
+    dom.signinForm.reset();
+  });
+
+  dom.signupForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = normalizeEmail(dom.signupEmail.value);
+    const password = dom.signupPassword.value;
+    const confirm = dom.signupConfirmPassword.value;
+
+    if (!email) {
+      toast("Enter a valid email", "warn");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast("Use at least 6 characters for password", "warn");
+      return;
+    }
+
+    if (password !== confirm) {
+      toast("Passwords do not match", "warn");
+      return;
+    }
+
+    const exists = state.auth.users.some((entry) => entry.email === email);
+    if (exists) {
+      toast("Account already exists. Please sign in.", "warn");
+      setAuthMode("signin");
+      dom.signinEmail.value = email;
+      return;
+    }
+
+    const user = {
+      email,
+      passwordDigest: digestPassword(email, password),
+      createdAt: new Date().toISOString(),
+    };
+    state.auth.users = [...state.auth.users, user];
+    persistAuthUsers(state.auth.users);
+
+    state.auth.session = { email, signedInAt: new Date().toISOString() };
+    persistAuthSession(state.auth.session);
+    renderAuthState();
+    closeAuthModal();
+    toast(`Welcome, ${email}`);
+    state.watchlist = loadWatchlist();
+    renderWatchlistTags();
+    await refreshWatchlistData(false);
+    dom.signupForm.reset();
+    dom.signinForm.reset();
+  });
 }
 
 async function refreshAll(forceRefresh = false) {
@@ -895,14 +1028,146 @@ function toast(message, level = "info") {
   }, 3200);
 }
 
-function loadWatchlist() {
-  const raw = localStorage.getItem("ssd_watchlist");
+function openAuthModal() {
+  dom.authModal.classList.remove("is-hidden");
+  document.body.classList.add("modal-open");
+  if (state.auth.mode === "signin") {
+    dom.signinEmail.focus();
+  } else {
+    dom.signupEmail.focus();
+  }
+}
+
+function closeAuthModal() {
+  dom.authModal.classList.add("is-hidden");
+  document.body.classList.remove("modal-open");
+}
+
+function setAuthMode(mode) {
+  state.auth.mode = mode === "signup" ? "signup" : "signin";
+  const isSignin = state.auth.mode === "signin";
+
+  dom.authTabSignin.classList.toggle("is-active", isSignin);
+  dom.authTabSignup.classList.toggle("is-active", !isSignin);
+  dom.signinForm.classList.toggle("is-hidden", !isSignin);
+  dom.signupForm.classList.toggle("is-hidden", isSignin);
+}
+
+function renderAuthState() {
+  const session = state.auth.session;
+  if (session?.email) {
+    dom.authStatusChip.textContent = session.email;
+    dom.authOpenBtn.textContent = "Account";
+    dom.authLogoutBtn.classList.remove("is-hidden");
+    dom.watchlistSubtitle.textContent = `Personal symbol radar for ${session.email}`;
+  } else {
+    dom.authStatusChip.textContent = "Guest Mode";
+    dom.authOpenBtn.textContent = "Sign In / Sign Up";
+    dom.authLogoutBtn.classList.add("is-hidden");
+    dom.watchlistSubtitle.textContent = "Personal symbol radar with local persistence";
+  }
+}
+
+function signOut() {
+  state.auth.session = null;
+  persistAuthSession(null);
+  renderAuthState();
+  state.watchlist = loadWatchlist();
+  renderWatchlistTags();
+  toast("Signed out");
+}
+
+function loadAuthUsers() {
+  const raw = localStorage.getItem(AUTH_USERS_KEY);
   if (!raw) {
+    return [];
+  }
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    return parsed
+      .map((row) => ({
+        email: normalizeEmail(row?.email),
+        passwordDigest: String(row?.passwordDigest || ""),
+        createdAt: String(row?.createdAt || ""),
+      }))
+      .filter((row) => row.email && row.passwordDigest);
+  } catch {
+    return [];
+  }
+}
+
+function persistAuthUsers(users) {
+  localStorage.setItem(AUTH_USERS_KEY, JSON.stringify(users));
+}
+
+function loadAuthSession() {
+  const raw = localStorage.getItem(AUTH_SESSION_KEY);
+  if (!raw) {
+    return null;
+  }
+  try {
+    const parsed = JSON.parse(raw);
+    const email = normalizeEmail(parsed?.email);
+    if (!email) {
+      return null;
+    }
+    return {
+      email,
+      signedInAt: String(parsed?.signedInAt || ""),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function persistAuthSession(session) {
+  if (!session) {
+    localStorage.removeItem(AUTH_SESSION_KEY);
+    return;
+  }
+  localStorage.setItem(AUTH_SESSION_KEY, JSON.stringify(session));
+}
+
+function normalizeEmail(value) {
+  const email = String(value || "").trim().toLowerCase();
+  if (!email || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+    return "";
+  }
+  return email;
+}
+
+function digestPassword(email, password) {
+  const input = `${email}::${password}::stock-sentiment-dashboard`;
+  let hash = 2166136261;
+  for (let i = 0; i < input.length; i += 1) {
+    hash ^= input.charCodeAt(i);
+    hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+  }
+  return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
+function watchlistStorageKey() {
+  const session = loadAuthSession();
+  if (session?.email) {
+    return `ssd_watchlist_${session.email}`;
+  }
+  return WATCHLIST_KEY_GUEST;
+}
+
+function loadWatchlist() {
+  const key = watchlistStorageKey();
+  const raw = localStorage.getItem("ssd_watchlist");
+  const namespaced = localStorage.getItem(key);
+  const data = namespaced ?? raw;
+  if (!data) {
     return DEFAULT_WATCHLIST;
   }
 
   try {
-    const parsed = JSON.parse(raw);
+    const parsed = JSON.parse(data);
     if (!Array.isArray(parsed)) {
       return DEFAULT_WATCHLIST;
     }
@@ -915,7 +1180,7 @@ function loadWatchlist() {
 }
 
 function saveWatchlist(watchlist) {
-  localStorage.setItem("ssd_watchlist", JSON.stringify(watchlist));
+  localStorage.setItem(watchlistStorageKey(), JSON.stringify(watchlist));
 }
 
 function loadApiBase() {
