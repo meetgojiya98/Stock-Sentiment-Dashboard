@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-03-22T20:44:29.512018+00:00",
+  "generatedAt": "2026-03-22T21:40:03.498900+00:00",
   "dashboard": {
-    "generatedAt": "2026-03-22T20:44:29.512018+00:00",
+    "generatedAt": "2026-03-22T21:40:03.498900+00:00",
     "cached": true,
     "overview": {
       "totalItems": 74,
-      "sentimentIndex": 2.3,
-      "volatilityIndex": 14.32,
-      "activeTickers": 27,
-      "positiveRatio": 10.81,
-      "negativeRatio": 4.05,
+      "sentimentIndex": 3.47,
+      "volatilityIndex": 14.4,
+      "activeTickers": 26,
+      "positiveRatio": 12.16,
+      "negativeRatio": 2.7,
       "neutralRatio": 85.14,
       "marketPulse": "Balanced / mixed",
       "trendDirection": "flat"
     },
     "sentiment": {
-      "positive": 8,
-      "negative": 3,
+      "positive": 9,
+      "negative": 2,
       "neutral": 63
     },
     "sources": {
@@ -41,20 +41,12 @@
         "leadTicker": "APY"
       },
       {
-        "time": "2026-03-22T19:28:00+00:00",
-        "label": "Mar 22 19:28",
-        "sentiment": -5.71,
-        "confidence": 31.48,
+        "time": "2026-03-22T19:49:07+00:00",
+        "label": "Mar 22 19:49",
+        "sentiment": -9.44,
+        "confidence": 27.21,
         "mentions": 8,
-        "leadTicker": "GPU"
-      },
-      {
-        "time": "2026-03-22T19:51:43+00:00",
-        "label": "Mar 22 19:51",
-        "sentiment": -5.55,
-        "confidence": 19.07,
-        "mentions": 8,
-        "leadTicker": "AMZN"
+        "leadTicker": "NVDA"
       },
       {
         "time": "2026-03-22T20:03:17+00:00",
@@ -73,32 +65,40 @@
         "leadTicker": "UBER"
       },
       {
-        "time": "2026-03-22T20:44:29.509718+00:00",
-        "label": "Mar 22 20:44",
-        "sentiment": 0.0,
-        "confidence": 1.7,
+        "time": "2026-03-22T21:24:49+00:00",
+        "label": "Mar 22 21:24",
+        "sentiment": 4.15,
+        "confidence": 15.78,
         "mentions": 8,
         "leadTicker": "BTS"
       },
       {
-        "time": "2026-03-22T20:44:29.509928+00:00",
-        "label": "Mar 22 20:44",
+        "time": "2026-03-22T21:40:03.496602+00:00",
+        "label": "Mar 22 21:40",
+        "sentiment": 4.84,
+        "confidence": 9.41,
+        "mentions": 8,
+        "leadTicker": ""
+      },
+      {
+        "time": "2026-03-22T21:40:03.496813+00:00",
+        "label": "Mar 22 21:40",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 8,
         "leadTicker": ""
       },
       {
-        "time": "2026-03-22T20:44:29.510130+00:00",
-        "label": "Mar 22 20:44",
+        "time": "2026-03-22T21:40:03.497011+00:00",
+        "label": "Mar 22 21:40",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 8,
         "leadTicker": ""
       },
       {
-        "time": "2026-03-22T20:44:29.510176+00:00",
-        "label": "Mar 22 20:44",
+        "time": "2026-03-22T21:40:03.497062+00:00",
+        "label": "Mar 22 21:40",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 2,
@@ -224,19 +224,6 @@
         }
       },
       {
-        "ticker": "NVDA",
-        "mentions": 2,
-        "averageSentiment": 0.0,
-        "bullish": 0,
-        "bearish": 0,
-        "neutral": 2,
-        "momentum": 0.0,
-        "hypeScore": 13.0,
-        "sourceMix": {
-          "news": 2
-        }
-      },
-      {
         "ticker": "CD",
         "mentions": 2,
         "averageSentiment": 0.0,
@@ -261,6 +248,19 @@
         "sourceMix": {
           "news": 2
         }
+      },
+      {
+        "ticker": "MELI",
+        "mentions": 1,
+        "averageSentiment": -6.93,
+        "bullish": 0,
+        "bearish": 0,
+        "neutral": 1,
+        "momentum": 0.0,
+        "hypeScore": 9.27,
+        "sourceMix": {
+          "news": 1
+        }
       }
     ],
     "themes": [
@@ -271,21 +271,21 @@
       },
       {
         "theme": "AI",
-        "mentions": 9,
-        "averageSentiment": 2.63
+        "mentions": 8,
+        "averageSentiment": 9.61
       },
       {
         "theme": "EV",
-        "mentions": 6,
-        "averageSentiment": 4.46
-      },
-      {
-        "theme": "M&A",
-        "mentions": 1,
-        "averageSentiment": 0.0
+        "mentions": 7,
+        "averageSentiment": 3.82
       },
       {
         "theme": "Earnings",
+        "mentions": 2,
+        "averageSentiment": 16.59
+      },
+      {
+        "theme": "M&A",
         "mentions": 1,
         "averageSentiment": 0.0
       }
@@ -293,8 +293,8 @@
     "narratives": [
       {
         "theme": "Macro",
-        "mentions": 48,
-        "sentiment": 2.5,
+        "mentions": 47,
+        "sentiment": 2.56,
         "headline": "Invested Assets Growth Bolsters UBS Group AG (UBS) Net Profit",
         "tickerFocus": [
           "AG",
@@ -310,21 +310,26 @@
       },
       {
         "theme": "AI",
-        "mentions": 9,
-        "sentiment": 2.63,
-        "headline": "Arista Networks (ANET) Targets AI Networking Boom with Expanding Market Opportunity and Strong Growth Outlook",
-        "tickerFocus": [
-          "ANET"
-        ]
+        "mentions": 8,
+        "sentiment": 9.61,
+        "headline": "Taiwan Semiconductor Controls 72% of the Global Chip Market, and the Stock Could Surge in 2026",
+        "tickerFocus": []
       },
       {
         "theme": "EV",
-        "mentions": 6,
-        "sentiment": 4.46,
+        "mentions": 7,
+        "sentiment": 3.82,
         "headline": "Is Citigroup Inc. (C) One of the Best Forever Stocks to Buy Now?",
         "tickerFocus": [
           "C"
         ]
+      },
+      {
+        "theme": "Earnings",
+        "mentions": 2,
+        "sentiment": 16.59,
+        "headline": "Viemed Healthcare Highlights Growth, Diversification and 2026 Guidance at Investor Conference",
+        "tickerFocus": []
       },
       {
         "theme": "M&A",
@@ -335,86 +340,15 @@
           "IBM",
           "LRCX"
         ]
-      },
-      {
-        "theme": "Earnings",
-        "mentions": 1,
-        "sentiment": 0.0,
-        "headline": "Investor Reveals $51 Million Sale of Armstrong Strong as Shares Sink Post-Earnings",
-        "tickerFocus": []
       }
     ],
     "feedPreview": [
-      {
-        "id": "reddit-795d3325",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz2az3/bond_markets_big_2026_fed_bet_flipped_on_its_head/",
-        "publishedAt": "2026-03-22T20:44:29.510176+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-a6051713",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1ryq4bj/i_lost_all_my_money/",
-        "publishedAt": "2026-03-22T20:44:29.510153+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-28ce82f3",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzjsl3/just_a_bunch_of_0dte_spy/",
-        "publishedAt": "2026-03-22T20:44:29.510130+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-da72f939",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzhauy/yolo_worked_ig/",
-        "publishedAt": "2026-03-22T20:44:29.510108+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
       {
         "id": "reddit-9eeb20aa",
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzc8do/bers_celebrating_like_theres_no_tomorrow/",
-        "publishedAt": "2026-03-22T20:44:29.510083+00:00",
+        "publishedAt": "2026-03-22T21:40:03.497062+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -430,7 +364,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz4pt8/markets_bet_on_fed_rate_hike_as_soon_as_july/",
-        "publishedAt": "2026-03-22T20:44:29.510057+00:00",
+        "publishedAt": "2026-03-22T21:40:03.497036+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -446,7 +380,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz6u3x/i_quit_trading_then_just_played_with_10k_for_fun/",
-        "publishedAt": "2026-03-22T20:44:29.510031+00:00",
+        "publishedAt": "2026-03-22T21:40:03.497011+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -462,7 +396,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz8s2k/exclusiveamazon_plans_smartphone_comeback_more/",
-        "publishedAt": "2026-03-22T20:44:29.510005+00:00",
+        "publishedAt": "2026-03-22T21:40:03.496985+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -478,7 +412,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz562r/small_capfocused_russell_2000_becomes_the_first/",
-        "publishedAt": "2026-03-22T20:44:29.509980+00:00",
+        "publishedAt": "2026-03-22T21:40:03.496959+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -494,7 +428,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzsc4r/uso_bno_yolo_rolled_strikes_another_week_oil_150/",
-        "publishedAt": "2026-03-22T20:44:29.509954+00:00",
+        "publishedAt": "2026-03-22T21:40:03.496933+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -510,7 +444,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz9c15/1000_gain_on_allahu_akbar_in_the_gas_field_20k237k/",
-        "publishedAt": "2026-03-22T20:44:29.509928+00:00",
+        "publishedAt": "2026-03-22T21:40:03.496907+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -526,7 +460,39 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzu4xl/went_zero_or_hero_ended_up_at_0/",
-        "publishedAt": "2026-03-22T20:44:29.509903+00:00",
+        "publishedAt": "2026-03-22T21:40:03.496882+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-ba998a00",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0y0kj/ai_companies_are_not_ai_companies/",
+        "publishedAt": "2026-03-22T21:40:03.496857+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-b72c6ab8",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0y57n/tuesday/",
+        "publishedAt": "2026-03-22T21:40:03.496835+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -542,7 +508,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz5wwi/god_speed_boys/",
-        "publishedAt": "2026-03-22T20:44:29.509880+00:00",
+        "publishedAt": "2026-03-22T21:40:03.496813+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -558,7 +524,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzr9fo/i_am_financially_ruined/",
-        "publishedAt": "2026-03-22T20:44:29.509855+00:00",
+        "publishedAt": "2026-03-22T21:40:03.496790+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -574,7 +540,39 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzah1i/musk_found_liable_to_twitter_shareholders_in/",
-        "publishedAt": "2026-03-22T20:44:29.509830+00:00",
+        "publishedAt": "2026-03-22T21:40:03.496765+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-cc3923d3",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0xjsb/will_my_put_save_my_account/",
+        "publishedAt": "2026-03-22T21:40:03.496740+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-ae915f50",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0vuwl/manage_to_come_back_from_a_48k_loss_learn_from_my/",
+        "publishedAt": "2026-03-22T21:40:03.496714+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -589,75 +587,11 @@
   },
   "feed": [
     {
-      "id": "reddit-795d3325",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz2az3/bond_markets_big_2026_fed_bet_flipped_on_its_head/",
-      "publishedAt": "2026-03-22T20:44:29.510176+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-a6051713",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1ryq4bj/i_lost_all_my_money/",
-      "publishedAt": "2026-03-22T20:44:29.510153+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-28ce82f3",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzjsl3/just_a_bunch_of_0dte_spy/",
-      "publishedAt": "2026-03-22T20:44:29.510130+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-da72f939",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzhauy/yolo_worked_ig/",
-      "publishedAt": "2026-03-22T20:44:29.510108+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
       "id": "reddit-9eeb20aa",
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzc8do/bers_celebrating_like_theres_no_tomorrow/",
-      "publishedAt": "2026-03-22T20:44:29.510083+00:00",
+      "publishedAt": "2026-03-22T21:40:03.497062+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -673,7 +607,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz4pt8/markets_bet_on_fed_rate_hike_as_soon_as_july/",
-      "publishedAt": "2026-03-22T20:44:29.510057+00:00",
+      "publishedAt": "2026-03-22T21:40:03.497036+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -689,7 +623,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz6u3x/i_quit_trading_then_just_played_with_10k_for_fun/",
-      "publishedAt": "2026-03-22T20:44:29.510031+00:00",
+      "publishedAt": "2026-03-22T21:40:03.497011+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -705,7 +639,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz8s2k/exclusiveamazon_plans_smartphone_comeback_more/",
-      "publishedAt": "2026-03-22T20:44:29.510005+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496985+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -721,7 +655,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz562r/small_capfocused_russell_2000_becomes_the_first/",
-      "publishedAt": "2026-03-22T20:44:29.509980+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496959+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -737,7 +671,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzsc4r/uso_bno_yolo_rolled_strikes_another_week_oil_150/",
-      "publishedAt": "2026-03-22T20:44:29.509954+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496933+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -753,7 +687,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz9c15/1000_gain_on_allahu_akbar_in_the_gas_field_20k237k/",
-      "publishedAt": "2026-03-22T20:44:29.509928+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496907+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -769,7 +703,39 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzu4xl/went_zero_or_hero_ended_up_at_0/",
-      "publishedAt": "2026-03-22T20:44:29.509903+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496882+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-ba998a00",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0y0kj/ai_companies_are_not_ai_companies/",
+      "publishedAt": "2026-03-22T21:40:03.496857+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-b72c6ab8",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0y57n/tuesday/",
+      "publishedAt": "2026-03-22T21:40:03.496835+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -785,7 +751,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz5wwi/god_speed_boys/",
-      "publishedAt": "2026-03-22T20:44:29.509880+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496813+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -801,7 +767,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzr9fo/i_am_financially_ruined/",
-      "publishedAt": "2026-03-22T20:44:29.509855+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496790+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -817,7 +783,23 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rzah1i/musk_found_liable_to_twitter_shareholders_in/",
-      "publishedAt": "2026-03-22T20:44:29.509830+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496765+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-cc3923d3",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0xjsb/will_my_put_save_my_account/",
+      "publishedAt": "2026-03-22T21:40:03.496740+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -833,7 +815,23 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0vuwl/manage_to_come_back_from_a_48k_loss_learn_from_my/",
-      "publishedAt": "2026-03-22T20:44:29.509802+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496714+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-494889c6",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0xxyj/now_make_them_kiss/",
+      "publishedAt": "2026-03-22T21:40:03.496690+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -849,7 +847,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s005xz/united_airlines_plans_for_oil_hitting_175_a/",
-      "publishedAt": "2026-03-22T20:44:29.509774+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496663+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -865,23 +863,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0bfqx/i_lost_my_life_savings_of_64k_day_trading/",
-      "publishedAt": "2026-03-22T20:44:29.509746+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-07ab97f9",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0w65x/roth_ira_is_cooked/",
-      "publishedAt": "2026-03-22T20:44:29.509718+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496634+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -897,7 +879,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0l8sy/tell_me_im_wrong_private_credit_is_2008_with_a/",
-      "publishedAt": "2026-03-22T20:44:29.509690+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496602+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -913,7 +895,23 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0m2y8/canadian_regard_swing_trades_and_twice_all_ins/",
-      "publishedAt": "2026-03-22T20:44:29.509662+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496575+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-07ab97f9",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0w65x/roth_ira_is_cooked/",
+      "publishedAt": "2026-03-22T21:40:03.496550+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -929,7 +927,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0k9y1/monday/",
-      "publishedAt": "2026-03-22T20:44:29.509638+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496525+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -945,7 +943,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0kiha/monday/",
-      "publishedAt": "2026-03-22T20:44:29.509613+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496499+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -961,7 +959,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s0vjnn/what_are_your_moves_tomorrow_march_23_2026/",
-      "publishedAt": "2026-03-22T20:44:29.509581+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496468+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -977,7 +975,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz4bnm/weekly_earnings_thread_323_327/",
-      "publishedAt": "2026-03-22T20:44:29.509536+00:00",
+      "publishedAt": "2026-03-22T21:40:03.496425+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -987,6 +985,131 @@
       },
       "tickers": [],
       "themes": []
+    },
+    {
+      "id": "news-35bb4dc1",
+      "source": "news",
+      "title": "Taiwan Semiconductor Controls 72% of the Global Chip Market, and the Stock Could Surge in 2026",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-controls-72-global-212500987.html",
+      "publishedAt": "2026-03-22T21:25:00+00:00",
+      "text": "Taiwan Semiconductor Controls 72% of the Global Chip Market, and the Stock Could Surge in 2026",
+      "summary": "Taiwan Semiconductor Controls 72% of the Global Chip Market, and the Stock Could Surge in 2026",
+      "sentiment": {
+        "label": "positive",
+        "score": 38.73,
+        "confidence": 68.89
+      },
+      "tickers": [],
+      "themes": [
+        "AI"
+      ]
+    },
+    {
+      "id": "news-5547fdc4",
+      "source": "news",
+      "title": "How Will Dow Jones Futures React After Trump Threatens To 'Obliterate' Iran's Power Plants?",
+      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-oil-prices-yields-trump-iran-war-winding-down/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-03-22T21:24:49+00:00",
+      "text": "How Will Dow Jones Futures React After Trump Threatens To 'Obliterate' Iran's Power Plants?",
+      "summary": "How Will Dow Jones Futures React After Trump Threatens To 'Obliterate' Iran's Power Plants?",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 12.73
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-5604c054",
+      "source": "news",
+      "title": "Beyond Meat (BYND) Q4 Earnings on Deck: Options Market Prices in a Massive 32% Earnings Explosion",
+      "url": "https://finance.yahoo.com/markets/options/articles/beyond-meat-bynd-q4-earnings-211500678.html",
+      "publishedAt": "2026-03-22T21:15:00+00:00",
+      "text": "Beyond Meat (BYND) Q4 Earnings on Deck: Options Market Prices in a Massive 32% Earnings Explosion",
+      "summary": "Beyond Meat (BYND) Q4 Earnings on Deck: Options Market Prices in a Massive 32% Earnings Explosion",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 13.64
+      },
+      "tickers": [
+        "BYND"
+      ],
+      "themes": [
+        "Earnings"
+      ]
+    },
+    {
+      "id": "news-bc662a10",
+      "source": "news",
+      "title": "Viemed Healthcare Highlights Growth, Diversification and 2026 Guidance at Investor Conference",
+      "url": "https://finance.yahoo.com/sectors/healthcare/articles/viemed-healthcare-highlights-growth-diversification-210252334.html",
+      "publishedAt": "2026-03-22T21:02:52+00:00",
+      "text": "Viemed Healthcare Highlights Growth, Diversification and 2026 Guidance at Investor Conference",
+      "summary": "Viemed Healthcare Highlights Growth, Diversification and 2026 Guidance at Investor Conference",
+      "sentiment": {
+        "label": "positive",
+        "score": 33.17,
+        "confidence": 57.18
+      },
+      "tickers": [],
+      "themes": [
+        "Earnings"
+      ]
+    },
+    {
+      "id": "news-c6634aaa",
+      "source": "news",
+      "title": "Why I'm Buying ServiceNow Stock While Everyone Else Is Panicking About AI Disruption",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/why-im-buying-servicenow-stock-205000586.html",
+      "publishedAt": "2026-03-22T20:50:00+00:00",
+      "text": "Why I'm Buying ServiceNow Stock While Everyone Else Is Panicking About AI Disruption",
+      "summary": "Why I'm Buying ServiceNow Stock While Everyone Else Is Panicking About AI Disruption",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 11.82
+      },
+      "tickers": [],
+      "themes": [
+        "AI",
+        "EV"
+      ]
+    },
+    {
+      "id": "news-1f2fdb6a",
+      "source": "news",
+      "title": "Get Ready for $4 Gasoline, GasBuddy Says",
+      "url": "https://www.barrons.com/livecoverage/sundayshows0322/card/get-ready-for-4-gasoline-gasbuddy-says-q8Vj3LCXSzdHzTAgE2kV?siteid=yhoof2&yptr=yahoo",
+      "publishedAt": "2026-03-22T20:39:05+00:00",
+      "text": "Get Ready for $4 Gasoline, GasBuddy Says",
+      "summary": "Get Ready for $4 Gasoline, GasBuddy Says",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 5.45
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-5b2ac237",
+      "source": "news",
+      "title": "Better Oil Stock: Chevron vs. Occidental Petroleum",
+      "url": "https://finance.yahoo.com/sectors/energy/articles/better-oil-stock-chevron-vs-203500027.html",
+      "publishedAt": "2026-03-22T20:35:00+00:00",
+      "text": "Better Oil Stock: Chevron vs. Occidental Petroleum",
+      "summary": "Better Oil Stock: Chevron vs. Occidental Petroleum",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 6.36
+      },
+      "tickers": [],
+      "themes": [
+        "EV"
+      ]
     },
     {
       "id": "news-2972ba8b",
@@ -1005,6 +1128,22 @@
         "BTS",
         "NFLX"
       ],
+      "themes": []
+    },
+    {
+      "id": "news-ef9e80d0",
+      "source": "news",
+      "title": "Invest Your Child’s Future With $3,000: See What It Could Become by Age 18",
+      "url": "https://finance.yahoo.com/markets/options/articles/invest-child-future-3-000-203000705.html",
+      "publishedAt": "2026-03-22T20:30:00+00:00",
+      "text": "Invest Your Child’s Future With $3,000: See What It Could Become by Age 18",
+      "summary": "Invest Your Child’s Future With $3,000: See What It Could Become by Age 18",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 11.82
+      },
+      "tickers": [],
       "themes": []
     },
     {
@@ -1306,22 +1445,6 @@
       ]
     },
     {
-      "id": "news-b994b312",
-      "source": "news",
-      "title": "Get Ready For Dow Jones Futures After Trump Threatens To 'Obliterate' Iran's Power Plants",
-      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-oil-prices-yields-trump-iran-war-winding-down/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-03-22T19:51:43+00:00",
-      "text": "Get Ready For Dow Jones Futures After Trump Threatens To 'Obliterate' Iran's Power Plants",
-      "summary": "Get Ready For Dow Jones Futures After Trump Threatens To 'Obliterate' Iran's Power Plants",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 12.73
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
       "id": "news-00a6067e",
       "source": "news",
       "title": "MercadoLibre Inc. (MELI) Positioned for E-commerce Growth Despite Downgrade on Competition Concerns",
@@ -1356,114 +1479,6 @@
         "NVDA"
       ],
       "themes": []
-    },
-    {
-      "id": "news-574b2e0f",
-      "source": "news",
-      "title": "Here's Why Amazon's Biggest Bet in 2026 Could Backfire on Shareholders",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/heres-why-amazons-biggest-bet-194500675.html",
-      "publishedAt": "2026-03-22T19:45:00+00:00",
-      "text": "Here's Why Amazon's Biggest Bet in 2026 Could Backfire on Shareholders",
-      "summary": "Here's Why Amazon's Biggest Bet in 2026 Could Backfire on Shareholders",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 9.09
-      },
-      "tickers": [
-        "AMZN"
-      ],
-      "themes": []
-    },
-    {
-      "id": "news-57e8ec14",
-      "source": "news",
-      "title": "Will Beyond Meat's Move From Fridge to Freezer at Walmart and Costco Help or Hurt the Stock?",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/beyond-meats-move-fridge-freezer-193500877.html",
-      "publishedAt": "2026-03-22T19:35:00+00:00",
-      "text": "Will Beyond Meat's Move From Fridge to Freezer at Walmart and Costco Help or Hurt the Stock?",
-      "summary": "Will Beyond Meat's Move From Fridge to Freezer at Walmart and Costco Help or Hurt the Stock?",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 15.45
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-668c3c9a",
-      "source": "news",
-      "title": "Gold Eyes Worst Month Against Oil Since 1973; Mining Stocks Slump Most Since 2008",
-      "url": "https://finance.yahoo.com/markets/commodities/articles/gold-eyes-worst-month-against-193110100.html",
-      "publishedAt": "2026-03-22T19:31:10+00:00",
-      "text": "Gold Eyes Worst Month Against Oil Since 1973; Mining Stocks Slump Most Since 2008",
-      "summary": "Gold Eyes Worst Month Against Oil Since 1973; Mining Stocks Slump Most Since 2008",
-      "sentiment": {
-        "label": "negative",
-        "score": -37.44,
-        "confidence": 65.2
-      },
-      "tickers": [],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-9751369f",
-      "source": "news",
-      "title": "Traders Brace for Turbulent Open as War Rages On",
-      "url": "https://finance.yahoo.com/economy/policy/articles/traders-brace-turbulent-open-war-193000196.html",
-      "publishedAt": "2026-03-22T19:30:00+00:00",
-      "text": "Traders Brace for Turbulent Open as War Rages On",
-      "summary": "Traders Brace for Turbulent Open as War Rages On",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 8.18
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-7933a181",
-      "source": "news",
-      "title": "Investor Reveals $51 Million Sale of Armstrong Strong as Shares Sink Post-Earnings",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/investor-reveals-51-million-sale-192947221.html",
-      "publishedAt": "2026-03-22T19:29:47+00:00",
-      "text": "Investor Reveals $51 Million Sale of Armstrong Strong as Shares Sink Post-Earnings",
-      "summary": "Investor Reveals $51 Million Sale of Armstrong Strong as Shares Sink Post-Earnings",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 10.0
-      },
-      "tickers": [],
-      "themes": [
-        "Earnings",
-        "EV"
-      ]
-    },
-    {
-      "id": "news-ea638f2b",
-      "source": "news",
-      "title": "Nvidia's CEO Jensen Huang Just Guided for $1 Trillion of GPU Orders Through 2027. Why Aren't Investors Buying the Stock?",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/nvidias-ceo-jensen-huang-just-192800267.html",
-      "publishedAt": "2026-03-22T19:28:00+00:00",
-      "text": "Nvidia's CEO Jensen Huang Just Guided for $1 Trillion of GPU Orders Through 2027. Why Aren't Investors Buying the Stock?",
-      "summary": "Nvidia's CEO Jensen Huang Just Guided for $1 Trillion of GPU Orders Through 2027. Why Aren't Investors Buying the Stock?",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 16.36
-      },
-      "tickers": [
-        "GPU",
-        "NVDA"
-      ],
-      "themes": [
-        "AI"
-      ]
     },
     {
       "id": "news-f36984cd",
@@ -1561,24 +1576,6 @@
         "label": "negative",
         "score": -30.74,
         "confidence": 56.38
-      },
-      "tickers": [],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-fba45b32",
-      "source": "news",
-      "title": "This ‘Alpha Male’ Stock Is Profiting as the Strait of Hormuz Remains Closed. Should You Buy It Now?",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/alpha-male-stock-profiting-strait-150002627.html",
-      "publishedAt": "2026-03-22T15:00:02+00:00",
-      "text": "This ‘Alpha Male’ Stock Is Profiting as the Strait of Hormuz Remains Closed. Should You Buy It Now?",
-      "summary": "This ‘Alpha Male’ Stock Is Profiting as the Strait of Hormuz Remains Closed. Should You Buy It Now?",
-      "sentiment": {
-        "label": "positive",
-        "score": 22.94,
-        "confidence": 49.63
       },
       "tickers": [],
       "themes": [
@@ -1699,6 +1696,24 @@
       ]
     },
     {
+      "id": "news-28e1bf86",
+      "source": "news",
+      "title": "Mortgage and refinance interest rates today, March 22, 2026: Highest since September",
+      "url": "https://finance.yahoo.com/personal-finance/mortgages/article/mortgage-refinance-interest-rates-today-sunday-march-22-2026-100000411.html",
+      "publishedAt": "2026-03-22T10:00:00+00:00",
+      "text": "Mortgage and refinance interest rates today, March 22, 2026: Highest since September",
+      "summary": "Mortgage and refinance interest rates today, March 22, 2026: Highest since September",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 9.09
+      },
+      "tickers": [],
+      "themes": [
+        "Rates"
+      ]
+    },
+    {
       "id": "news-df967720",
       "source": "news",
       "title": "HELOC and home equity loan rates Sunday, March 22, 2026: Steady following second Fed rate pause",
@@ -1714,24 +1729,6 @@
       "tickers": [
         "HELOC"
       ],
-      "themes": [
-        "Rates"
-      ]
-    },
-    {
-      "id": "news-28e1bf86",
-      "source": "news",
-      "title": "Mortgage and refinance interest rates today, March 22, 2026: Highest since September",
-      "url": "https://finance.yahoo.com/personal-finance/mortgages/article/mortgage-refinance-interest-rates-today-sunday-march-22-2026-100000411.html",
-      "publishedAt": "2026-03-22T10:00:00+00:00",
-      "text": "Mortgage and refinance interest rates today, March 22, 2026: Highest since September",
-      "summary": "Mortgage and refinance interest rates today, March 22, 2026: Highest since September",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 9.09
-      },
-      "tickers": [],
       "themes": [
         "Rates"
       ]
@@ -2007,19 +2004,6 @@
       }
     },
     {
-      "ticker": "NVDA",
-      "mentions": 2,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 2,
-      "momentum": 0.0,
-      "hypeScore": 13.0,
-      "sourceMix": {
-        "news": 2
-      }
-    },
-    {
       "ticker": "CD",
       "mentions": 2,
       "averageSentiment": 0.0,
@@ -2054,6 +2038,19 @@
       "neutral": 1,
       "momentum": 0.0,
       "hypeScore": 9.27,
+      "sourceMix": {
+        "news": 1
+      }
+    },
+    {
+      "ticker": "BYND",
+      "mentions": 1,
+      "averageSentiment": 0.0,
+      "bullish": 0,
+      "bearish": 0,
+      "neutral": 1,
+      "momentum": 0.0,
+      "hypeScore": 6.5,
       "sourceMix": {
         "news": 1
       }
@@ -2202,20 +2199,7 @@
       }
     },
     {
-      "ticker": "AMZN",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "GPU",
+      "ticker": "NVDA",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
