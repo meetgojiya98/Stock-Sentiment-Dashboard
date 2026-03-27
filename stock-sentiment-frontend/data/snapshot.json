@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-03-27T09:07:31.069958+00:00",
+  "generatedAt": "2026-03-27T10:06:03.207387+00:00",
   "dashboard": {
-    "generatedAt": "2026-03-27T09:07:31.069958+00:00",
+    "generatedAt": "2026-03-27T10:06:03.207387+00:00",
     "cached": true,
     "overview": {
       "totalItems": 73,
       "sentimentIndex": 1.08,
       "volatilityIndex": 6.71,
-      "activeTickers": 11,
+      "activeTickers": 10,
       "positiveRatio": 2.74,
       "negativeRatio": 0.0,
       "neutralRatio": 97.26,
@@ -49,56 +49,56 @@
         "leadTicker": "AARP"
       },
       {
-        "time": "2026-03-25T21:30:45+00:00",
-        "label": "Mar 25 21:30",
+        "time": "2026-03-25T22:19:15+00:00",
+        "label": "Mar 25 22:19",
         "sentiment": 0.0,
-        "confidence": 10.11,
+        "confidence": 6.82,
         "mentions": 8,
-        "leadTicker": "SEC"
+        "leadTicker": "MLKN"
       },
       {
-        "time": "2026-03-25T23:30:02+00:00",
-        "label": "Mar 25 23:30",
+        "time": "2026-03-26T00:14:58+00:00",
+        "label": "Mar 26 00:14",
         "sentiment": 3.47,
-        "confidence": 14.57,
+        "confidence": 13.43,
         "mentions": 8,
-        "leadTicker": "EPA"
+        "leadTicker": "BAC"
       },
       {
         "time": "2026-03-26T16:58:11+00:00",
         "label": "Mar 26 16:58",
         "sentiment": 6.38,
-        "confidence": 15.16,
+        "confidence": 14.59,
         "mentions": 8,
         "leadTicker": "CMS"
       },
       {
-        "time": "2026-03-27T09:07:31.067723+00:00",
-        "label": "Mar 27 09:07",
+        "time": "2026-03-27T10:06:03.205295+00:00",
+        "label": "Mar 27 10:06",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 8,
         "leadTicker": ""
       },
       {
-        "time": "2026-03-27T09:07:31.067935+00:00",
-        "label": "Mar 27 09:07",
+        "time": "2026-03-27T10:06:03.205532+00:00",
+        "label": "Mar 27 10:06",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 8,
         "leadTicker": ""
       },
       {
-        "time": "2026-03-27T09:07:31.068179+00:00",
-        "label": "Mar 27 09:07",
+        "time": "2026-03-27T10:06:03.205732+00:00",
+        "label": "Mar 27 10:06",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 8,
         "leadTicker": ""
       },
       {
-        "time": "2026-03-27T09:07:31.068204+00:00",
-        "label": "Mar 27 09:07",
+        "time": "2026-03-27T10:06:03.205756+00:00",
+        "label": "Mar 27 10:06",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 1,
@@ -159,20 +159,7 @@
         }
       },
       {
-        "ticker": "EPA",
-        "mentions": 1,
-        "averageSentiment": 0.0,
-        "bullish": 0,
-        "bearish": 0,
-        "neutral": 1,
-        "momentum": 0.0,
-        "hypeScore": 6.5,
-        "sourceMix": {
-          "news": 1
-        }
-      },
-      {
-        "ticker": "SEC",
+        "ticker": "MLKN",
         "mentions": 1,
         "averageSentiment": 0.0,
         "bullish": 0,
@@ -252,13 +239,18 @@
     ],
     "themes": [
       {
+        "theme": "Earnings",
+        "mentions": 7,
+        "averageSentiment": 0.0
+      },
+      {
         "theme": "AI",
-        "mentions": 6,
-        "averageSentiment": 4.62
+        "mentions": 5,
+        "averageSentiment": 5.55
       },
       {
         "theme": "EV",
-        "mentions": 6,
+        "mentions": 5,
         "averageSentiment": 0.0
       },
       {
@@ -268,11 +260,6 @@
       },
       {
         "theme": "Crypto",
-        "mentions": 3,
-        "averageSentiment": 0.0
-      },
-      {
-        "theme": "Earnings",
         "mentions": 1,
         "averageSentiment": 0.0
       }
@@ -280,23 +267,30 @@
     "narratives": [
       {
         "theme": "Macro",
-        "mentions": 54,
-        "sentiment": 0.95,
+        "mentions": 51,
+        "sentiment": 1.0,
         "headline": "Technical Assessment: Bullish in the Intermediate-Term",
         "tickerFocus": []
       },
       {
+        "theme": "Earnings",
+        "mentions": 7,
+        "sentiment": 0.0,
+        "headline": "Cognyte Software Ltd. Q4 2026 Earnings Call Summary",
+        "tickerFocus": []
+      },
+      {
         "theme": "AI",
-        "mentions": 6,
-        "sentiment": 4.62,
+        "mentions": 5,
+        "sentiment": 5.55,
         "headline": "Williams-Sonoma Just Raised Its Dividend 15%. Should You Buy the Blue-Chip Stock Here?",
         "tickerFocus": []
       },
       {
         "theme": "EV",
-        "mentions": 6,
+        "mentions": 5,
         "sentiment": 0.0,
-        "headline": "Stock Market Today, March 25: JetBlue Airways Stock Surges After Reports of Strategic Review Including Possible Sale",
+        "headline": "Wells Fargo Autograph Card review: No frills and high rewards",
         "tickerFocus": []
       },
       {
@@ -310,16 +304,9 @@
       },
       {
         "theme": "Crypto",
-        "mentions": 3,
-        "sentiment": 0.0,
-        "headline": "Franklin Templeton Launches ETFs That Trade In Crypto Wallets 24/7",
-        "tickerFocus": []
-      },
-      {
-        "theme": "Earnings",
         "mentions": 1,
         "sentiment": 0.0,
-        "headline": "MillerKnoll, Inc. Q3 2026 Earnings Call Summary",
+        "headline": "Franklin Templeton Launches ETFs That Trade In Crypto Wallets 24/7",
         "tickerFocus": []
       }
     ],
@@ -329,7 +316,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4i7q2/5_bagger_on_spy_puts/",
-        "publishedAt": "2026-03-27T09:07:31.068204+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205756+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -345,7 +332,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4fcl2/gains_i_should_have_had_monday/",
-        "publishedAt": "2026-03-27T09:07:31.068179+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205732+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -361,7 +348,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4h183/joby_loss_porn/",
-        "publishedAt": "2026-03-27T09:07:31.068155+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205709+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -377,23 +364,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4jzx5/bear_thesis/",
-        "publishedAt": "2026-03-27T09:07:31.068128+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-ad25d670",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4vpyz/my_biggest_trade_of_my_life/",
-        "publishedAt": "2026-03-27T09:07:31.068104+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205688+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -409,7 +380,23 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s3ukw1/meta_lays_off_hundreds_of_employees/",
-        "publishedAt": "2026-03-27T09:07:31.068075+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205663+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-ad25d670",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4vpyz/my_biggest_trade_of_my_life/",
+        "publishedAt": "2026-03-27T10:06:03.205638+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -425,7 +412,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4bgik/100k_portfolio_22k_in_gains_today_scalping_options/",
-        "publishedAt": "2026-03-27T09:07:31.068014+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205611+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -441,7 +428,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4otiq/im_going_to_lose_it_all_before_market_opens_arent/",
-        "publishedAt": "2026-03-27T09:07:31.067987+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205584+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -457,7 +444,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4ichq/exercised_an_option_just_to_have_it_reversed/",
-        "publishedAt": "2026-03-27T09:07:31.067960+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205557+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -473,7 +460,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s461q6/crypto_backed_mortgages/",
-        "publishedAt": "2026-03-27T09:07:31.067935+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205532+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -489,7 +476,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4pncm/168_4450_in_20_minutes/",
-        "publishedAt": "2026-03-27T09:07:31.067911+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205505+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -505,7 +492,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4dts3/samsung_and_sk_hynix_stocks_plunge_following/",
-        "publishedAt": "2026-03-27T09:07:31.067883+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205452+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -521,7 +508,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4f3jf/microsoft_freezes_hiring_in_major_cloud_sales/",
-        "publishedAt": "2026-03-27T09:07:31.067856+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205426+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -537,7 +524,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4l8id/trump_pause_lifts_futures_after_serious_selloff/",
-        "publishedAt": "2026-03-27T09:07:31.067830+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205400+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -553,7 +540,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4ege5/just_buy_shares_they_said/",
-        "publishedAt": "2026-03-27T09:07:31.067804+00:00",
+        "publishedAt": "2026-03-27T10:06:03.205375+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -572,7 +559,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4i7q2/5_bagger_on_spy_puts/",
-      "publishedAt": "2026-03-27T09:07:31.068204+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205756+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -588,7 +575,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4fcl2/gains_i_should_have_had_monday/",
-      "publishedAt": "2026-03-27T09:07:31.068179+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205732+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -604,7 +591,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4h183/joby_loss_porn/",
-      "publishedAt": "2026-03-27T09:07:31.068155+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205709+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -620,23 +607,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4jzx5/bear_thesis/",
-      "publishedAt": "2026-03-27T09:07:31.068128+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-ad25d670",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4vpyz/my_biggest_trade_of_my_life/",
-      "publishedAt": "2026-03-27T09:07:31.068104+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205688+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -652,7 +623,23 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s3ukw1/meta_lays_off_hundreds_of_employees/",
-      "publishedAt": "2026-03-27T09:07:31.068075+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205663+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-ad25d670",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4vpyz/my_biggest_trade_of_my_life/",
+      "publishedAt": "2026-03-27T10:06:03.205638+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -668,7 +655,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4bgik/100k_portfolio_22k_in_gains_today_scalping_options/",
-      "publishedAt": "2026-03-27T09:07:31.068014+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205611+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -684,7 +671,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4otiq/im_going_to_lose_it_all_before_market_opens_arent/",
-      "publishedAt": "2026-03-27T09:07:31.067987+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205584+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -700,7 +687,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4ichq/exercised_an_option_just_to_have_it_reversed/",
-      "publishedAt": "2026-03-27T09:07:31.067960+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205557+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -716,7 +703,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s461q6/crypto_backed_mortgages/",
-      "publishedAt": "2026-03-27T09:07:31.067935+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205532+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -732,7 +719,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4pncm/168_4450_in_20_minutes/",
-      "publishedAt": "2026-03-27T09:07:31.067911+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205505+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -748,7 +735,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4dts3/samsung_and_sk_hynix_stocks_plunge_following/",
-      "publishedAt": "2026-03-27T09:07:31.067883+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205452+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -764,7 +751,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4f3jf/microsoft_freezes_hiring_in_major_cloud_sales/",
-      "publishedAt": "2026-03-27T09:07:31.067856+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205426+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -780,7 +767,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4l8id/trump_pause_lifts_futures_after_serious_selloff/",
-      "publishedAt": "2026-03-27T09:07:31.067830+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205400+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -796,7 +783,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4ege5/just_buy_shares_they_said/",
-      "publishedAt": "2026-03-27T09:07:31.067804+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205375+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -812,7 +799,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4iol8/please_benjamin_netanyahu_my_calls_are_cooked/",
-      "publishedAt": "2026-03-27T09:07:31.067778+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205349+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -828,7 +815,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4lo1w/an_oldie_but_a_goodie_feat_chamath/",
-      "publishedAt": "2026-03-27T09:07:31.067751+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205323+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -844,7 +831,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4fz9s/wife_will_divorce_me_if_she_finds_out/",
-      "publishedAt": "2026-03-27T09:07:31.067723+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205295+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -860,23 +847,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4hice/exclusive_musk_rewrites_ipo_playbook_with_large/",
-      "publishedAt": "2026-03-27T09:07:31.067691+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-3f86c095",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4wqa7/why_i_think_the_clownshow_diplomacy_and_long_term/",
-      "publishedAt": "2026-03-27T09:07:31.067663+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205263+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -892,7 +863,23 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4sp6z/i_went_all_in_yoga_pants_trying_to_recoup_my_55k/",
-      "publishedAt": "2026-03-27T09:07:31.067635+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205235+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-3f86c095",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4wqa7/why_i_think_the_clownshow_diplomacy_and_long_term/",
+      "publishedAt": "2026-03-27T10:06:03.205207+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -908,7 +895,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4ixtz/netflix_raises_prices_across_all_streaming_plans/",
-      "publishedAt": "2026-03-27T09:07:31.067606+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205178+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -924,7 +911,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4vee1/micron_sandisk_stocks_tumble_after_google_unveils/",
-      "publishedAt": "2026-03-27T09:07:31.067575+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205148+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -940,7 +927,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1s4i264/what_are_your_moves_tomorrow_march_27_2026/",
-      "publishedAt": "2026-03-27T09:07:31.067542+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205116+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -956,13 +943,29 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1rz4bnm/weekly_earnings_thread_323_327/",
-      "publishedAt": "2026-03-27T09:07:31.067496+00:00",
+      "publishedAt": "2026-03-27T10:06:03.205072+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
         "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-596743f5",
+      "source": "news",
+      "title": "Analyst Report: Brighthouse Financial Inc",
+      "url": "https://finance.yahoo.com/research/reports/ARGUS_3715_AnalystReport_1774544291000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+      "publishedAt": "2026-03-26T16:58:11+00:00",
+      "text": "Analyst Report: Brighthouse Financial Inc",
+      "summary": "Analyst Report: Brighthouse Financial Inc",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 4.55
       },
       "tickers": [],
       "themes": []
@@ -983,22 +986,6 @@
       "tickers": [
         "CMS"
       ],
-      "themes": []
-    },
-    {
-      "id": "news-596743f5",
-      "source": "news",
-      "title": "Analyst Report: Brighthouse Financial Inc",
-      "url": "https://finance.yahoo.com/research/reports/ARGUS_3715_AnalystReport_1774544291000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
-      "publishedAt": "2026-03-26T16:58:11+00:00",
-      "text": "Analyst Report: Brighthouse Financial Inc",
-      "summary": "Analyst Report: Brighthouse Financial Inc",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 4.55
-      },
-      "tickers": [],
       "themes": []
     },
     {
@@ -1069,6 +1056,60 @@
       },
       "tickers": [],
       "themes": []
+    },
+    {
+      "id": "news-98afdc5c",
+      "source": "news",
+      "title": "Cognyte Software Ltd. Q4 2026 Earnings Call Summary",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cognyte-software-ltd-q4-2026-002038640.html",
+      "publishedAt": "2026-03-26T00:20:38+00:00",
+      "text": "Cognyte Software Ltd. Q4 2026 Earnings Call Summary",
+      "summary": "Cognyte Software Ltd. Q4 2026 Earnings Call Summary",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 6.36
+      },
+      "tickers": [],
+      "themes": [
+        "Earnings"
+      ]
+    },
+    {
+      "id": "news-e168efe8",
+      "source": "news",
+      "title": "Dyadic International, Inc. Q4 2025 Earnings Call Summary",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/dyadic-international-inc-q4-2025-001522328.html",
+      "publishedAt": "2026-03-26T00:15:22+00:00",
+      "text": "Dyadic International, Inc. Q4 2025 Earnings Call Summary",
+      "summary": "Dyadic International, Inc. Q4 2025 Earnings Call Summary",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 6.36
+      },
+      "tickers": [],
+      "themes": [
+        "Earnings"
+      ]
+    },
+    {
+      "id": "news-3a91635e",
+      "source": "news",
+      "title": "Cintas Corporation Q3 2026 Earnings Call Summary",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cintas-corporation-q3-2026-earnings-001458538.html",
+      "publishedAt": "2026-03-26T00:14:58+00:00",
+      "text": "Cintas Corporation Q3 2026 Earnings Call Summary",
+      "summary": "Cintas Corporation Q3 2026 Earnings Call Summary",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 5.45
+      },
+      "tickers": [],
+      "themes": [
+        "Earnings"
+      ]
     },
     {
       "id": "news-57348370",
@@ -1227,82 +1268,85 @@
       ]
     },
     {
-      "id": "news-f1fe138f",
+      "id": "news-92599651",
       "source": "news",
-      "title": "Corn Pushes Higher into Wednesday’s Close as EPA Opens E15 for the Summer",
-      "url": "https://finance.yahoo.com/markets/commodities/articles/corn-pushes-higher-wednesday-close-215530219.html",
-      "publishedAt": "2026-03-25T21:55:30+00:00",
-      "text": "Corn Pushes Higher into Wednesday’s Close as EPA Opens E15 for the Summer",
-      "summary": "Corn Pushes Higher into Wednesday’s Close as EPA Opens E15 for the Summer",
+      "title": "MillerKnoll Q3 Earnings Call Highlights",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/millerknoll-q3-earnings-call-highlights-221101215.html",
+      "publishedAt": "2026-03-25T22:11:01+00:00",
+      "text": "MillerKnoll Q3 Earnings Call Highlights",
+      "summary": "MillerKnoll Q3 Earnings Call Highlights",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
-        "confidence": 12.73
-      },
-      "tickers": [
-        "EPA"
-      ],
-      "themes": []
-    },
-    {
-      "id": "news-0e892c92",
-      "source": "news",
-      "title": "Pipelines back in play as Canada eyes a strategic energy reset: by Oil & Gas 360",
-      "url": "https://finance.yahoo.com/sectors/energy/articles/pipelines-back-play-canada-eyes-213045761.html",
-      "publishedAt": "2026-03-25T21:30:45+00:00",
-      "text": "Pipelines back in play as Canada eyes a strategic energy reset: by Oil & Gas 360",
-      "summary": "Pipelines back in play as Canada eyes a strategic energy reset: by Oil & Gas 360",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 12.73
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-9973efa5",
-      "source": "news",
-      "title": "Stock Market Today, March 25: JetBlue Airways Stock Surges After Reports of Strategic Review Including Possible Sale",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-march-25-211915777.html",
-      "publishedAt": "2026-03-25T21:19:15+00:00",
-      "text": "Stock Market Today, March 25: JetBlue Airways Stock Surges After Reports of Strategic Review Including Possible Sale",
-      "summary": "Stock Market Today, March 25: JetBlue Airways Stock Surges After Reports of Strategic Review Including Possible Sale",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 14.55
+        "confidence": 4.55
       },
       "tickers": [],
       "themes": [
-        "AI",
-        "EV"
+        "Earnings"
       ]
     },
     {
-      "id": "news-051ae7f2",
+      "id": "news-e763c6b7",
       "source": "news",
-      "title": "This Depressed Fund Owns a Stake in SpaceX. An IPO Could Give It a Big Lift.",
-      "url": "https://www.barrons.com/articles/blue-owl-private-credit-spacex-ipo-80a08bda?siteid=yhoof2&yptr=yahoo",
-      "publishedAt": "2026-03-25T21:18:00+00:00",
-      "text": "This Depressed Fund Owns a Stake in SpaceX. An IPO Could Give It a Big Lift",
-      "summary": "This Depressed Fund Owns a Stake in SpaceX. An IPO Could Give It a Big Lift",
+      "title": "Health In Tech Q4 Earnings Call Highlights",
+      "url": "https://finance.yahoo.com/sectors/healthcare/articles/health-tech-q4-earnings-call-221101930.html",
+      "publishedAt": "2026-03-25T22:11:01+00:00",
+      "text": "Health In Tech Q4 Earnings Call Highlights",
+      "summary": "Health In Tech Q4 Earnings Call Highlights",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
-        "confidence": 14.55
+        "confidence": 6.36
+      },
+      "tickers": [],
+      "themes": [
+        "Earnings"
+      ]
+    },
+    {
+      "id": "news-652a764f",
+      "source": "news",
+      "title": "Losses Pile Up for Beef Slaughterhouse Owners",
+      "url": "https://www.wsj.com/business/jbs-earnings-4q-2025-jbs-f62f56eb?siteid=yhoof2&yptr=yahoo",
+      "publishedAt": "2026-03-25T22:11:00+00:00",
+      "text": "Losses Pile Up for Beef Slaughterhouse Owners",
+      "summary": "Losses Pile Up for Beef Slaughterhouse Owners",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 6.36
       },
       "tickers": [],
       "themes": []
     },
     {
-      "id": "news-b1f8cf16",
+      "id": "news-4457d214",
       "source": "news",
-      "title": "Jefferies Says Private-Lending Blowups Led to $17 Million in Losses",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-03-25-2026/card/jefferies-says-private-lending-blowups-led-to-17-million-in-losses-MRsO20IdF1i3Ca806usX?siteid=yhoof2&yptr=yahoo",
-      "publishedAt": "2026-03-25T21:17:44+00:00",
-      "text": "Jefferies Says Private-Lending Blowups Led to $17 Million in Losses",
-      "summary": "Jefferies Says Private-Lending Blowups Led to $17 Million in Losses",
+      "title": "MillerKnoll (MLKN) Q3 2026 Earnings Transcript",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/millerknoll-mlkn-q3-2026-earnings-220812468.html",
+      "publishedAt": "2026-03-25T22:08:12+00:00",
+      "text": "MillerKnoll (MLKN) Q3 2026 Earnings Transcript",
+      "summary": "MillerKnoll (MLKN) Q3 2026 Earnings Transcript",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 4.55
+      },
+      "tickers": [
+        "MLKN"
+      ],
+      "themes": [
+        "Earnings"
+      ]
+    },
+    {
+      "id": "news-1c6cdb57",
+      "source": "news",
+      "title": "Remitly Director's $522K Sale Was Months in the Making",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/remitly-directors-522k-sale-months-220805678.html",
+      "publishedAt": "2026-03-25T22:08:05+00:00",
+      "text": "Remitly Director's $522K Sale Was Months in the Making",
+      "summary": "Remitly Director's $522K Sale Was Months in the Making",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
@@ -1323,60 +1367,6 @@
         "label": "neutral",
         "score": 0.0,
         "confidence": 5.45
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-452e2402",
-      "source": "news",
-      "title": "Decoding the SEC’s Token Taxonomy",
-      "url": "https://finance.yahoo.com/markets/crypto/articles/decoding-sec-token-taxonomy-211504960.html",
-      "publishedAt": "2026-03-25T21:15:04+00:00",
-      "text": "Decoding the SEC’s Token Taxonomy",
-      "summary": "Decoding the SEC’s Token Taxonomy",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 5.45
-      },
-      "tickers": [
-        "SEC"
-      ],
-      "themes": [
-        "Crypto"
-      ]
-    },
-    {
-      "id": "news-2d800087",
-      "source": "news",
-      "title": "As The Clarity Act Clock Ticks, Cathie Wood Buys Diving Crypto Name",
-      "url": "https://www.investors.com/news/clarity-act-stablecoin-deal-yields-reward-payments-circle-stock-coinbase/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-03-25T21:06:53+00:00",
-      "text": "As The Clarity Act Clock Ticks, Cathie Wood Buys Diving Crypto Name",
-      "summary": "As The Clarity Act Clock Ticks, Cathie Wood Buys Diving Crypto Name",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 10.91
-      },
-      "tickers": [],
-      "themes": [
-        "Crypto"
-      ]
-    },
-    {
-      "id": "news-edbd3738",
-      "source": "news",
-      "title": "International Seaways Insider Sells $1.5 Million in Shares -- Signal or Noise?",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/international-seaways-insider-sells-1-210623714.html",
-      "publishedAt": "2026-03-25T21:06:23+00:00",
-      "text": "International Seaways Insider Sells $1.5 Million in Shares -- Signal or Noise?",
-      "summary": "International Seaways Insider Sells $1.5 Million in Shares -- Signal or Noise?",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 9.09
       },
       "tickers": [],
       "themes": []
@@ -1854,20 +1844,7 @@
       }
     },
     {
-      "ticker": "EPA",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "SEC",
+      "ticker": "MLKN",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
