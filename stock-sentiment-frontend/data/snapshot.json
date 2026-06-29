@@ -1,191 +1,118 @@
 {
-  "generatedAt": "2026-06-29T11:22:31.531044+00:00",
+  "generatedAt": "2026-06-29T16:09:34.317240+00:00",
   "dashboard": {
-    "generatedAt": "2026-06-29T11:22:31.531044+00:00",
+    "generatedAt": "2026-06-29T16:09:34.317240+00:00",
     "cached": true,
     "overview": {
-      "totalItems": 74,
-      "sentimentIndex": 1.82,
-      "volatilityIndex": 11.3,
-      "activeTickers": 26,
-      "positiveRatio": 5.41,
-      "negativeRatio": 1.35,
-      "neutralRatio": 93.24,
+      "totalItems": 72,
+      "sentimentIndex": 1.11,
+      "volatilityIndex": 8.67,
+      "activeTickers": 17,
+      "positiveRatio": 5.56,
+      "negativeRatio": 1.39,
+      "neutralRatio": 93.06,
       "marketPulse": "Balanced / mixed",
       "trendDirection": "flat"
     },
     "sentiment": {
       "positive": 4,
       "negative": 1,
-      "neutral": 69
+      "neutral": 67
     },
     "sources": {
-      "news": 49,
+      "news": 47,
       "reddit": 25
     },
     "timeline": [
       {
-        "time": "2026-06-28T10:00:00+00:00",
-        "label": "Jun 28 10:00",
+        "time": "2026-06-28T21:03:00+00:00",
+        "label": "Jun 28 21:03",
+        "sentiment": -5.21,
+        "confidence": 17.78,
+        "mentions": 8,
+        "leadTicker": "IBIT"
+      },
+      {
+        "time": "2026-06-29T10:53:20+00:00",
+        "label": "Jun 29 10:53",
         "sentiment": 0.0,
-        "confidence": 11.36,
+        "confidence": 9.2,
         "mentions": 8,
         "leadTicker": "APY"
       },
       {
-        "time": "2026-06-29T08:20:44+00:00",
-        "label": "Jun 29 08:20",
-        "sentiment": 3.73,
-        "confidence": 17.46,
+        "time": "2026-06-29T14:30:00+00:00",
+        "label": "Jun 29 14:30",
+        "sentiment": 4.72,
+        "confidence": 17.19,
         "mentions": 8,
-        "leadTicker": "APY"
+        "leadTicker": "MSFT"
       },
       {
-        "time": "2026-06-29T10:00:00+00:00",
-        "label": "Jun 29 10:00",
-        "sentiment": 7.92,
-        "confidence": 23.74,
+        "time": "2026-06-29T15:10:53+00:00",
+        "label": "Jun 29 15:10",
+        "sentiment": 3.61,
+        "confidence": 15.35,
+        "mentions": 8,
+        "leadTicker": "TSLA"
+      },
+      {
+        "time": "2026-06-29T15:37:54+00:00",
+        "label": "Jun 29 15:37",
+        "sentiment": 0.0,
+        "confidence": 10.57,
+        "mentions": 8,
+        "leadTicker": "AMZN"
+      },
+      {
+        "time": "2026-06-29T16:09:34.314121+00:00",
+        "label": "Jun 29 16:09",
+        "sentiment": 6.84,
+        "confidence": 18.66,
         "mentions": 8,
         "leadTicker": "US"
       },
       {
-        "time": "2026-06-29T10:18:01+00:00",
-        "label": "Jun 29 10:18",
-        "sentiment": 0.0,
-        "confidence": 11.25,
-        "mentions": 8,
-        "leadTicker": "APY"
-      },
-      {
-        "time": "2026-06-29T10:33:44+00:00",
-        "label": "Jun 29 10:33",
-        "sentiment": 5.87,
-        "confidence": 21.35,
-        "mentions": 8,
-        "leadTicker": "PLTR"
-      },
-      {
-        "time": "2026-06-29T11:04:39+00:00",
-        "label": "Jun 29 11:04",
-        "sentiment": -0.69,
-        "confidence": 22.45,
-        "mentions": 8,
-        "leadTicker": "CLL"
-      },
-      {
-        "time": "2026-06-29T11:22:31.522539+00:00",
-        "label": "Jun 29 11:22",
-        "sentiment": 0.0,
-        "confidence": 1.7,
-        "mentions": 8,
-        "leadTicker": ""
-      },
-      {
-        "time": "2026-06-29T11:22:31.522753+00:00",
-        "label": "Jun 29 11:22",
+        "time": "2026-06-29T16:09:34.314486+00:00",
+        "label": "Jun 29 16:09",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 8,
         "leadTicker": ""
       },
       {
-        "time": "2026-06-29T11:22:31.522949+00:00",
-        "label": "Jun 29 11:22",
+        "time": "2026-06-29T16:09:34.314786+00:00",
+        "label": "Jun 29 16:09",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 8,
         "leadTicker": ""
       },
       {
-        "time": "2026-06-29T11:22:31.522996+00:00",
-        "label": "Jun 29 11:22",
+        "time": "2026-06-29T16:09:34.315087+00:00",
+        "label": "Jun 29 16:09",
         "sentiment": 0.0,
         "confidence": 0.91,
-        "mentions": 2,
+        "mentions": 8,
         "leadTicker": ""
       }
     ],
     "trending": [
       {
-        "ticker": "APY",
-        "mentions": 6,
-        "averageSentiment": 0.0,
-        "bullish": 0,
-        "bearish": 0,
-        "neutral": 6,
-        "momentum": 0.0,
-        "hypeScore": 39.0,
-        "sourceMix": {
-          "news": 6
-        }
-      },
-      {
-        "ticker": "AVGO",
+        "ticker": "IBIT",
         "mentions": 1,
-        "averageSentiment": 63.32,
-        "bullish": 1,
-        "bearish": 0,
-        "neutral": 0,
-        "momentum": 0.0,
-        "hypeScore": 31.83,
-        "sourceMix": {
-          "news": 1
-        }
-      },
-      {
-        "ticker": "US",
-        "mentions": 4,
-        "averageSentiment": 0.0,
-        "bullish": 0,
-        "bearish": 0,
-        "neutral": 4,
-        "momentum": 0.0,
-        "hypeScore": 26.0,
-        "sourceMix": {
-          "news": 4
-        }
-      },
-      {
-        "ticker": "NVDA",
-        "mentions": 1,
-        "averageSentiment": 46.96,
-        "bullish": 1,
-        "bearish": 0,
-        "neutral": 0,
-        "momentum": 0.0,
-        "hypeScore": 25.28,
-        "sourceMix": {
-          "news": 1
-        }
-      },
-      {
-        "ticker": "VIDIA",
-        "mentions": 1,
-        "averageSentiment": 46.96,
-        "bullish": 1,
-        "bearish": 0,
-        "neutral": 0,
-        "momentum": 0.0,
-        "hypeScore": 25.28,
-        "sourceMix": {
-          "news": 1
-        }
-      },
-      {
-        "ticker": "SK",
-        "mentions": 1,
-        "averageSentiment": -38.67,
+        "averageSentiment": -41.67,
         "bullish": 0,
         "bearish": 1,
         "neutral": 0,
         "momentum": 0.0,
-        "hypeScore": 21.97,
+        "hypeScore": 23.17,
         "sourceMix": {
           "news": 1
         }
       },
       {
-        "ticker": "HELOC",
+        "ticker": "GOOGL",
         "mentions": 3,
         "averageSentiment": 0.0,
         "bullish": 0,
@@ -198,7 +125,7 @@
         }
       },
       {
-        "ticker": "CD",
+        "ticker": "APY",
         "mentions": 3,
         "averageSentiment": 0.0,
         "bullish": 0,
@@ -208,6 +135,32 @@
         "hypeScore": 19.5,
         "sourceMix": {
           "news": 3
+        }
+      },
+      {
+        "ticker": "UBS",
+        "mentions": 1,
+        "averageSentiment": 28.87,
+        "bullish": 1,
+        "bearish": 0,
+        "neutral": 0,
+        "momentum": 0.0,
+        "hypeScore": 18.05,
+        "sourceMix": {
+          "news": 1
+        }
+      },
+      {
+        "ticker": "AMZN",
+        "mentions": 2,
+        "averageSentiment": 0.0,
+        "bullish": 0,
+        "bearish": 0,
+        "neutral": 2,
+        "momentum": 0.0,
+        "hypeScore": 13.0,
+        "sourceMix": {
+          "news": 2
         }
       },
       {
@@ -224,7 +177,33 @@
         }
       },
       {
-        "ticker": "CLL",
+        "ticker": "HELOC",
+        "mentions": 2,
+        "averageSentiment": 0.0,
+        "bullish": 0,
+        "bearish": 0,
+        "neutral": 2,
+        "momentum": 0.0,
+        "hypeScore": 13.0,
+        "sourceMix": {
+          "news": 2
+        }
+      },
+      {
+        "ticker": "CD",
+        "mentions": 2,
+        "averageSentiment": 0.0,
+        "bullish": 0,
+        "bearish": 0,
+        "neutral": 2,
+        "momentum": 0.0,
+        "hypeScore": 13.0,
+        "sourceMix": {
+          "news": 2
+        }
+      },
+      {
+        "ticker": "US",
         "mentions": 1,
         "averageSentiment": 0.0,
         "bullish": 0,
@@ -237,7 +216,7 @@
         }
       },
       {
-        "ticker": "MU",
+        "ticker": "KLAR",
         "mentions": 1,
         "averageSentiment": 0.0,
         "bullish": 0,
@@ -250,7 +229,20 @@
         }
       },
       {
-        "ticker": "AMD",
+        "ticker": "PLC",
+        "mentions": 1,
+        "averageSentiment": 0.0,
+        "bullish": 0,
+        "bearish": 0,
+        "neutral": 1,
+        "momentum": 0.0,
+        "hypeScore": 6.5,
+        "sourceMix": {
+          "news": 1
+        }
+      },
+      {
+        "ticker": "ADEA",
         "mentions": 1,
         "averageSentiment": 0.0,
         "bullish": 0,
@@ -265,22 +257,37 @@
     ],
     "themes": [
       {
-        "theme": "AI",
-        "mentions": 21,
-        "averageSentiment": 8.25
+        "theme": "Rates",
+        "mentions": 10,
+        "averageSentiment": 0.0
       },
       {
-        "theme": "Rates",
-        "mentions": 12,
+        "theme": "AI",
+        "mentions": 5,
         "averageSentiment": 0.0
       },
       {
         "theme": "EV",
+        "mentions": 5,
+        "averageSentiment": 0.0
+      },
+      {
+        "theme": "Earnings",
+        "mentions": 4,
+        "averageSentiment": 0.0
+      },
+      {
+        "theme": "Labor",
         "mentions": 1,
-        "averageSentiment": 33.17
+        "averageSentiment": 0.0
       },
       {
         "theme": "M&A",
+        "mentions": 1,
+        "averageSentiment": 0.0
+      },
+      {
+        "theme": "Crypto",
         "mentions": 1,
         "averageSentiment": 0.0
       }
@@ -288,184 +295,92 @@
     "narratives": [
       {
         "theme": "Macro",
-        "mentions": 41,
-        "sentiment": -0.94,
-        "headline": "SK Hynix Just Sent a Huge Warning to Micron Investors",
+        "mentions": 48,
+        "sentiment": 1.66,
+        "headline": "BlackRock IBIT investors are now nursing a 40% loss",
         "tickerFocus": [
-          "SK"
-        ]
-      },
-      {
-        "theme": "AI",
-        "mentions": 21,
-        "sentiment": 8.25,
-        "headline": "Broadcom (AVGO) The Best High Growth Semiconductor to Buy Now?",
-        "tickerFocus": [
-          "AVGO"
+          "IBIT"
         ]
       },
       {
         "theme": "Rates",
-        "mentions": 12,
+        "mentions": 10,
         "sentiment": 0.0,
-        "headline": "HELOC and home equity loan rates, Monday, June 29, 2026: Current HELOC rate is 61 basis points lower than HEL rate",
+        "headline": "Inflation Could Wreck Your Retirement. Here's How to Tackle It.",
+        "tickerFocus": []
+      },
+      {
+        "theme": "AI",
+        "mentions": 5,
+        "sentiment": 0.0,
+        "headline": "Oil rises on US-Iran strikes; cautious hopes for shipping cap gains",
         "tickerFocus": [
-          "HEL",
-          "HELOC"
+          "US"
         ]
       },
       {
         "theme": "EV",
-        "mentions": 1,
-        "sentiment": 33.17,
-        "headline": "ReBound Returns’ analysis reveals £29m losses from retail returns fraud",
+        "mentions": 5,
+        "sentiment": 0.0,
+        "headline": "Amazon Stock's Climb Leads Strong Day For Magnificent Seven",
+        "tickerFocus": [
+          "AMZN"
+        ]
+      },
+      {
+        "theme": "Earnings",
+        "mentions": 4,
+        "sentiment": 0.0,
+        "headline": "How Micron Could 3x From Here If AI Memory Demand Keeps Exploding",
         "tickerFocus": []
+      },
+      {
+        "theme": "Labor",
+        "mentions": 1,
+        "sentiment": 0.0,
+        "headline": "Oil rises on US-Iran strikes; cautious hopes for shipping cap gains",
+        "tickerFocus": [
+          "US"
+        ]
       },
       {
         "theme": "M&A",
         "mentions": 1,
         "sentiment": 0.0,
-        "headline": "Can Micron (MU) ’s Deal With Anthropic Cement Its Place in the AI Memory Market?",
-        "tickerFocus": [
-          "MU"
-        ]
+        "headline": "Santos Signs 10-Year Deal to Supply South Australia Strategic Gas Reserve",
+        "tickerFocus": []
+      },
+      {
+        "theme": "Crypto",
+        "mentions": 1,
+        "sentiment": 0.0,
+        "headline": "Bitcoin and ethereum prices today, Monday, June 29, 2026: Prices continue to move lower",
+        "tickerFocus": []
       }
     ],
     "feedPreview": [
-      {
-        "id": "reddit-e2b1d11a",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhenfn/thats_how_i_roll_lol/",
-        "publishedAt": "2026-06-29T11:22:31.522996+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-c16671b3",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uguo9y/for_all_you_degens/",
-        "publishedAt": "2026-06-29T11:22:31.522973+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-4f8b02a7",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui38y0/sls_holding_until_i_have_1_mil_thoughts/",
-        "publishedAt": "2026-06-29T11:22:31.522949+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-0a616249",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui8kuz/my_first_buy_picked_up_in_october/",
-        "publishedAt": "2026-06-29T11:22:31.522925+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-8593b68e",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhymze/sls_been_jumping_in_and_out/",
-        "publishedAt": "2026-06-29T11:22:31.522901+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-cf3bf985",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui287h/risked_20k_on_0dte_mu_calls_just_to_break_even/",
-        "publishedAt": "2026-06-29T11:22:31.522875+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-061c015a",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhko8e/margin_finally_called_me/",
-        "publishedAt": "2026-06-29T11:22:31.522850+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-f8c5aa87",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhjt2g/cathie_wood_invests_115_million_in_coinbase_as/",
-        "publishedAt": "2026-06-29T11:22:31.522824+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
       {
         "id": "reddit-97c114df",
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhruvn/wendys_a_deep_value_turnaround/",
-        "publishedAt": "2026-06-29T11:22:31.522800+00:00",
+        "publishedAt": "2026-06-29T16:09:34.315087+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-1135a99e",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uiwiqp/meitu_ai_beauty_loss_dd_thoughts/",
+        "publishedAt": "2026-06-29T16:09:34.315049+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -481,39 +396,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1uib0mk/bb_then_now/",
-        "publishedAt": "2026-06-29T11:22:31.522778+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-2fa9f6a8",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uin8ul/is_anyone_shorting_global_etfs_ahead_of_july_7th/",
-        "publishedAt": "2026-06-29T11:22:31.522753+00:00",
-        "text": "Untitled",
-        "summary": "Untitled",
-        "sentiment": {
-          "label": "neutral",
-          "score": 0.0,
-          "confidence": 0.91
-        },
-        "tickers": [],
-        "themes": []
-      },
-      {
-        "id": "reddit-96d7827b",
-        "source": "reddit",
-        "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui1d28/ceg_is_literally_printing_glowing_green_money_now/",
-        "publishedAt": "2026-06-29T11:22:31.522727+00:00",
+        "publishedAt": "2026-06-29T16:09:34.315015+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -529,7 +412,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhs9ux/trump_again_threatens_iran_with_annihilation_as/",
-        "publishedAt": "2026-06-29T11:22:31.522701+00:00",
+        "publishedAt": "2026-06-29T16:09:34.314978+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -541,11 +424,11 @@
         "themes": []
       },
       {
-        "id": "reddit-928e5cd5",
+        "id": "reddit-96d7827b",
         "source": "reddit",
         "title": "Untitled",
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui40c5/the_market_remained_irrational_longer_than_i/",
-        "publishedAt": "2026-06-29T11:22:31.522675+00:00",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui1d28/ceg_is_literally_printing_glowing_green_money_now/",
+        "publishedAt": "2026-06-29T16:09:34.314940+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -561,7 +444,151 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui75bc/what_are_your_moves_tomorrow_june_29_2026/",
-        "publishedAt": "2026-06-29T11:22:31.522649+00:00",
+        "publishedAt": "2026-06-29T16:09:34.314902+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-928e5cd5",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui40c5/the_market_remained_irrational_longer_than_i/",
+        "publishedAt": "2026-06-29T16:09:34.314860+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-2fa9f6a8",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uin8ul/is_anyone_shorting_global_etfs_ahead_of_july_7th/",
+        "publishedAt": "2026-06-29T16:09:34.314821+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-41f54028",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uiaw7j/so_about_that_ai_trade/",
+        "publishedAt": "2026-06-29T16:09:34.314786+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-5dfaa71f",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uiatng/google_limits_metas_use_of_its_gemini_ai_models/",
+        "publishedAt": "2026-06-29T16:09:34.314749+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-4e65008b",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uitaow/perfectly_balanced/",
+        "publishedAt": "2026-06-29T16:09:34.314714+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-b83609a2",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uiq8d4/bb_qnx_securing_physical_ai/",
+        "publishedAt": "2026-06-29T16:09:34.314680+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-b6c40c46",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uidu6z/samsung_sk_reportedly_to_invest_13_trillion_over/",
+        "publishedAt": "2026-06-29T16:09:34.314643+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-7c850a09",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1uivtr7/full_port_into_netflix_calls/",
+        "publishedAt": "2026-06-29T16:09:34.314605+00:00",
+        "text": "Untitled",
+        "summary": "Untitled",
+        "sentiment": {
+          "label": "neutral",
+          "score": 0.0,
+          "confidence": 0.91
+        },
+        "tickers": [],
+        "themes": []
+      },
+      {
+        "id": "reddit-308f863d",
+        "source": "reddit",
+        "title": "Untitled",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui8dyn/us_iran_halt_strikes_ahead_of_tuesday_talks/",
+        "publishedAt": "2026-06-29T16:09:34.314568+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -576,139 +603,27 @@
   },
   "feed": [
     {
-      "id": "reddit-e2b1d11a",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhenfn/thats_how_i_roll_lol/",
-      "publishedAt": "2026-06-29T11:22:31.522996+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-c16671b3",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uguo9y/for_all_you_degens/",
-      "publishedAt": "2026-06-29T11:22:31.522973+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-4f8b02a7",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui38y0/sls_holding_until_i_have_1_mil_thoughts/",
-      "publishedAt": "2026-06-29T11:22:31.522949+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-0a616249",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui8kuz/my_first_buy_picked_up_in_october/",
-      "publishedAt": "2026-06-29T11:22:31.522925+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-8593b68e",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhymze/sls_been_jumping_in_and_out/",
-      "publishedAt": "2026-06-29T11:22:31.522901+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-cf3bf985",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui287h/risked_20k_on_0dte_mu_calls_just_to_break_even/",
-      "publishedAt": "2026-06-29T11:22:31.522875+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-061c015a",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhko8e/margin_finally_called_me/",
-      "publishedAt": "2026-06-29T11:22:31.522850+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-f8c5aa87",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhjt2g/cathie_wood_invests_115_million_in_coinbase_as/",
-      "publishedAt": "2026-06-29T11:22:31.522824+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
       "id": "reddit-97c114df",
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhruvn/wendys_a_deep_value_turnaround/",
-      "publishedAt": "2026-06-29T11:22:31.522800+00:00",
+      "publishedAt": "2026-06-29T16:09:34.315087+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-1135a99e",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uiwiqp/meitu_ai_beauty_loss_dd_thoughts/",
+      "publishedAt": "2026-06-29T16:09:34.315049+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -724,39 +639,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1uib0mk/bb_then_now/",
-      "publishedAt": "2026-06-29T11:22:31.522778+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-2fa9f6a8",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uin8ul/is_anyone_shorting_global_etfs_ahead_of_july_7th/",
-      "publishedAt": "2026-06-29T11:22:31.522753+00:00",
-      "text": "Untitled",
-      "summary": "Untitled",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 0.91
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "reddit-96d7827b",
-      "source": "reddit",
-      "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui1d28/ceg_is_literally_printing_glowing_green_money_now/",
-      "publishedAt": "2026-06-29T11:22:31.522727+00:00",
+      "publishedAt": "2026-06-29T16:09:34.315015+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -772,7 +655,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhs9ux/trump_again_threatens_iran_with_annihilation_as/",
-      "publishedAt": "2026-06-29T11:22:31.522701+00:00",
+      "publishedAt": "2026-06-29T16:09:34.314978+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -784,11 +667,11 @@
       "themes": []
     },
     {
-      "id": "reddit-928e5cd5",
+      "id": "reddit-96d7827b",
       "source": "reddit",
       "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui40c5/the_market_remained_irrational_longer_than_i/",
-      "publishedAt": "2026-06-29T11:22:31.522675+00:00",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui1d28/ceg_is_literally_printing_glowing_green_money_now/",
+      "publishedAt": "2026-06-29T16:09:34.314940+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -804,7 +687,39 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui75bc/what_are_your_moves_tomorrow_june_29_2026/",
-      "publishedAt": "2026-06-29T11:22:31.522649+00:00",
+      "publishedAt": "2026-06-29T16:09:34.314902+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-928e5cd5",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui40c5/the_market_remained_irrational_longer_than_i/",
+      "publishedAt": "2026-06-29T16:09:34.314860+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-2fa9f6a8",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uin8ul/is_anyone_shorting_global_etfs_ahead_of_july_7th/",
+      "publishedAt": "2026-06-29T16:09:34.314821+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -820,7 +735,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1uiaw7j/so_about_that_ai_trade/",
-      "publishedAt": "2026-06-29T11:22:31.522626+00:00",
+      "publishedAt": "2026-06-29T16:09:34.314786+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -836,7 +751,39 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1uiatng/google_limits_metas_use_of_its_gemini_ai_models/",
-      "publishedAt": "2026-06-29T11:22:31.522599+00:00",
+      "publishedAt": "2026-06-29T16:09:34.314749+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-4e65008b",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uitaow/perfectly_balanced/",
+      "publishedAt": "2026-06-29T16:09:34.314714+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-b83609a2",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uiq8d4/bb_qnx_securing_physical_ai/",
+      "publishedAt": "2026-06-29T16:09:34.314680+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -852,7 +799,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1uidu6z/samsung_sk_reportedly_to_invest_13_trillion_over/",
-      "publishedAt": "2026-06-29T11:22:31.522570+00:00",
+      "publishedAt": "2026-06-29T16:09:34.314643+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -864,11 +811,11 @@
       "themes": []
     },
     {
-      "id": "reddit-4cbda755",
+      "id": "reddit-7c850a09",
       "source": "reddit",
       "title": "Untitled",
-      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uik31c/samsung_electronics_sk_hynix_to_invest_in_two_new/",
-      "publishedAt": "2026-06-29T11:22:31.522539+00:00",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uivtr7/full_port_into_netflix_calls/",
+      "publishedAt": "2026-06-29T16:09:34.314605+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -884,7 +831,23 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui8dyn/us_iran_halt_strikes_ahead_of_tuesday_talks/",
-      "publishedAt": "2026-06-29T11:22:31.522511+00:00",
+      "publishedAt": "2026-06-29T16:09:34.314568+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-90d2136a",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uit08s/bb_bears_are_about_to_learn_what_qnx_is/",
+      "publishedAt": "2026-06-29T16:09:34.314531+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -900,7 +863,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1uhypv3/didnt_know_we_had_regards_in_alaska/",
-      "publishedAt": "2026-06-29T11:22:31.522485+00:00",
+      "publishedAt": "2026-06-29T16:09:34.314486+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -916,7 +879,39 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1uie8bf/kospi_opens_3_lower_as_financial_regulators/",
-      "publishedAt": "2026-06-29T11:22:31.522457+00:00",
+      "publishedAt": "2026-06-29T16:09:34.314447+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-4cbda755",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uik31c/samsung_electronics_sk_hynix_to_invest_in_two_new/",
+      "publishedAt": "2026-06-29T16:09:34.314402+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-2a33ab36",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uiv3zu/think_this_might_be_a_sign/",
+      "publishedAt": "2026-06-29T16:09:34.314362+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -932,7 +927,39 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1ui8cae/weekends_over_wars_over/",
-      "publishedAt": "2026-06-29T11:22:31.522430+00:00",
+      "publishedAt": "2026-06-29T16:09:34.314301+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-fac96657",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uisis7/comcast_soars_20_after_announcing_it_will_spin/",
+      "publishedAt": "2026-06-29T16:09:34.314259+00:00",
+      "text": "Untitled",
+      "summary": "Untitled",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 0.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "reddit-33810956",
+      "source": "reddit",
+      "title": "Untitled",
+      "url": "https://www.reddit.com/r/wallstreetbets/comments/1uiqkgp/rocket_lab_to_buy_satellite_communications_firm/",
+      "publishedAt": "2026-06-29T16:09:34.314218+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -948,7 +975,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1uipg80/wen/",
-      "publishedAt": "2026-06-29T11:22:31.522402+00:00",
+      "publishedAt": "2026-06-29T16:09:34.314179+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -964,7 +991,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1uio695/daily_discussion_thread_for_june_29_2026/",
-      "publishedAt": "2026-06-29T11:22:31.522359+00:00",
+      "publishedAt": "2026-06-29T16:09:34.314121+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -976,152 +1003,34 @@
       "themes": []
     },
     {
-      "id": "news-25051e30",
+      "id": "news-4bad4c90",
       "source": "news",
-      "title": "Equinor to end offshore wind operations in Japan",
-      "url": "https://finance.yahoo.com/energy/articles/equinor-end-offshore-wind-operations-110514113.html",
-      "publishedAt": "2026-06-29T11:05:14+00:00",
-      "text": "Equinor to end offshore wind operations in Japan",
-      "summary": "Equinor to end offshore wind operations in Japan",
+      "title": "Oil rises on US-Iran strikes; cautious hopes for shipping cap gains",
+      "url": "https://finance.yahoo.com/news/oil-climbs-following-renewed-us-233412520.html",
+      "publishedAt": "2026-06-29T15:56:00+00:00",
+      "text": "Oil rises on US-Iran strikes; cautious hopes for shipping cap gains",
+      "summary": "Oil rises on US-Iran strikes; cautious hopes for shipping cap gains",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
-        "confidence": 7.27
+        "confidence": 10.0
       },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-9ddc4d23",
-      "source": "news",
-      "title": "SpaceX Stock Will Join The Nasdaq-100 Index On July 7",
-      "url": "https://www.investors.com/news/spacex-stock-will-join-nasdaq-100-index-july-7/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-06-29T11:04:39+00:00",
-      "text": "SpaceX Stock Will Join The Nasdaq-100 Index On July 7",
-      "summary": "SpaceX Stock Will Join The Nasdaq-100 Index On July 7",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 8.18
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-d72553b1",
-      "source": "news",
-      "title": "Qualcomm Is Remaking Itself Into an AI Company. Its Shares Look Dirt Cheap.",
-      "url": "https://finance.yahoo.com/technology/ai/articles/qualcomm-remaking-itself-ai-company-105300071.html",
-      "publishedAt": "2026-06-29T10:53:00+00:00",
-      "text": "Qualcomm Is Remaking Itself Into an AI Company. Its Shares Look Dirt Cheap",
-      "summary": "Qualcomm Is Remaking Itself Into an AI Company. Its Shares Look Dirt Cheap",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 11.82
-      },
-      "tickers": [],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-5a5b55df",
-      "source": "news",
-      "title": "ReBound Returns’ analysis reveals £29m losses from retail returns fraud",
-      "url": "https://finance.yahoo.com/small-business/articles/rebound-returns-analysis-reveals-29m-105104046.html",
-      "publishedAt": "2026-06-29T10:51:04+00:00",
-      "text": "ReBound Returns’ analysis reveals £29m losses from retail returns fraud",
-      "summary": "ReBound Returns’ analysis reveals £29m losses from retail returns fraud",
-      "sentiment": {
-        "label": "positive",
-        "score": 33.17,
-        "confidence": 57.18
-      },
-      "tickers": [],
+      "tickers": [
+        "US"
+      ],
       "themes": [
         "AI",
-        "EV"
+        "Labor"
       ]
     },
     {
-      "id": "news-27859a11",
+      "id": "news-a557e3d2",
       "source": "news",
-      "title": "SK Hynix Just Sent a Huge Warning to Micron Investors",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/sk-hynix-just-sent-huge-105000622.html",
-      "publishedAt": "2026-06-29T10:50:00+00:00",
-      "text": "SK Hynix Just Sent a Huge Warning to Micron Investors",
-      "summary": "SK Hynix Just Sent a Huge Warning to Micron Investors",
-      "sentiment": {
-        "label": "negative",
-        "score": -38.67,
-        "confidence": 65.16
-      },
-      "tickers": [
-        "SK"
-      ],
-      "themes": []
-    },
-    {
-      "id": "news-cedefd55",
-      "source": "news",
-      "title": "Volkswagen eyes 100,000 job cuts and four plant closures – report",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/volkswagen-eyes-100-000-job-104524032.html",
-      "publishedAt": "2026-06-29T10:45:24+00:00",
-      "text": "Volkswagen eyes 100,000 job cuts and four plant closures – report",
-      "summary": "Volkswagen eyes 100,000 job cuts and four plant closures – report",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 8.18
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-ac823497",
-      "source": "news",
-      "title": "Autonomous driving firm Momenta targets $752m in Hong Kong listing",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/autonomous-driving-firm-momenta-targets-104313721.html",
-      "publishedAt": "2026-06-29T10:43:13+00:00",
-      "text": "Autonomous driving firm Momenta targets $752m in Hong Kong listing",
-      "summary": "Autonomous driving firm Momenta targets $752m in Hong Kong listing",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 9.09
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-e4199e98",
-      "source": "news",
-      "title": "Curis opens 11 sites for emavusertib combo in TakeAim CLL trial",
-      "url": "https://finance.yahoo.com/healthcare/articles/curis-opens-11-sites-emavusertib-103728891.html",
-      "publishedAt": "2026-06-29T10:37:28+00:00",
-      "text": "Curis opens 11 sites for emavusertib combo in TakeAim CLL trial",
-      "summary": "Curis opens 11 sites for emavusertib combo in TakeAim CLL trial",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 9.09
-      },
-      "tickers": [
-        "CLL"
-      ],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-4e03b8b8",
-      "source": "news",
-      "title": "South Korea’s rise in household debt raises questions over financial stability",
-      "url": "https://finance.yahoo.com/economy/policy/articles/south-korea-rise-household-debt-103639263.html",
-      "publishedAt": "2026-06-29T10:36:39+00:00",
-      "text": "South Korea’s rise in household debt raises questions over financial stability",
-      "summary": "South Korea’s rise in household debt raises questions over financial stability",
+      "title": "How Micron Could 3x From Here If AI Memory Demand Keeps Exploding",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/micron-could-3x-ai-memory-154902014.html",
+      "publishedAt": "2026-06-29T15:49:02+00:00",
+      "text": "How Micron Could 3x From Here If AI Memory Demand Keeps Exploding",
+      "summary": "How Micron Could 3x From Here If AI Memory Demand Keeps Exploding",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
@@ -1129,240 +1038,568 @@
       },
       "tickers": [],
       "themes": [
-        "AI"
+        "AI",
+        "Earnings"
       ]
     },
     {
-      "id": "news-79597767",
+      "id": "news-0e7a6ee0",
       "source": "news",
-      "title": "Morning Bid: Weekend wars",
-      "url": "https://finance.yahoo.com/markets/articles/morning-bid-weekend-wars-103344395.html",
-      "publishedAt": "2026-06-29T10:33:44+00:00",
-      "text": "Morning Bid: Weekend wars",
-      "summary": "Morning Bid: Weekend wars",
+      "title": "Comcast to separate NBCUniversal and Sky in tax-free spinoff, shares rise",
+      "url": "https://finance.yahoo.com/media-advertising/articles/comcast-separate-nbcuniversal-sky-tax-154500092.html",
+      "publishedAt": "2026-06-29T15:45:00+00:00",
+      "text": "Comcast to separate NBCUniversal and Sky in tax-free spinoff, shares rise",
+      "summary": "Comcast to separate NBCUniversal and Sky in tax-free spinoff, shares rise",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
-        "confidence": 3.64
+        "confidence": 10.0
       },
       "tickers": [],
       "themes": []
     },
     {
-      "id": "news-7974050d",
+      "id": "news-d3cc2f8f",
       "source": "news",
-      "title": "Is NVIDIA (NVDA) the Best Fast Growth Stock to Buy as It Targets Fully Autonomous AI for Telecom Networks?",
-      "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-nvda-best-fast-growth-102525288.html",
-      "publishedAt": "2026-06-29T10:25:25+00:00",
-      "text": "Is NVIDIA (NVDA) the Best Fast Growth Stock to Buy as It Targets Fully Autonomous AI for Telecom Networks?",
-      "summary": "Is NVIDIA (NVDA) the Best Fast Growth Stock to Buy as It Targets Fully Autonomous AI for Telecom Networks?",
+      "title": "What It Takes to Win in the Next Era of Drayage",
+      "url": "https://finance.yahoo.com/small-business/articles/takes-win-next-era-drayage-154355767.html",
+      "publishedAt": "2026-06-29T15:43:55+00:00",
+      "text": "What It Takes to Win in the Next Era of Drayage",
+      "summary": "What It Takes to Win in the Next Era of Drayage",
       "sentiment": {
         "label": "positive",
-        "score": 46.96,
-        "confidence": 85.36
+        "score": 28.87,
+        "confidence": 51.86
       },
-      "tickers": [
-        "NVDA",
-        "VIDIA"
-      ],
-      "themes": [
-        "AI"
-      ]
+      "tickers": [],
+      "themes": []
     },
     {
-      "id": "news-0567d201",
+      "id": "news-1ba35c41",
       "source": "news",
-      "title": "Can Micron (MU) ’s Deal With Anthropic Cement Its Place in the AI Memory Market?",
-      "url": "https://finance.yahoo.com/technology/ai/articles/micron-mu-deal-anthropic-cement-102250038.html",
-      "publishedAt": "2026-06-29T10:22:50+00:00",
-      "text": "Can Micron (MU) ’s Deal With Anthropic Cement Its Place in the AI Memory Market?",
-      "summary": "Can Micron (MU) ’s Deal With Anthropic Cement Its Place in the AI Memory Market?",
+      "title": "Where Will Cerebras Stock be in 3 Years?",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/where-cerebras-stock-3-years-154300713.html",
+      "publishedAt": "2026-06-29T15:43:00+00:00",
+      "text": "Where Will Cerebras Stock be in 3 Years?",
+      "summary": "Where Will Cerebras Stock be in 3 Years?",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
-        "confidence": 13.64
+        "confidence": 6.36
       },
-      "tickers": [
-        "MU"
-      ],
-      "themes": [
-        "AI",
-        "M&A"
-      ]
+      "tickers": [],
+      "themes": []
     },
     {
-      "id": "news-41c7f093",
+      "id": "news-7120bf67",
       "source": "news",
-      "title": "AMD (AMD) Commits £2 Billion to the UK and Helps Build Two AI Supercomputers at Cambridge",
-      "url": "https://finance.yahoo.com/technology/ai/articles/amd-amd-commits-2-billion-102239533.html",
-      "publishedAt": "2026-06-29T10:22:39+00:00",
-      "text": "AMD (AMD) Commits £2 Billion to the UK and Helps Build Two AI Supercomputers at Cambridge",
-      "summary": "AMD (AMD) Commits £2 Billion to the UK and Helps Build Two AI Supercomputers at Cambridge",
+      "title": "AbbVie Stock Hits a New 52-Week High. Has It Gotten Too Expensive to Buy?",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/abbvie-stock-hits-52-week-154130464.html",
+      "publishedAt": "2026-06-29T15:41:30+00:00",
+      "text": "AbbVie Stock Hits a New 52-Week High. Has It Gotten Too Expensive to Buy?",
+      "summary": "AbbVie Stock Hits a New 52-Week High. Has It Gotten Too Expensive to Buy?",
+      "sentiment": {
+        "label": "positive",
+        "score": 25.82,
+        "confidence": 50.17
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-799043ed",
+      "source": "news",
+      "title": "Inflation Could Wreck Your Retirement. Here's How to Tackle It.",
+      "url": "https://finance.yahoo.com/markets/articles/inflation-could-wreck-retirement-heres-154100936.html",
+      "publishedAt": "2026-06-29T15:41:00+00:00",
+      "text": "Inflation Could Wreck Your Retirement. Here's How to Tackle It",
+      "summary": "Inflation Could Wreck Your Retirement. Here's How to Tackle It",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
-        "confidence": 13.64
+        "confidence": 9.09
       },
-      "tickers": [
-        "AMD",
-        "UK"
-      ],
+      "tickers": [],
       "themes": [
-        "AI"
+        "Rates"
       ]
     },
     {
-      "id": "news-288e6ecd",
+      "id": "news-e72afe15",
       "source": "news",
-      "title": "Lam Research (LRCX): Citi Raises Target by $135 on a Multi-Year Chip Manufacturing Investment Boom",
-      "url": "https://finance.yahoo.com/technology/articles/lam-research-lrcx-citi-raises-102212911.html",
-      "publishedAt": "2026-06-29T10:22:12+00:00",
-      "text": "Lam Research (LRCX): Citi Raises Target by $135 on a Multi-Year Chip Manufacturing Investment Boom",
-      "summary": "Lam Research (LRCX): Citi Raises Target by $135 on a Multi-Year Chip Manufacturing Investment Boom",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 12.73
-      },
-      "tickers": [
-        "LRCX"
-      ],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-652d1fb4",
-      "source": "news",
-      "title": "Analysis-Cheaper AI is better: Soaring bills are reshaping how businesses choose models",
-      "url": "https://finance.yahoo.com/news/analysis-cheaper-ai-better-soaring-101601387.html",
-      "publishedAt": "2026-06-29T10:18:50+00:00",
-      "text": "Analysis-Cheaper AI is better: Soaring bills are reshaping how businesses choose models",
-      "summary": "Analysis-Cheaper AI is better: Soaring bills are reshaping how businesses choose models",
+      "title": "Genesco Is the Latest Shoe Firm to Have a New Finance Guru",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/genesco-latest-shoe-firm-finance-153754895.html",
+      "publishedAt": "2026-06-29T15:37:54+00:00",
+      "text": "Genesco Is the Latest Shoe Firm to Have a New Finance Guru",
+      "summary": "Genesco Is the Latest Shoe Firm to Have a New Finance Guru",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
         "confidence": 10.91
       },
       "tickers": [],
-      "themes": [
-        "AI"
-      ]
+      "themes": []
     },
     {
-      "id": "news-345eb955",
+      "id": "news-7f318a47",
       "source": "news",
-      "title": "Wall Street Firm Says Intel (INTC) Has a Cost Edge Over TSMC in the Advanced Chip Packaging Race",
-      "url": "https://finance.yahoo.com/technology/articles/wall-street-firm-says-intel-101834662.html",
-      "publishedAt": "2026-06-29T10:18:34+00:00",
-      "text": "Wall Street Firm Says Intel (INTC) Has a Cost Edge Over TSMC in the Advanced Chip Packaging Race",
-      "summary": "Wall Street Firm Says Intel (INTC) Has a Cost Edge Over TSMC in the Advanced Chip Packaging Race",
+      "title": "Klarna Group PLC (KLAR) Fell Amid Management’s Cautious Guidance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/klarna-group-plc-klar-fell-153638089.html",
+      "publishedAt": "2026-06-29T15:36:38+00:00",
+      "text": "Klarna Group PLC (KLAR) Fell Amid Management’s Cautious Guidance",
+      "summary": "Klarna Group PLC (KLAR) Fell Amid Management’s Cautious Guidance",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
-        "confidence": 16.36
+        "confidence": 9.09
       },
       "tickers": [
-        "INTC",
-        "TSMC"
+        "KLAR",
+        "PLC"
       ],
       "themes": [
-        "AI"
+        "Earnings"
       ]
     },
     {
-      "id": "news-eda0bfad",
+      "id": "news-9ecd9c46",
       "source": "news",
-      "title": "The US Army Just Made Palantir (PLTR) Foundry the Data Backbone of Its Biggest Tech Overhaul",
-      "url": "https://finance.yahoo.com/technology/ai/articles/us-army-just-made-palantir-101813918.html",
-      "publishedAt": "2026-06-29T10:18:13+00:00",
-      "text": "The US Army Just Made Palantir (PLTR) Foundry the Data Backbone of Its Biggest Tech Overhaul",
-      "summary": "The US Army Just Made Palantir (PLTR) Foundry the Data Backbone of Its Biggest Tech Overhaul",
+      "title": "Stock Market Today: Dow Pops As Trump Fed Firing Is Blocked; Google Parent, Amazon Shine (Live Coverage)",
+      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-spacex-spcx-stock-nasdaq-100/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-06-29T15:25:07+00:00",
+      "text": "Stock Market Today: Dow Pops As Trump Fed Firing Is Blocked; Google Parent, Amazon Shine (Live Coverage)",
+      "summary": "Stock Market Today: Dow Pops As Trump Fed Firing Is Blocked; Google Parent, Amazon Shine (Live Coverage)",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 15.45
+      },
+      "tickers": [
+        "AMZN",
+        "GOOGL"
+      ],
+      "themes": [
+        "Rates"
+      ]
+    },
+    {
+      "id": "news-d618fd97",
+      "source": "news",
+      "title": "Comcast Sets Company Split. Is More M&A Coming? Telecom Stocks Fall.",
+      "url": "https://www.investors.com/news/technology/comcast-stock-soars-on-company-split-as-cable-tv-giants-makeover-continues/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-06-29T15:22:15+00:00",
+      "text": "Comcast Sets Company Split. Is More M&A Coming? Telecom Stocks Fall",
+      "summary": "Comcast Sets Company Split. Is More M&A Coming? Telecom Stocks Fall",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 10.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-99526bf2",
+      "source": "news",
+      "title": "Stocks and oil prices edge up with eyes on Iran; yen touches 40-year low vs dollar",
+      "url": "https://finance.yahoo.com/markets/articles/stocks-adrift-oil-us-iran-014817134.html",
+      "publishedAt": "2026-06-29T15:22:14+00:00",
+      "text": "Stocks and oil prices edge up with eyes on Iran; yen touches 40-year low vs dollar",
+      "summary": "Stocks and oil prices edge up with eyes on Iran; yen touches 40-year low vs dollar",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
         "confidence": 14.55
       },
-      "tickers": [
-        "PLTR",
-        "US"
-      ],
+      "tickers": [],
       "themes": []
     },
     {
-      "id": "news-b8462766",
+      "id": "news-c1f49565",
       "source": "news",
-      "title": "Amazon Explores External Trainium Chip Sales, Putting Marvell (MRVL) in Focus",
-      "url": "https://finance.yahoo.com/technology/ai/articles/amazon-explores-external-trainium-chip-101801747.html",
-      "publishedAt": "2026-06-29T10:18:01+00:00",
-      "text": "Amazon Explores External Trainium Chip Sales, Putting Marvell (MRVL) in Focus",
-      "summary": "Amazon Explores External Trainium Chip Sales, Putting Marvell (MRVL) in Focus",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 10.0
-      },
-      "tickers": [
-        "AMZN",
-        "MRVL"
-      ],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-b0363060",
-      "source": "news",
-      "title": "Arm Holdings (ARM) Expands Its Agentic-AI CPU Ecosystem With Oracle Cloud Infrastructure",
-      "url": "https://finance.yahoo.com/technology/ai/articles/arm-holdings-arm-expands-agentic-101632634.html",
-      "publishedAt": "2026-06-29T10:16:32+00:00",
-      "text": "Arm Holdings (ARM) Expands Its Agentic-AI CPU Ecosystem With Oracle Cloud Infrastructure",
-      "summary": "Arm Holdings (ARM) Expands Its Agentic-AI CPU Ecosystem With Oracle Cloud Infrastructure",
+      "title": "Alphabet debuts in Dow Jones Industrial Average as index tilts toward tech",
+      "url": "https://finance.yahoo.com/markets/world-indices/articles/alphabet-debuts-dow-jones-industrial-152012819.html",
+      "publishedAt": "2026-06-29T15:20:12+00:00",
+      "text": "Alphabet debuts in Dow Jones Industrial Average as index tilts toward tech",
+      "summary": "Alphabet debuts in Dow Jones Industrial Average as index tilts toward tech",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
         "confidence": 10.91
       },
       "tickers": [
-        "ARM",
-        "CPU"
+        "GOOGL"
       ],
-      "themes": [
-        "AI"
-      ]
+      "themes": []
     },
     {
-      "id": "news-8ab124c3",
+      "id": "news-01659896",
       "source": "news",
-      "title": "Comcast to split cable business from media through NBCUniversal, Sky spinoff",
-      "url": "https://finance.yahoo.com/media-advertising/articles/comcast-split-cable-business-media-101129586.html",
-      "publishedAt": "2026-06-29T10:11:29+00:00",
-      "text": "Comcast to split cable business from media through NBCUniversal, Sky spinoff",
-      "summary": "Comcast to split cable business from media through NBCUniversal, Sky spinoff",
+      "title": "Schneider announces additional leadership changes",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/schneider-announces-additional-leadership-changes-151939370.html",
+      "publishedAt": "2026-06-29T15:19:39+00:00",
+      "text": "Schneider announces additional leadership changes",
+      "summary": "Schneider announces additional leadership changes",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
-        "confidence": 10.0
+        "confidence": 4.55
       },
       "tickers": [],
       "themes": []
     },
     {
-      "id": "news-98cba6e1",
+      "id": "news-f6fa7bca",
       "source": "news",
-      "title": "Exclusive-Apple accuses India of 'copy-pasting' rivals' claims in antitrust investigation",
-      "url": "https://finance.yahoo.com/news/exclusive-apple-accuses-india-copy-095932181.html",
-      "publishedAt": "2026-06-29T10:09:14+00:00",
-      "text": "Exclusive-Apple accuses India of 'copy-pasting' rivals' claims in antitrust investigation",
-      "summary": "Exclusive-Apple accuses India of 'copy-pasting' rivals' claims in antitrust investigation",
+      "title": "Amazon Stock's Climb Leads Strong Day For Magnificent Seven",
+      "url": "https://www.investors.com/news/technology/amazon-stock-gains-prime-day-cloud-price-hike/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-06-29T15:12:55+00:00",
+      "text": "Amazon Stock's Climb Leads Strong Day For Magnificent Seven",
+      "summary": "Amazon Stock's Climb Leads Strong Day For Magnificent Seven",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 8.18
+      },
+      "tickers": [
+        "AMZN"
+      ],
+      "themes": [
+        "EV"
+      ]
+    },
+    {
+      "id": "news-cdb01214",
+      "source": "news",
+      "title": "Tech stocks today: Tech stocks halt slide, Google rises after joining the Dow",
+      "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-tech-stocks-halt-slide-google-rises-after-joining-the-dow-151053436.html",
+      "publishedAt": "2026-06-29T15:10:53+00:00",
+      "text": "Tech stocks today: Tech stocks halt slide, Google rises after joining the Dow",
+      "summary": "Tech stocks today: Tech stocks halt slide, Google rises after joining the Dow",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 11.82
+      },
+      "tickers": [
+        "GOOGL"
+      ],
+      "themes": []
+    },
+    {
+      "id": "news-906b508f",
+      "source": "news",
+      "title": "UBS, BofA, Jefferies Start Quantinuum With Buy Ratings On 'Full-Stack' Platform",
+      "url": "https://www.investors.com/news/technology/jefferies-starts-quantinuum-stock-qnt-buy-rating-full-stack-platform/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-06-29T15:04:00+00:00",
+      "text": "UBS, BofA, Jefferies Start Quantinuum With Buy Ratings On 'Full-Stack' Platform",
+      "summary": "UBS, BofA, Jefferies Start Quantinuum With Buy Ratings On 'Full-Stack' Platform",
+      "sentiment": {
+        "label": "positive",
+        "score": 28.87,
+        "confidence": 51.86
+      },
+      "tickers": [
+        "UBS"
+      ],
+      "themes": []
+    },
+    {
+      "id": "news-42da50de",
+      "source": "news",
+      "title": "Halliburton, Valero and 3 More Stocks Set Up for a Fragile Hormuz Truce",
+      "url": "https://finance.yahoo.com/energy/articles/halliburton-valero-3-more-stocks-150000805.html",
+      "publishedAt": "2026-06-29T15:00:00+00:00",
+      "text": "Halliburton, Valero and 3 More Stocks Set Up for a Fragile Hormuz Truce",
+      "summary": "Halliburton, Valero and 3 More Stocks Set Up for a Fragile Hormuz Truce",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 10.91
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-16f9fcb6",
+      "source": "news",
+      "title": "A mom got fired in her first week for taking 1 day off — and in 49 states, it's perfectly legal",
+      "url": "https://finance.yahoo.com/small-business/articles/mom-got-fired-her-first-150000760.html",
+      "publishedAt": "2026-06-29T15:00:00+00:00",
+      "text": "A mom got fired in her first week for taking 1 day off — and in 49 states, it's perfectly legal",
+      "summary": "A mom got fired in her first week for taking 1 day off — and in 49 states, it's perfectly legal",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 16.36
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-28e6a9ca",
+      "source": "news",
+      "title": "Adeia (ADEA) Benefited from Recent Licensing Successes",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/adeia-adea-benefited-recent-licensing-144313976.html",
+      "publishedAt": "2026-06-29T14:43:13+00:00",
+      "text": "Adeia (ADEA) Benefited from Recent Licensing Successes",
+      "summary": "Adeia (ADEA) Benefited from Recent Licensing Successes",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 6.36
+      },
+      "tickers": [
+        "ADEA"
+      ],
+      "themes": []
+    },
+    {
+      "id": "news-61c80724",
+      "source": "news",
+      "title": "Dollar slips, yen tumbles to 40-year low",
+      "url": "https://finance.yahoo.com/news/dollar-poised-best-month-nearly-015012839.html",
+      "publishedAt": "2026-06-29T14:37:59+00:00",
+      "text": "Dollar slips, yen tumbles to 40-year low",
+      "summary": "Dollar slips, yen tumbles to 40-year low",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 6.36
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-c3c41767",
+      "source": "news",
+      "title": "Tesla Recovers Alongside Magnificent Seven, Analysts Chime In On Deliveries",
+      "url": "https://www.investors.com/news/tesla-stock-magnificent-seven-nvidia-microsoft-meta-amazon-elon-musk/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-06-29T14:35:59+00:00",
+      "text": "Tesla Recovers Alongside Magnificent Seven, Analysts Chime In On Deliveries",
+      "summary": "Tesla Recovers Alongside Magnificent Seven, Analysts Chime In On Deliveries",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
         "confidence": 9.09
       },
       "tickers": [
-        "AAPL"
+        "TSLA"
       ],
+      "themes": [
+        "EV"
+      ]
+    },
+    {
+      "id": "news-62c5931d",
+      "source": "news",
+      "title": "He's 49 with $300K in savings and $180K left on his mortgage — here's when paying it off beats investing",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/hes-49-300k-savings-180k-143000408.html",
+      "publishedAt": "2026-06-29T14:30:00+00:00",
+      "text": "He's 49 with $300K in savings and $180K left on his mortgage — here's when paying it off beats investing",
+      "summary": "He's 49 with $300K in savings and $180K left on his mortgage — here's when paying it off beats investing",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 16.36
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-349cdd94",
+      "source": "news",
+      "title": "Santos Signs 10-Year Deal to Supply South Australia Strategic Gas Reserve",
+      "url": "https://finance.yahoo.com/energy/articles/santos-signs-10-deal-supply-143000604.html",
+      "publishedAt": "2026-06-29T14:30:00+00:00",
+      "text": "Santos Signs 10-Year Deal to Supply South Australia Strategic Gas Reserve",
+      "summary": "Santos Signs 10-Year Deal to Supply South Australia Strategic Gas Reserve",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 10.0
+      },
+      "tickers": [],
+      "themes": [
+        "M&A"
+      ]
+    },
+    {
+      "id": "news-dcfd08bf",
+      "source": "news",
+      "title": "Analysis-Iraq's push for bigger OPEC quota driven by revenue pressures, new oil investment",
+      "url": "https://finance.yahoo.com/energy/articles/analysis-iraqs-push-bigger-opec-141406056.html",
+      "publishedAt": "2026-06-29T14:14:06+00:00",
+      "text": "Analysis-Iraq's push for bigger OPEC quota driven by revenue pressures, new oil investment",
+      "summary": "Analysis-Iraq's push for bigger OPEC quota driven by revenue pressures, new oil investment",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 11.82
+      },
+      "tickers": [
+        "OPEC"
+      ],
+      "themes": [
+        "Earnings",
+        "EV"
+      ]
+    },
+    {
+      "id": "news-0de06a94",
+      "source": "news",
+      "title": "Wall Street has sky-high expectations for second quarter earnings",
+      "url": "https://finance.yahoo.com/markets/article/wall-street-has-sky-high-expectations-for-second-quarter-earnings-141310243.html",
+      "publishedAt": "2026-06-29T14:13:10+00:00",
+      "text": "Wall Street has sky-high expectations for second quarter earnings",
+      "summary": "Wall Street has sky-high expectations for second quarter earnings",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 8.18
+      },
+      "tickers": [],
+      "themes": [
+        "Earnings"
+      ]
+    },
+    {
+      "id": "news-08ee554a",
+      "source": "news",
+      "title": "Microsoft stock is headed for its worst month since 2000",
+      "url": "https://finance.yahoo.com/markets/article/microsoft-stock-is-headed-for-its-worst-month-since-2000-140904697.html",
+      "publishedAt": "2026-06-29T14:09:04+00:00",
+      "text": "Microsoft stock is headed for its worst month since 2000",
+      "summary": "Microsoft stock is headed for its worst month since 2000",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 8.18
+      },
+      "tickers": [
+        "MSFT"
+      ],
+      "themes": []
+    },
+    {
+      "id": "news-6207cc98",
+      "source": "news",
+      "title": "Bitcoin and ethereum prices today, Monday, June 29, 2026: Prices continue to move lower",
+      "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-june-29-2026-prices-continue-to-move-lower-132348850.html",
+      "publishedAt": "2026-06-29T13:23:48+00:00",
+      "text": "Bitcoin and ethereum prices today, Monday, June 29, 2026: Prices continue to move lower",
+      "summary": "Bitcoin and ethereum prices today, Monday, June 29, 2026: Prices continue to move lower",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 10.91
+      },
+      "tickers": [],
+      "themes": [
+        "Crypto"
+      ]
+    },
+    {
+      "id": "news-869aa297",
+      "source": "news",
+      "title": "Silver prices today, Monday, June 29, 2026: Silver prices trending lower",
+      "url": "https://finance.yahoo.com/personal-finance/investing/article/silver-prices-today-monday-june-29-2026-silver-prices-trending-lower-123846297.html",
+      "publishedAt": "2026-06-29T12:38:46+00:00",
+      "text": "Silver prices today, Monday, June 29, 2026: Silver prices trending lower",
+      "summary": "Silver prices today, Monday, June 29, 2026: Silver prices trending lower",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 8.18
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-0379f979",
+      "source": "news",
+      "title": "Gold prices today, Monday, June 29: Holding at last week's levels ahead of June jobs report",
+      "url": "https://finance.yahoo.com/personal-finance/investing/article/gold-prices-today-monday-june-29-holding-at-last-weeks-levels-ahead-of-june-jobs-report-121244273.html",
+      "publishedAt": "2026-06-29T12:12:44+00:00",
+      "text": "Gold prices today, Monday, June 29: Holding at last week's levels ahead of June jobs report",
+      "summary": "Gold prices today, Monday, June 29: Holding at last week's levels ahead of June jobs report",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 13.64
+      },
+      "tickers": [],
+      "themes": [
+        "EV"
+      ]
+    },
+    {
+      "id": "news-34c54a99",
+      "source": "news",
+      "title": "Analyst Report: Best Buy Co Inc",
+      "url": "https://finance.yahoo.com/research/reports/ARGUS_2762_AnalystReport_1782731300000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+      "publishedAt": "2026-06-29T11:08:20+00:00",
+      "text": "Analyst Report: Best Buy Co Inc",
+      "summary": "Analyst Report: Best Buy Co Inc",
+      "sentiment": {
+        "label": "positive",
+        "score": 37.8,
+        "confidence": 60.26
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-47a108f5",
+      "source": "news",
+      "title": "Market Digest: BBY, BRSL",
+      "url": "https://finance.yahoo.com/research/reports/ARGUS_47457_MarketSummary_1782730400000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+      "publishedAt": "2026-06-29T10:53:20+00:00",
+      "text": "Market Digest: BBY, BRSL",
+      "summary": "Market Digest: BBY, BRSL",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 3.64
+      },
+      "tickers": [
+        "BBY",
+        "BRSL"
+      ],
+      "themes": []
+    },
+    {
+      "id": "news-97d300ff",
+      "source": "news",
+      "title": "Daily – Vickers Top Insider Picks for 06/29/2026",
+      "url": "https://finance.yahoo.com/research/reports/ARGUS_47455_InsiderActivity_1782729689000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+      "publishedAt": "2026-06-29T10:41:29+00:00",
+      "text": "Daily – Vickers Top Insider Picks for 06/29/2026",
+      "summary": "Daily – Vickers Top Insider Picks for 06/29/2026",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 5.45
+      },
+      "tickers": [],
+      "themes": [
+        "AI"
+      ]
+    },
+    {
+      "id": "news-3bcd7914",
+      "source": "news",
+      "title": "Daily – Vickers Top Buyers & Sellers for 06/29/2026",
+      "url": "https://finance.yahoo.com/research/reports/ARGUS_47456_TopBottomInsiderActivity_1782729689000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+      "publishedAt": "2026-06-29T10:41:29+00:00",
+      "text": "Daily – Vickers Top Buyers & Sellers for 06/29/2026",
+      "summary": "Daily – Vickers Top Buyers & Sellers for 06/29/2026",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 5.45
+      },
+      "tickers": [],
       "themes": [
         "AI"
       ]
@@ -1407,6 +1644,26 @@
       ]
     },
     {
+      "id": "news-a52c0309",
+      "source": "news",
+      "title": "Best high-yield savings interest rates today, Monday, June 29, 2026: Earn up to 4.10% APY",
+      "url": "https://finance.yahoo.com/personal-finance/banking/article/best-high-yield-savings-interest-rates-today-monday-june-29-2026-earn-up-to-410-apy-100000306.html",
+      "publishedAt": "2026-06-29T10:00:00+00:00",
+      "text": "Best high-yield savings interest rates today, Monday, June 29, 2026: Earn up to 4.10% APY",
+      "summary": "Best high-yield savings interest rates today, Monday, June 29, 2026: Earn up to 4.10% APY",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 10.91
+      },
+      "tickers": [
+        "APY"
+      ],
+      "themes": [
+        "Rates"
+      ]
+    },
+    {
       "id": "news-ea85c62b",
       "source": "news",
       "title": "Best CD rates today, Monday, June 29, 2026: Lock in up to 4.10% APY",
@@ -1428,274 +1685,39 @@
       ]
     },
     {
-      "id": "news-a52c0309",
+      "id": "news-ea39647a",
       "source": "news",
-      "title": "Best high-yield savings interest rates today, Monday, June 29, 2026: Earn up to 4.10% APY",
-      "url": "https://finance.yahoo.com/personal-finance/banking/article/best-high-yield-savings-interest-rates-today-monday-june-29-2026-earn-up-to-410-apy-100000306.html",
-      "publishedAt": "2026-06-29T10:00:00+00:00",
-      "text": "Best high-yield savings interest rates today, Monday, June 29, 2026: Earn up to 4.10% APY",
-      "summary": "Best high-yield savings interest rates today, Monday, June 29, 2026: Earn up to 4.10% APY",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 10.91
-      },
-      "tickers": [
-        "APY"
-      ],
-      "themes": [
-        "Rates"
-      ]
-    },
-    {
-      "id": "news-3d2968eb",
-      "source": "news",
-      "title": "Americans may not reach financial independence until age 37 — and a viral trend called 'moneymaxxing' aims to fix that",
-      "url": "https://finance.yahoo.com/markets/articles/americans-may-not-reach-financial-100000763.html",
-      "publishedAt": "2026-06-29T10:00:00+00:00",
-      "text": "Americans may not reach financial independence until age 37 — and a viral trend called 'moneymaxxing' aims to fix that",
-      "summary": "Americans may not reach financial independence until age 37 — and a viral trend called 'moneymaxxing' aims to fix that",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 16.36
-      },
-      "tickers": [],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-70b79e95",
-      "source": "news",
-      "title": "Broadcom (AVGO) The Best High Growth Semiconductor to Buy Now?",
-      "url": "https://finance.yahoo.com/technology/ai/articles/broadcom-avgo-best-high-growth-095843511.html",
-      "publishedAt": "2026-06-29T09:58:43+00:00",
-      "text": "Broadcom (AVGO) The Best High Growth Semiconductor to Buy Now?",
-      "summary": "Broadcom (AVGO) The Best High Growth Semiconductor to Buy Now?",
-      "sentiment": {
-        "label": "positive",
-        "score": 63.32,
-        "confidence": 99.0
-      },
-      "tickers": [
-        "AVGO"
-      ],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-edd3bb5e",
-      "source": "news",
-      "title": "A grandma wants to gift $50K in stock for her grandson's college — but $25,000 in hidden gains could trigger a tax trap",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/grandma-wants-gift-50k-stock-093000492.html",
-      "publishedAt": "2026-06-29T09:30:00+00:00",
-      "text": "A grandma wants to gift $50K in stock for her grandson's college — but $25,000 in hidden gains could trigger a tax trap",
-      "summary": "A grandma wants to gift $50K in stock for her grandson's college — but $25,000 in hidden gains could trigger a tax trap",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 19.09
-      },
-      "tickers": [],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-5d13653b",
-      "source": "news",
-      "title": "Are you richer than you think? 5 clear signs you’re doing better than the average American in 2026",
-      "url": "https://finance.yahoo.com/markets/articles/richer-think-5-clear-signs-093000739.html",
-      "publishedAt": "2026-06-29T09:30:00+00:00",
-      "text": "Are you richer than you think? 5 clear signs you’re doing better than the average American in 2026",
-      "summary": "Are you richer than you think? 5 clear signs you’re doing better than the average American in 2026",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 15.45
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-58b900bd",
-      "source": "news",
-      "title": "Aker Solutions Wins Hydropower Contract for 150 MW Tussa II Plant",
-      "url": "https://finance.yahoo.com/energy/articles/aker-solutions-wins-hydropower-contract-092000346.html",
-      "publishedAt": "2026-06-29T09:20:00+00:00",
-      "text": "Aker Solutions Wins Hydropower Contract for 150 MW Tussa II Plant",
-      "summary": "Aker Solutions Wins Hydropower Contract for 150 MW Tussa II Plant",
+      "title": "79-year-old fashion retailer closed 136 stores, killed one of its brands",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/h-m-closed-136-stores-012815718.html",
+      "publishedAt": "2026-06-29T01:28:15+00:00",
+      "text": "79-year-old fashion retailer closed 136 stores, killed one of its brands",
+      "summary": "79-year-old fashion retailer closed 136 stores, killed one of its brands",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
         "confidence": 9.09
       },
-      "tickers": [
-        "II",
-        "MW"
-      ],
-      "themes": []
-    },
-    {
-      "id": "news-e7880fdc",
-      "source": "news",
-      "title": "Banks get creative and look further afield as AI-fueled debt soars",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/banks-creative-look-further-afield-090554702.html",
-      "publishedAt": "2026-06-29T09:05:54+00:00",
-      "text": "Banks get creative and look further afield as AI-fueled debt soars",
-      "summary": "Banks get creative and look further afield as AI-fueled debt soars",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 10.0
-      },
       "tickers": [],
       "themes": [
         "AI"
       ]
     },
     {
-      "id": "news-4214b130",
+      "id": "news-976dfde6",
       "source": "news",
-      "title": "Dollar set for best month in nearly a year as bulls grow confident",
-      "url": "https://finance.yahoo.com/news/dollar-poised-best-month-nearly-015012839.html",
-      "publishedAt": "2026-06-29T08:54:03+00:00",
-      "text": "Dollar set for best month in nearly a year as bulls grow confident",
-      "summary": "Dollar set for best month in nearly a year as bulls grow confident",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 11.82
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-dad2f19f",
-      "source": "news",
-      "title": "Oil steadies as US and Iran agree to halt attacks",
-      "url": "https://finance.yahoo.com/news/oil-climbs-following-renewed-us-233412520.html",
-      "publishedAt": "2026-06-29T08:21:40+00:00",
-      "text": "Oil steadies as US and Iran agree to halt attacks",
-      "summary": "Oil steadies as US and Iran agree to halt attacks",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 9.09
-      },
-      "tickers": [
-        "US"
-      ],
-      "themes": []
-    },
-    {
-      "id": "news-d873ed1c",
-      "source": "news",
-      "title": "Stocks perk up and oil cools as US and Iran halt hostilities",
-      "url": "https://finance.yahoo.com/markets/articles/stocks-adrift-oil-us-iran-014817134.html",
-      "publishedAt": "2026-06-29T08:20:44+00:00",
-      "text": "Stocks perk up and oil cools as US and Iran halt hostilities",
-      "summary": "Stocks perk up and oil cools as US and Iran halt hostilities",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 10.91
-      },
-      "tickers": [
-        "US"
-      ],
-      "themes": []
-    },
-    {
-      "id": "news-c7d88171",
-      "source": "news",
-      "title": "Stock market today: S&P 500, Nasdaq, Dow futures rise as US and Iran call a halt to attacks",
-      "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-monday-june-29-224230573.html",
-      "publishedAt": "2026-06-28T22:42:30+00:00",
-      "text": "Stock market today: S&P 500, Nasdaq, Dow futures rise as US and Iran call a halt to attacks",
-      "summary": "Stock market today: S&P 500, Nasdaq, Dow futures rise as US and Iran call a halt to attacks",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 16.36
-      },
-      "tickers": [
-        "US"
-      ],
-      "themes": []
-    },
-    {
-      "id": "news-d6900df4",
-      "source": "news",
-      "title": "IRMAA hits retirees two years after property sale",
-      "url": "https://finance.yahoo.com/healthcare/articles/irmaa-hits-retirees-two-years-181700890.html",
-      "publishedAt": "2026-06-28T18:17:00+00:00",
-      "text": "IRMAA hits retirees two years after property sale",
-      "summary": "IRMAA hits retirees two years after property sale",
+      "title": "Chevron CFO reveals why gas prices are stuck",
+      "url": "https://finance.yahoo.com/energy/articles/chevron-cfo-reveals-why-gas-210300205.html",
+      "publishedAt": "2026-06-28T21:03:00+00:00",
+      "text": "Chevron CFO reveals why gas prices are stuck",
+      "summary": "Chevron CFO reveals why gas prices are stuck",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
         "confidence": 7.27
       },
-      "tickers": [
-        "IRMAA"
-      ],
-      "themes": []
-    },
-    {
-      "id": "news-42d113e3",
-      "source": "news",
-      "title": "'We don't view this as a bubble' that will pop soon: Wall Street weighs surging AI costs on stock market rally",
-      "url": "https://finance.yahoo.com/markets/article/we-dont-view-this-as-a-bubble-that-will-pop-soon-wall-street-weighs-surging-ai-costs-on-stock-market-rally-115642288.html",
-      "publishedAt": "2026-06-28T11:56:42+00:00",
-      "text": "'We don't view this as a bubble' that will pop soon: Wall Street weighs surging AI costs on stock market rally",
-      "summary": "'We don't view this as a bubble' that will pop soon: Wall Street weighs surging AI costs on stock market rally",
-      "sentiment": {
-        "label": "positive",
-        "score": 29.85,
-        "confidence": 62.37
-      },
       "tickers": [],
       "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-cae7b100",
-      "source": "news",
-      "title": "Emerging markets are now an AI chip trade: Chart of the Day",
-      "url": "https://finance.yahoo.com/markets/article/emerging-markets-are-now-an-ai-chip-trade-chart-of-the-day-115540648.html",
-      "publishedAt": "2026-06-28T11:55:40+00:00",
-      "text": "Emerging markets are now an AI chip trade: Chart of the Day",
-      "summary": "Emerging markets are now an AI chip trade: Chart of the Day",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 10.91
-      },
-      "tickers": [],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-773bdc07",
-      "source": "news",
-      "title": "AI jitters meet a jobs report and falling oil prices: What to watch this week",
-      "url": "https://finance.yahoo.com/markets/article/ai-jitters-meet-a-jobs-report-and-falling-oil-prices-what-to-watch-this-week-100000636.html",
-      "publishedAt": "2026-06-28T10:00:00+00:00",
-      "text": "AI jitters meet a jobs report and falling oil prices: What to watch this week",
-      "summary": "AI jitters meet a jobs report and falling oil prices: What to watch this week",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 13.64
-      },
-      "tickers": [],
-      "themes": [
-        "AI"
+        "EV"
       ]
     },
     {
@@ -1759,37 +1781,51 @@
       ]
     },
     {
-      "id": "news-d583e6ba",
+      "id": "news-ba001b86",
       "source": "news",
-      "title": "Best high-yield savings interest rates today, Sunday, June 28, 2026: Earn up to 4.10% APY",
-      "url": "https://finance.yahoo.com/personal-finance/banking/article/best-high-yield-savings-interest-rates-today-sunday-june-28-2026-earn-up-to-410-apy-100000604.html",
-      "publishedAt": "2026-06-28T10:00:00+00:00",
-      "text": "Best high-yield savings interest rates today, Sunday, June 28, 2026: Earn up to 4.10% APY",
-      "summary": "Best high-yield savings interest rates today, Sunday, June 28, 2026: Earn up to 4.10% APY",
+      "title": "BlackRock IBIT investors are now nursing a 40% loss",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/blackrock-ibit-investors-now-nursing-093325287.html",
+      "publishedAt": "2026-06-28T09:33:25+00:00",
+      "text": "BlackRock IBIT investors are now nursing a 40% loss",
+      "summary": "BlackRock IBIT investors are now nursing a 40% loss",
       "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 10.91
+        "label": "negative",
+        "score": -41.67,
+        "confidence": 67.69
       },
       "tickers": [
-        "APY"
+        "IBIT"
       ],
-      "themes": [
-        "Rates"
-      ]
+      "themes": []
     },
     {
-      "id": "news-d39379da",
+      "id": "news-6587b75b",
       "source": "news",
-      "title": "Mortgage and refinance interest rates today, Saturday, June 27, 2026: Lowest 30-year rate since April",
-      "url": "https://finance.yahoo.com/personal-finance/mortgages/article/mortgage-and-refinance-interest-rates-today-saturday-june-27-2026-lowest-30-year-rate-since-april-100000248.html",
-      "publishedAt": "2026-06-27T10:00:00+00:00",
-      "text": "Mortgage and refinance interest rates today, Saturday, June 27, 2026: Lowest 30-year rate since April",
-      "summary": "Mortgage and refinance interest rates today, Saturday, June 27, 2026: Lowest 30-year rate since April",
+      "title": "Student loan overhaul starts July 1: What borrowers should know",
+      "url": "https://finance.yahoo.com/personal-finance/student-loans/article/student-loan-overhaul-starts-july-1-what-borrowers-should-know-150138537.html",
+      "publishedAt": "2026-06-09T15:01:38+00:00",
+      "text": "Student loan overhaul starts July 1: What borrowers should know",
+      "summary": "Student loan overhaul starts July 1: What borrowers should know",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
-        "confidence": 11.82
+        "confidence": 8.18
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-b2c33e47",
+      "source": "news",
+      "title": "Best secured personal loans and lenders of July 2026: Get lower rates by adding collateral",
+      "url": "https://finance.yahoo.com/personal-finance/personal-loans/article/best-secured-personal-loans-224147862.html",
+      "publishedAt": "2026-04-28T22:41:47+00:00",
+      "text": "Best secured personal loans and lenders of July 2026: Get lower rates by adding collateral",
+      "summary": "Best secured personal loans and lenders of July 2026: Get lower rates by adding collateral",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 12.73
       },
       "tickers": [],
       "themes": [
@@ -1797,98 +1833,17 @@
       ]
     },
     {
-      "id": "news-63254e0f",
+      "id": "news-807d9a81",
       "source": "news",
-      "title": "Best CD rates today, Saturday, June 27, 2026: Best account provides 4.10% APY",
-      "url": "https://finance.yahoo.com/personal-finance/banking/article/best-cd-rates-today-saturday-june-27-2026-best-account-provides-410-apy-100000070.html",
-      "publishedAt": "2026-06-27T10:00:00+00:00",
-      "text": "Best CD rates today, Saturday, June 27, 2026: Best account provides 4.10% APY",
-      "summary": "Best CD rates today, Saturday, June 27, 2026: Best account provides 4.10% APY",
+      "title": "Best same-day emergency loans for July 2026: Get fast funding after approval",
+      "url": "https://finance.yahoo.com/personal-finance/personal-loans/article/best-same-day-emergency-loans-220714166.html",
+      "publishedAt": "2026-03-27T22:07:14+00:00",
+      "text": "Best same-day emergency loans for July 2026: Get fast funding after approval",
+      "summary": "Best same-day emergency loans for July 2026: Get fast funding after approval",
       "sentiment": {
         "label": "neutral",
         "score": 0.0,
-        "confidence": 9.09
-      },
-      "tickers": [
-        "APY",
-        "CD"
-      ],
-      "themes": [
-        "Rates"
-      ]
-    },
-    {
-      "id": "news-aaadf848",
-      "source": "news",
-      "title": "HELOC and home equity loan rates Saturday, June 27, 2026: 'FedWatch' tool suggests higher rates are coming",
-      "url": "https://finance.yahoo.com/personal-finance/mortgages/article/heloc-and-home-equity-loan-rates-saturday-june-27-2026-fedwatch-tool-suggests-higher-rates-are-coming-100000972.html",
-      "publishedAt": "2026-06-27T10:00:00+00:00",
-      "text": "HELOC and home equity loan rates Saturday, June 27, 2026: 'FedWatch' tool suggests higher rates are coming",
-      "summary": "HELOC and home equity loan rates Saturday, June 27, 2026: 'FedWatch' tool suggests higher rates are coming",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 13.64
-      },
-      "tickers": [
-        "HELOC"
-      ],
-      "themes": [
-        "Rates"
-      ]
-    },
-    {
-      "id": "news-f39c3eab",
-      "source": "news",
-      "title": "Best high-yield savings interest rates today, Saturday, June 27, 2026: Earn up to 4.10% APY",
-      "url": "https://finance.yahoo.com/personal-finance/banking/article/best-high-yield-savings-interest-rates-today-saturday-june-27-2026-earn-up-to-410-apy-100000193.html",
-      "publishedAt": "2026-06-27T10:00:00+00:00",
-      "text": "Best high-yield savings interest rates today, Saturday, June 27, 2026: Earn up to 4.10% APY",
-      "summary": "Best high-yield savings interest rates today, Saturday, June 27, 2026: Earn up to 4.10% APY",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 10.91
-      },
-      "tickers": [
-        "APY"
-      ],
-      "themes": [
-        "Rates"
-      ]
-    },
-    {
-      "id": "news-de034c09",
-      "source": "news",
-      "title": "Disney settles YouTube TV and DirecTV lawsuit for $50 million: Here's who gets paid",
-      "url": "https://finance.yahoo.com/personal-finance/banking/article/disney-settles-youtube-tv-and-directv-lawsuit-for-50-million-heres-who-gets-paid-191758059.html",
-      "publishedAt": "2026-06-26T19:17:58+00:00",
-      "text": "Disney settles YouTube TV and DirecTV lawsuit for $50 million: Here's who gets paid",
-      "summary": "Disney settles YouTube TV and DirecTV lawsuit for $50 million: Here's who gets paid",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 11.82
-      },
-      "tickers": [
-        "TV"
-      ],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-b7f40b8a",
-      "source": "news",
-      "title": "5 major benefits of mobile banking",
-      "url": "https://finance.yahoo.com/personal-finance/banking/article/mobile-banking-benefits-210013653.html",
-      "publishedAt": "2024-06-26T21:00:13+00:00",
-      "text": "5 major benefits of mobile banking",
-      "summary": "5 major benefits of mobile banking",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 4.55
+        "confidence": 10.0
       },
       "tickers": [],
       "themes": []
@@ -1896,85 +1851,20 @@
   ],
   "tickerIndex": [
     {
-      "ticker": "APY",
-      "mentions": 6,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 6,
-      "momentum": 0.0,
-      "hypeScore": 39.0,
-      "sourceMix": {
-        "news": 6
-      }
-    },
-    {
-      "ticker": "AVGO",
+      "ticker": "IBIT",
       "mentions": 1,
-      "averageSentiment": 63.32,
-      "bullish": 1,
-      "bearish": 0,
-      "neutral": 0,
-      "momentum": 0.0,
-      "hypeScore": 31.83,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "US",
-      "mentions": 4,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 4,
-      "momentum": 0.0,
-      "hypeScore": 26.0,
-      "sourceMix": {
-        "news": 4
-      }
-    },
-    {
-      "ticker": "NVDA",
-      "mentions": 1,
-      "averageSentiment": 46.96,
-      "bullish": 1,
-      "bearish": 0,
-      "neutral": 0,
-      "momentum": 0.0,
-      "hypeScore": 25.28,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "VIDIA",
-      "mentions": 1,
-      "averageSentiment": 46.96,
-      "bullish": 1,
-      "bearish": 0,
-      "neutral": 0,
-      "momentum": 0.0,
-      "hypeScore": 25.28,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "SK",
-      "mentions": 1,
-      "averageSentiment": -38.67,
+      "averageSentiment": -41.67,
       "bullish": 0,
       "bearish": 1,
       "neutral": 0,
       "momentum": 0.0,
-      "hypeScore": 21.97,
+      "hypeScore": 23.17,
       "sourceMix": {
         "news": 1
       }
     },
     {
-      "ticker": "HELOC",
+      "ticker": "GOOGL",
       "mentions": 3,
       "averageSentiment": 0.0,
       "bullish": 0,
@@ -1987,7 +1877,7 @@
       }
     },
     {
-      "ticker": "CD",
+      "ticker": "APY",
       "mentions": 3,
       "averageSentiment": 0.0,
       "bullish": 0,
@@ -1997,6 +1887,32 @@
       "hypeScore": 19.5,
       "sourceMix": {
         "news": 3
+      }
+    },
+    {
+      "ticker": "UBS",
+      "mentions": 1,
+      "averageSentiment": 28.87,
+      "bullish": 1,
+      "bearish": 0,
+      "neutral": 0,
+      "momentum": 0.0,
+      "hypeScore": 18.05,
+      "sourceMix": {
+        "news": 1
+      }
+    },
+    {
+      "ticker": "AMZN",
+      "mentions": 2,
+      "averageSentiment": 0.0,
+      "bullish": 0,
+      "bearish": 0,
+      "neutral": 2,
+      "momentum": 0.0,
+      "hypeScore": 13.0,
+      "sourceMix": {
+        "news": 2
       }
     },
     {
@@ -2013,7 +1929,33 @@
       }
     },
     {
-      "ticker": "CLL",
+      "ticker": "HELOC",
+      "mentions": 2,
+      "averageSentiment": 0.0,
+      "bullish": 0,
+      "bearish": 0,
+      "neutral": 2,
+      "momentum": 0.0,
+      "hypeScore": 13.0,
+      "sourceMix": {
+        "news": 2
+      }
+    },
+    {
+      "ticker": "CD",
+      "mentions": 2,
+      "averageSentiment": 0.0,
+      "bullish": 0,
+      "bearish": 0,
+      "neutral": 2,
+      "momentum": 0.0,
+      "hypeScore": 13.0,
+      "sourceMix": {
+        "news": 2
+      }
+    },
+    {
+      "ticker": "US",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
@@ -2026,7 +1968,7 @@
       }
     },
     {
-      "ticker": "MU",
+      "ticker": "KLAR",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
@@ -2039,7 +1981,7 @@
       }
     },
     {
-      "ticker": "AMD",
+      "ticker": "PLC",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
@@ -2052,7 +1994,7 @@
       }
     },
     {
-      "ticker": "UK",
+      "ticker": "ADEA",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
@@ -2065,7 +2007,7 @@
       }
     },
     {
-      "ticker": "LRCX",
+      "ticker": "TSLA",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
@@ -2078,7 +2020,7 @@
       }
     },
     {
-      "ticker": "INTC",
+      "ticker": "OPEC",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
@@ -2091,7 +2033,7 @@
       }
     },
     {
-      "ticker": "TSMC",
+      "ticker": "MSFT",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
@@ -2104,7 +2046,7 @@
       }
     },
     {
-      "ticker": "PLTR",
+      "ticker": "BBY",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
@@ -2117,111 +2059,7 @@
       }
     },
     {
-      "ticker": "AMZN",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "MRVL",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "ARM",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "CPU",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "AAPL",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "II",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "MW",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "IRMAA",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "TV",
+      "ticker": "BRSL",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
@@ -2236,6 +2074,6 @@
   ],
   "meta": {
     "source": "rss",
-    "itemCount": 74
+    "itemCount": 72
   }
 }
