@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-08-23T13:00:12.563803+00:00",
+  "generatedAt": "2026-08-23T13:44:16.824308+00:00",
   "dashboard": {
-    "generatedAt": "2026-08-23T13:00:12.563803+00:00",
+    "generatedAt": "2026-08-23T13:44:16.824308+00:00",
     "cached": true,
     "overview": {
       "totalItems": 75,
-      "sentimentIndex": 3.85,
-      "volatilityIndex": 14.96,
-      "activeTickers": 11,
-      "positiveRatio": 14.67,
+      "sentimentIndex": 2.29,
+      "volatilityIndex": 13.08,
+      "activeTickers": 10,
+      "positiveRatio": 10.67,
       "negativeRatio": 4.0,
-      "neutralRatio": 81.33,
+      "neutralRatio": 85.33,
       "marketPulse": "Balanced / mixed",
       "trendDirection": "flat"
     },
     "sentiment": {
-      "positive": 11,
+      "positive": 8,
       "negative": 3,
-      "neutral": 61
+      "neutral": 64
     },
     "sources": {
       "news": 50,
@@ -41,64 +41,64 @@
         "leadTicker": "APR"
       },
       {
-        "time": "2026-08-22T11:17:04+00:00",
-        "label": "Aug 22 11:17",
-        "sentiment": 5.48,
-        "confidence": 31.59,
-        "mentions": 8,
-        "leadTicker": "XRP"
-      },
-      {
         "time": "2026-08-22T11:50:00+00:00",
         "label": "Aug 22 11:50",
-        "sentiment": 15.25,
-        "confidence": 45.65,
+        "sentiment": 2.27,
+        "confidence": 41.05,
         "mentions": 8,
-        "leadTicker": "ETF"
+        "leadTicker": "HELOC"
       },
       {
         "time": "2026-08-22T12:01:58+00:00",
         "label": "Aug 22 12:01",
         "sentiment": 0.86,
-        "confidence": 20.81,
+        "confidence": 21.15,
         "mentions": 8,
         "leadTicker": "US"
       },
       {
+        "time": "2026-08-22T12:30:00+00:00",
+        "label": "Aug 22 12:30",
+        "sentiment": 2.79,
+        "confidence": 18.14,
+        "mentions": 8,
+        "leadTicker": "ETF"
+      },
+      {
         "time": "2026-08-22T23:17:00+00:00",
         "label": "Aug 22 23:17",
-        "sentiment": 2.79,
-        "confidence": 15.3,
+        "sentiment": 3.82,
+        "confidence": 17.24,
         "mentions": 8,
         "leadTicker": "NVDA"
       },
       {
-        "time": "2026-08-23T13:00:12.560988+00:00",
-        "label": "Aug 23 13:00",
+        "time": "2026-08-23T13:44:16.822019+00:00",
+        "label": "Aug 23 13:44",
         "sentiment": 0.0,
         "confidence": 3.98,
         "mentions": 8,
         "leadTicker": "APY"
       },
       {
-        "time": "2026-08-23T13:00:12.561197+00:00",
-        "label": "Aug 23 13:00",
+        "time": "2026-08-23T13:44:16.822166+00:00",
+        "label": "Aug 23 13:44",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 8,
         "leadTicker": ""
       },
       {
-        "time": "2026-08-23T13:00:12.561391+00:00",
-        "label": "Aug 23 13:00",
+        "time": "2026-08-23T13:44:16.822306+00:00",
+        "label": "Aug 23 13:44",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 8,
         "leadTicker": ""
       },
       {
-        "time": "2026-08-23T13:00:12.561460+00:00",
-        "label": "Aug 23 13:00",
+        "time": "2026-08-23T13:44:16.822357+00:00",
+        "label": "Aug 23 13:44",
         "sentiment": 0.0,
         "confidence": 0.91,
         "mentions": 3,
@@ -106,6 +106,19 @@
       }
     ],
     "trending": [
+      {
+        "ticker": "NVDA",
+        "mentions": 3,
+        "averageSentiment": 10.18,
+        "bullish": 1,
+        "bearish": 0,
+        "neutral": 2,
+        "momentum": -30.55,
+        "hypeScore": 30.29,
+        "sourceMix": {
+          "news": 3
+        }
+      },
       {
         "ticker": "APY",
         "mentions": 4,
@@ -148,12 +161,12 @@
       {
         "ticker": "ETF",
         "mentions": 2,
-        "averageSentiment": 13.87,
-        "bullish": 1,
+        "averageSentiment": 0.0,
+        "bullish": 0,
         "bearish": 0,
-        "neutral": 1,
+        "neutral": 2,
         "momentum": 0.0,
-        "hypeScore": 18.55,
+        "hypeScore": 13.0,
         "sourceMix": {
           "news": 2
         }
@@ -169,19 +182,6 @@
         "hypeScore": 13.0,
         "sourceMix": {
           "news": 2
-        }
-      },
-      {
-        "ticker": "NVDA",
-        "mentions": 1,
-        "averageSentiment": 0.0,
-        "bullish": 0,
-        "bearish": 0,
-        "neutral": 1,
-        "momentum": 0.0,
-        "hypeScore": 6.5,
-        "sourceMix": {
-          "news": 1
         }
       },
       {
@@ -224,19 +224,6 @@
         }
       },
       {
-        "ticker": "XRP",
-        "mentions": 1,
-        "averageSentiment": 0.0,
-        "bullish": 0,
-        "bearish": 0,
-        "neutral": 1,
-        "momentum": 0.0,
-        "hypeScore": 6.5,
-        "sourceMix": {
-          "news": 1
-        }
-      },
-      {
         "ticker": "APR",
         "mentions": 1,
         "averageSentiment": 0.0,
@@ -253,8 +240,8 @@
     "themes": [
       {
         "theme": "AI",
-        "mentions": 16,
-        "averageSentiment": 5.66
+        "mentions": 15,
+        "averageSentiment": 0.08
       },
       {
         "theme": "Rates",
@@ -267,21 +254,26 @@
         "averageSentiment": 0.0
       },
       {
+        "theme": "Earnings",
+        "mentions": 3,
+        "averageSentiment": 10.18
+      },
+      {
         "theme": "Crypto",
         "mentions": 3,
         "averageSentiment": 21.29
       },
       {
-        "theme": "Earnings",
-        "mentions": 2,
-        "averageSentiment": 0.0
+        "theme": "M&A",
+        "mentions": 1,
+        "averageSentiment": 30.55
       }
     ],
     "narratives": [
       {
         "theme": "Macro",
-        "mentions": 44,
-        "sentiment": 3.06,
+        "mentions": 45,
+        "sentiment": 2.38,
         "headline": "Palantir, Freeport Clear Buy Points, Lead Five Stocks To Watch",
         "tickerFocus": [
           "PLTR"
@@ -289,8 +281,8 @@
       },
       {
         "theme": "AI",
-        "mentions": 16,
-        "sentiment": 5.66,
+        "mentions": 15,
+        "sentiment": 0.08,
         "headline": "Flash in the Pan or Sustained Rally Contender? 3 Momentum Stocks to Watch",
         "tickerFocus": []
       },
@@ -317,10 +309,21 @@
       },
       {
         "theme": "Earnings",
-        "mentions": 2,
-        "sentiment": 0.0,
-        "headline": "Tempus AI's Data Chief Just Filed a Form 4. His Segment Grew 28% Last Quarter.",
-        "tickerFocus": []
+        "mentions": 3,
+        "sentiment": 10.18,
+        "headline": "Nvidia Might Deliver Another ‘Beat and Raise’ Quarter, But Its Financing Deals Could Be the Bigger Driver of NVDA Stock",
+        "tickerFocus": [
+          "NVDA"
+        ]
+      },
+      {
+        "theme": "M&A",
+        "mentions": 1,
+        "sentiment": 30.55,
+        "headline": "Nvidia Might Deliver Another ‘Beat and Raise’ Quarter, But Its Financing Deals Could Be the Bigger Driver of NVDA Stock",
+        "tickerFocus": [
+          "NVDA"
+        ]
       }
     ],
     "feedPreview": [
@@ -329,7 +332,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vtlpx1/walmart_stock_drops_as_sales_growth_slows/",
-        "publishedAt": "2026-08-23T13:00:12.561460+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822357+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -345,7 +348,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vubzt7/daily_discussion_thread_for_august_21_2026/",
-        "publishedAt": "2026-08-23T13:00:12.561435+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822339+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -361,7 +364,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vurssc/aug_week_3_62k/",
-        "publishedAt": "2026-08-23T13:00:12.561414+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822323+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -377,7 +380,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vup72c/iren_to_the_moon_regard_edition/",
-        "publishedAt": "2026-08-23T13:00:12.561391+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822306+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -393,7 +396,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vtxz1o/zuckerberg_is_a_failure/",
-        "publishedAt": "2026-08-23T13:00:12.561368+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822290+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -409,7 +412,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vtw1h0/has_a_new_animal_enter_the_market/",
-        "publishedAt": "2026-08-23T13:00:12.561344+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822273+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -425,7 +428,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vus0fd/give_me_hope_guys/",
-        "publishedAt": "2026-08-23T13:00:12.561321+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822256+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -441,7 +444,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vutct8/i_traded_crcl_off_yesterdays_btc_move_and_made_24k/",
-        "publishedAt": "2026-08-23T13:00:12.561296+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822238+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -457,7 +460,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vun4dp/cant_wait_for_meta_to_start_mooning_after_cutting/",
-        "publishedAt": "2026-08-23T13:00:12.561270+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822219+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -473,7 +476,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vuhmyw/moderna_generational_yolo_territory_part_3_and/",
-        "publishedAt": "2026-08-23T13:00:12.561245+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822201+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -489,7 +492,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vuogpe/being_a_gay_bear_is_costly/",
-        "publishedAt": "2026-08-23T13:00:12.561222+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822184+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -505,7 +508,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vuzcw6/uso_oil_futures_will_it_invert_will_the_spr/",
-        "publishedAt": "2026-08-23T13:00:12.561197+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822166+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -521,7 +524,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vuq487/just_crossed_100k_today_what_do_i_do_now/",
-        "publishedAt": "2026-08-23T13:00:12.561172+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822149+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -537,7 +540,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vulqic/hood_800/",
-        "publishedAt": "2026-08-23T13:00:12.561150+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822133+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -553,7 +556,7 @@
         "source": "reddit",
         "title": "Untitled",
         "url": "https://www.reddit.com/r/wallstreetbets/comments/1vuymcs/26k_on_1dte_spy_calls/",
-        "publishedAt": "2026-08-23T13:00:12.561127+00:00",
+        "publishedAt": "2026-08-23T13:44:16.822117+00:00",
         "text": "Untitled",
         "summary": "Untitled",
         "sentiment": {
@@ -572,7 +575,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vtlpx1/walmart_stock_drops_as_sales_growth_slows/",
-      "publishedAt": "2026-08-23T13:00:12.561460+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822357+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -588,7 +591,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vubzt7/daily_discussion_thread_for_august_21_2026/",
-      "publishedAt": "2026-08-23T13:00:12.561435+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822339+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -604,7 +607,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vurssc/aug_week_3_62k/",
-      "publishedAt": "2026-08-23T13:00:12.561414+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822323+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -620,7 +623,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vup72c/iren_to_the_moon_regard_edition/",
-      "publishedAt": "2026-08-23T13:00:12.561391+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822306+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -636,7 +639,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vtxz1o/zuckerberg_is_a_failure/",
-      "publishedAt": "2026-08-23T13:00:12.561368+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822290+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -652,7 +655,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vtw1h0/has_a_new_animal_enter_the_market/",
-      "publishedAt": "2026-08-23T13:00:12.561344+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822273+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -668,7 +671,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vus0fd/give_me_hope_guys/",
-      "publishedAt": "2026-08-23T13:00:12.561321+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822256+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -684,7 +687,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vutct8/i_traded_crcl_off_yesterdays_btc_move_and_made_24k/",
-      "publishedAt": "2026-08-23T13:00:12.561296+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822238+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -700,7 +703,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vun4dp/cant_wait_for_meta_to_start_mooning_after_cutting/",
-      "publishedAt": "2026-08-23T13:00:12.561270+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822219+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -716,7 +719,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vuhmyw/moderna_generational_yolo_territory_part_3_and/",
-      "publishedAt": "2026-08-23T13:00:12.561245+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822201+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -732,7 +735,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vuogpe/being_a_gay_bear_is_costly/",
-      "publishedAt": "2026-08-23T13:00:12.561222+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822184+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -748,7 +751,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vuzcw6/uso_oil_futures_will_it_invert_will_the_spr/",
-      "publishedAt": "2026-08-23T13:00:12.561197+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822166+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -764,7 +767,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vuq487/just_crossed_100k_today_what_do_i_do_now/",
-      "publishedAt": "2026-08-23T13:00:12.561172+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822149+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -780,7 +783,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vulqic/hood_800/",
-      "publishedAt": "2026-08-23T13:00:12.561150+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822133+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -796,7 +799,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vuymcs/26k_on_1dte_spy_calls/",
-      "publishedAt": "2026-08-23T13:00:12.561127+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822117+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -812,7 +815,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vvgkty/ezpawn_dd/",
-      "publishedAt": "2026-08-23T13:00:12.561105+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822101+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -828,7 +831,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vutz6c/salesforce_partners_not_seeing_meaningful_revenue/",
-      "publishedAt": "2026-08-23T13:00:12.561078+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822082+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -844,7 +847,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vvohaa/whats_with_the_pricedependent_periods_of_reduced/",
-      "publishedAt": "2026-08-23T13:00:12.561050+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822062+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -860,7 +863,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vvpq3l/90k_1_week_cbrs_options/",
-      "publishedAt": "2026-08-23T13:00:12.561020+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822039+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -876,7 +879,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vvrh14/nvidia_customers_notified_about_airelated_price/",
-      "publishedAt": "2026-08-23T13:00:12.560988+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822019+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -892,7 +895,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vvk2no/trading_is_easy/",
-      "publishedAt": "2026-08-23T13:00:12.560915+00:00",
+      "publishedAt": "2026-08-23T13:44:16.822000+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -908,7 +911,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vvrioh/new_research_just_dropped/",
-      "publishedAt": "2026-08-23T13:00:12.560889+00:00",
+      "publishedAt": "2026-08-23T13:44:16.821982+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -924,7 +927,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vvnfpl/warren_buffett_in_the_retirement_home_watching/",
-      "publishedAt": "2026-08-23T13:00:12.560862+00:00",
+      "publishedAt": "2026-08-23T13:44:16.821962+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -940,7 +943,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vuqyzj/weekend_discussion_thread_for_the_weekend_of/",
-      "publishedAt": "2026-08-23T13:00:12.560831+00:00",
+      "publishedAt": "2026-08-23T13:44:16.821940+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -956,7 +959,7 @@
       "source": "reddit",
       "title": "Untitled",
       "url": "https://www.reddit.com/r/wallstreetbets/comments/1vumyj2/weekly_earnings_thread_824_828/",
-      "publishedAt": "2026-08-23T13:00:12.560786+00:00",
+      "publishedAt": "2026-08-23T13:44:16.821901+00:00",
       "text": "Untitled",
       "summary": "Untitled",
       "sentiment": {
@@ -1043,6 +1046,60 @@
       ]
     },
     {
+      "id": "news-e4541ec0",
+      "source": "news",
+      "title": "2 Software Stocks That Whale Rock Is Betting Will Survive the Apocalypse",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/2-software-stocks-whale-rock-140002300.html",
+      "publishedAt": "2026-08-22T14:00:02+00:00",
+      "text": "2 Software Stocks That Whale Rock Is Betting Will Survive the Apocalypse",
+      "summary": "2 Software Stocks That Whale Rock Is Betting Will Survive the Apocalypse",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 10.0
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-34c8d0b5",
+      "source": "news",
+      "title": "BlackRock CEO Larry Fink says a bank account is 'one of the worst financial decisions' — and urges Americans to invest",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/blackrock-ceo-larry-fink-says-140000827.html",
+      "publishedAt": "2026-08-22T14:00:00+00:00",
+      "text": "BlackRock CEO Larry Fink says a bank account is 'one of the worst financial decisions' — and urges Americans to invest",
+      "summary": "BlackRock CEO Larry Fink says a bank account is 'one of the worst financial decisions' — and urges Americans to invest",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 18.18
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-69365903",
+      "source": "news",
+      "title": "Nvidia Might Deliver Another ‘Beat and Raise’ Quarter, But Its Financing Deals Could Be the Bigger Driver of NVDA Stock",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-might-deliver-another-beat-134502581.html",
+      "publishedAt": "2026-08-22T13:45:02+00:00",
+      "text": "Nvidia Might Deliver Another ‘Beat and Raise’ Quarter, But Its Financing Deals Could Be the Bigger Driver of NVDA Stock",
+      "summary": "Nvidia Might Deliver Another ‘Beat and Raise’ Quarter, But Its Financing Deals Could Be the Bigger Driver of NVDA Stock",
+      "sentiment": {
+        "label": "positive",
+        "score": 30.55,
+        "confidence": 62.48
+      },
+      "tickers": [
+        "NVDA"
+      ],
+      "themes": [
+        "AI",
+        "Earnings",
+        "M&A"
+      ]
+    },
+    {
       "id": "news-7a1f3ec4",
       "source": "news",
       "title": "How to Play Beyond Meat Stock After Its 30-for-1 Reverse Split",
@@ -1113,6 +1170,43 @@
       "themes": []
     },
     {
+      "id": "news-bbca3f20",
+      "source": "news",
+      "title": "Where Will This Vanguard ETF, Loaded With Nvidia and Broadcom, Be in 10 Years?",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/where-vanguard-etf-loaded-nvidia-122000913.html",
+      "publishedAt": "2026-08-22T12:20:00+00:00",
+      "text": "Where Will This Vanguard ETF, Loaded With Nvidia and Broadcom, Be in 10 Years?",
+      "summary": "Where Will This Vanguard ETF, Loaded With Nvidia and Broadcom, Be in 10 Years?",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 11.82
+      },
+      "tickers": [
+        "ETF",
+        "NVDA"
+      ],
+      "themes": []
+    },
+    {
+      "id": "news-7ab238a0",
+      "source": "news",
+      "title": "Tempus AI's Accounting Chief Just Reported an Insider Transaction. Here's What Long-Term Investors Should Know",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/tempus-ais-accounting-chief-just-121847077.html",
+      "publishedAt": "2026-08-22T12:18:47+00:00",
+      "text": "Tempus AI's Accounting Chief Just Reported an Insider Transaction. Here's What Long-Term Investors Should Know",
+      "summary": "Tempus AI's Accounting Chief Just Reported an Insider Transaction. Here's What Long-Term Investors Should Know",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 13.64
+      },
+      "tickers": [],
+      "themes": [
+        "AI"
+      ]
+    },
+    {
       "id": "news-92a33a63",
       "source": "news",
       "title": "‘Always the best time to buy’: Todd Nepola says real estate builds generational wealth. 4 ways to get in from $100",
@@ -1124,6 +1218,56 @@
         "label": "positive",
         "score": 22.36,
         "confidence": 49.7
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-f4751c18",
+      "source": "news",
+      "title": "Her Annuity Pays $1,580 a Month, Guaranteed for Life. At 73, It Pushed Her Medicare Premium Up Two Brackets.",
+      "url": "https://finance.yahoo.com/healthcare/articles/her-annuity-pays-1-580-121354993.html",
+      "publishedAt": "2026-08-22T12:13:54+00:00",
+      "text": "Her Annuity Pays $1,580 a Month, Guaranteed for Life. At 73, It Pushed Her Medicare Premium Up Two Brackets",
+      "summary": "Her Annuity Pays $1,580 a Month, Guaranteed for Life. At 73, It Pushed Her Medicare Premium Up Two Brackets",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 15.45
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
+      "id": "news-2dc6a24c",
+      "source": "news",
+      "title": "What to Know About the CFO of Tempus AI's Latest Insider Transaction Filing",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/know-cfo-tempus-ais-latest-121133933.html",
+      "publishedAt": "2026-08-22T12:11:33+00:00",
+      "text": "What to Know About the CFO of Tempus AI's Latest Insider Transaction Filing",
+      "summary": "What to Know About the CFO of Tempus AI's Latest Insider Transaction Filing",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 11.82
+      },
+      "tickers": [],
+      "themes": [
+        "AI"
+      ]
+    },
+    {
+      "id": "news-e4cb9455",
+      "source": "news",
+      "title": "Passive Income: How Much Would You Need to Invest in Realty Income (O) Stock to Collect $1,000 in Annual Dividends?",
+      "url": "https://finance.yahoo.com/real-estate/articles/passive-income-much-invest-realty-120500018.html",
+      "publishedAt": "2026-08-22T12:05:00+00:00",
+      "text": "Passive Income: How Much Would You Need to Invest in Realty Income (O) Stock to Collect $1,000 in Annual Dividends?",
+      "summary": "Passive Income: How Much Would You Need to Invest in Realty Income (O) Stock to Collect $1,000 in Annual Dividends?",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 17.27
       },
       "tickers": [],
       "themes": []
@@ -1273,22 +1417,6 @@
       ]
     },
     {
-      "id": "news-7f3eaad4",
-      "source": "news",
-      "title": "The Target Turnaround Is Real. Here's What Investors Should Know.",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/target-turnaround-real-heres-investors-115000942.html",
-      "publishedAt": "2026-08-22T11:50:00+00:00",
-      "text": "The Target Turnaround Is Real. Here's What Investors Should Know",
-      "summary": "The Target Turnaround Is Real. Here's What Investors Should Know",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 9.09
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
       "id": "news-2b37cf5a",
       "source": "news",
       "title": "Flash in the Pan or Sustained Rally Contender? 3 Momentum Stocks to Watch",
@@ -1325,6 +1453,22 @@
       ]
     },
     {
+      "id": "news-7f3eaad4",
+      "source": "news",
+      "title": "The Target Turnaround Is Real. Here's What Investors Should Know.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/target-turnaround-real-heres-investors-115000942.html",
+      "publishedAt": "2026-08-22T11:50:00+00:00",
+      "text": "The Target Turnaround Is Real. Here's What Investors Should Know",
+      "summary": "The Target Turnaround Is Real. Here's What Investors Should Know",
+      "sentiment": {
+        "label": "neutral",
+        "score": 0.0,
+        "confidence": 9.09
+      },
+      "tickers": [],
+      "themes": []
+    },
+    {
       "id": "news-d4a7c4a9",
       "source": "news",
       "title": "S&P 500 dividend yield hits record low near 1% and it has some retirees rethinking their strategies",
@@ -1336,56 +1480,6 @@
         "label": "positive",
         "score": 24.25,
         "confidence": 49.71
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-6d2c8277",
-      "source": "news",
-      "title": "3 Software-as-a-Service (SaaS) Stocks with Big Upside from AI",
-      "url": "https://finance.yahoo.com/technology/ai/articles/3-software-saas-stocks-big-113500577.html",
-      "publishedAt": "2026-08-22T11:35:00+00:00",
-      "text": "3 Software-as-a-Service (SaaS) Stocks with Big Upside from AI",
-      "summary": "3 Software-as-a-Service (SaaS) Stocks with Big Upside from AI",
-      "sentiment": {
-        "label": "positive",
-        "score": 40.0,
-        "confidence": 65.27
-      },
-      "tickers": [],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-df5d7519",
-      "source": "news",
-      "title": "Why Opera Stock Sank This Week",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/why-opera-stock-sank-week-113500333.html",
-      "publishedAt": "2026-08-22T11:35:00+00:00",
-      "text": "Why Opera Stock Sank This Week",
-      "summary": "Why Opera Stock Sank This Week",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 5.45
-      },
-      "tickers": [],
-      "themes": []
-    },
-    {
-      "id": "news-aba17c5b",
-      "source": "news",
-      "title": "The Fire Closed His Photography Studio at 63. Social Security Counted the Canceled Weddings, Not the Burned Cameras.",
-      "url": "https://finance.yahoo.com/small-business/articles/fire-closed-photography-studio-63-113057331.html",
-      "publishedAt": "2026-08-22T11:30:57+00:00",
-      "text": "The Fire Closed His Photography Studio at 63. Social Security Counted the Canceled Weddings, Not the Burned Cameras",
-      "summary": "The Fire Closed His Photography Studio at 63. Social Security Counted the Canceled Weddings, Not the Burned Cameras",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 15.45
       },
       "tickers": [],
       "themes": []
@@ -1407,24 +1501,6 @@
       "themes": [
         "AI"
       ]
-    },
-    {
-      "id": "news-6c92ee66",
-      "source": "news",
-      "title": "Which Biotech ETF Is a Better Buy: Concentrated Bet or Broad Basket?",
-      "url": "https://finance.yahoo.com/healthcare/articles/biotech-etf-better-buy-concentrated-112501117.html",
-      "publishedAt": "2026-08-22T11:25:01+00:00",
-      "text": "Which Biotech ETF Is a Better Buy: Concentrated Bet or Broad Basket?",
-      "summary": "Which Biotech ETF Is a Better Buy: Concentrated Bet or Broad Basket?",
-      "sentiment": {
-        "label": "positive",
-        "score": 27.74,
-        "confidence": 51.12
-      },
-      "tickers": [
-        "ETF"
-      ],
-      "themes": []
     },
     {
       "id": "news-f63c0827",
@@ -1465,42 +1541,6 @@
       ]
     },
     {
-      "id": "news-4466485e",
-      "source": "news",
-      "title": "Why XRP Is Skyrocketing This Week",
-      "url": "https://finance.yahoo.com/markets/crypto/articles/why-xrp-skyrocketing-week-110840870.html",
-      "publishedAt": "2026-08-22T11:08:40+00:00",
-      "text": "Why XRP Is Skyrocketing This Week",
-      "summary": "Why XRP Is Skyrocketing This Week",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 5.45
-      },
-      "tickers": [
-        "XRP"
-      ],
-      "themes": []
-    },
-    {
-      "id": "news-72017d45",
-      "source": "news",
-      "title": "Tempus AI's CEO Sold $6.6 Million in Stock the Day Before a Huge Rally. Here's What to Know",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/tempus-ais-ceo-sold-6-110319518.html",
-      "publishedAt": "2026-08-22T11:03:19+00:00",
-      "text": "Tempus AI's CEO Sold $6.6 Million in Stock the Day Before a Huge Rally. Here's What to Know",
-      "summary": "Tempus AI's CEO Sold $6.6 Million in Stock the Day Before a Huge Rally. Here's What to Know",
-      "sentiment": {
-        "label": "positive",
-        "score": 44.55,
-        "confidence": 80.05
-      },
-      "tickers": [],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
       "id": "news-c0a94a53",
       "source": "news",
       "title": "Airbnb Just Hit a Four-Year High. The Downgrade Says That’s the Problem.",
@@ -1512,42 +1552,6 @@
         "label": "negative",
         "score": -36.08,
         "confidence": 64.13
-      },
-      "tickers": [],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-1456c474",
-      "source": "news",
-      "title": "3 Semiconductor Stocks to Buy Before August Ends",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/3-semiconductor-stocks-buy-august-110033279.html",
-      "publishedAt": "2026-08-22T11:00:33+00:00",
-      "text": "3 Semiconductor Stocks to Buy Before August Ends",
-      "summary": "3 Semiconductor Stocks to Buy Before August Ends",
-      "sentiment": {
-        "label": "positive",
-        "score": 35.36,
-        "confidence": 57.63
-      },
-      "tickers": [],
-      "themes": [
-        "AI"
-      ]
-    },
-    {
-      "id": "news-b3dc45f2",
-      "source": "news",
-      "title": "3 AI Stocks Built for the Next Decade",
-      "url": "https://finance.yahoo.com/technology/ai/articles/3-ai-stocks-built-next-110030876.html",
-      "publishedAt": "2026-08-22T11:00:30+00:00",
-      "text": "3 AI Stocks Built for the Next Decade",
-      "summary": "3 AI Stocks Built for the Next Decade",
-      "sentiment": {
-        "label": "neutral",
-        "score": 0.0,
-        "confidence": 6.36
       },
       "tickers": [],
       "themes": [
@@ -1868,6 +1872,19 @@
   ],
   "tickerIndex": [
     {
+      "ticker": "NVDA",
+      "mentions": 3,
+      "averageSentiment": 10.18,
+      "bullish": 1,
+      "bearish": 0,
+      "neutral": 2,
+      "momentum": -30.55,
+      "hypeScore": 30.29,
+      "sourceMix": {
+        "news": 3
+      }
+    },
+    {
       "ticker": "APY",
       "mentions": 4,
       "averageSentiment": 0.0,
@@ -1909,12 +1926,12 @@
     {
       "ticker": "ETF",
       "mentions": 2,
-      "averageSentiment": 13.87,
-      "bullish": 1,
+      "averageSentiment": 0.0,
+      "bullish": 0,
       "bearish": 0,
-      "neutral": 1,
+      "neutral": 2,
       "momentum": 0.0,
-      "hypeScore": 18.55,
+      "hypeScore": 13.0,
       "sourceMix": {
         "news": 2
       }
@@ -1930,19 +1947,6 @@
       "hypeScore": 13.0,
       "sourceMix": {
         "news": 2
-      }
-    },
-    {
-      "ticker": "NVDA",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
       }
     },
     {
@@ -1973,19 +1977,6 @@
     },
     {
       "ticker": "ICYMI",
-      "mentions": 1,
-      "averageSentiment": 0.0,
-      "bullish": 0,
-      "bearish": 0,
-      "neutral": 1,
-      "momentum": 0.0,
-      "hypeScore": 6.5,
-      "sourceMix": {
-        "news": 1
-      }
-    },
-    {
-      "ticker": "XRP",
       "mentions": 1,
       "averageSentiment": 0.0,
       "bullish": 0,
